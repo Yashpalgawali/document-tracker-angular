@@ -19,10 +19,10 @@ export class ViewvendortypesComponent implements OnInit{
       this.vendortypelist = data
       if(data!=null)
         {
-          alert('data presenet')
+          
         }
         else {
-          alert('no data')
+          
         }
     }
     )

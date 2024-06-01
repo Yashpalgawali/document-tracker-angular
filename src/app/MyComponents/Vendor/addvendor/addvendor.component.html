@@ -1,1 +1,31 @@
-<p>addvendor works!</p>
+<div class="container-fluid">
+    <form (ngSubmit)="savevendor()" method="post">
+        <div class="form-group">
+            <input type="text" name="vendor_name" id="vendor_name" [(ngModel)]="vendor.vendor_name" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="vendor_name" id="vendor_name" [(ngModel)]="vendor.vendor_email" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="vendor_name" id="vendor_name" [(ngModel)]="vendor.vendor_contact" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="vendor_name" id="vendor_name" [(ngModel)]="vendor.vendor_contact" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="vendor_name" id="vendor_name" [(ngModel)]="vendor.vendor_contact" class="form-control">
+            <select id="vendor_type" name="vendor_type" required class="form-control">
+                <option selected disabled>Selecte Vendor Type</option>
+                <ng-container *ngFor="let vtype of vtypelist; let i=index">
+                    <option [ngValue]="vtype.vendor_type_id">{{vtype.vendor_type}}</option>
+                </ng-container>
+                
+            </select>
+        </div>
+
+
+    </form>
+
+</div>
