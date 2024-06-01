@@ -1,0 +1,14 @@
+
+
+<div class="container-fluid">
+    <h1>Add VendorType</h1>
+    <form (ngSubmit)="saveVendorType()" method="POST"  >	
+    
+        <div class="form-control">
+            <label for="vendor_type"><strong> Vendor Type</strong></label>
+            <input type="text" name="vendor_type" id="vendor_type" [(ngModel)]="vendortype.vendor_type" class="form-control" placeholder="Enter VendorType">  
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button> 
+    </form>
+
+</div>
