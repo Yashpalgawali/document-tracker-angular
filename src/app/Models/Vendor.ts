@@ -7,6 +7,7 @@ export class Vendor {
     vendor_email !: string
     vendor_contact !: string
     password !: string
+    cnf_password !: string
     username !: string
     vendor_type !: VendorType
 }

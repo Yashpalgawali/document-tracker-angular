@@ -18,7 +18,7 @@ export class VendortypeService {
   }
 
   public getAllVendorTypes():Observable<VendorType[]>
-  {alert('URL is '+this.base_url)
+  { 
     return this.http.get<VendorType[]>(`${this.base_url}`);
   }
   
