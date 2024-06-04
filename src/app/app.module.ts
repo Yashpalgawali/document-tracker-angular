@@ -13,6 +13,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { EditvendorComponent } from './MyComponents/Vendor/editvendor/editvendor.component';
+import { EditvendortypeComponent } from './MyComponents/Vendortype/editvendortype/editvendortype.component';
+import { EditregulationComponent } from './MyComponents/Regulation/editregulation/editregulation.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     AddregulationComponent,
     ViewregulationsComponent,
     AddvendortypeComponent,
-    ViewvendortypesComponent
+    ViewvendortypesComponent,
+    EditvendorComponent,
+    EditvendortypeComponent,
+    EditregulationComponent
   ],
   imports: [
     BrowserModule,

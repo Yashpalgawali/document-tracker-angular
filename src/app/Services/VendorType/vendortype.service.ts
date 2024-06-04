@@ -21,5 +21,10 @@ export class VendortypeService {
   { 
     return this.http.get<VendorType[]>(`${this.base_url}`);
   }
+
+  public getVendorTypeById(vid : number):Observable<VendorType>
+  { 
+    return this.http.get<VendorType>(`${this.base_url}${vid}`);
+  }
   
 }

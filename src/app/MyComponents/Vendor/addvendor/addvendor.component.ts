@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Vendor } from 'src/app/Models/Vendor';
 import { VendortypeService } from 'src/app/Services/VendorType/vendortype.service';
-import { VendorService } from 'src/app/Services/vendor.service';
+import { VendorService } from 'src/app/Services/Vendor/vendor.service';
 
 @Component({
   selector: 'app-addvendor',
@@ -10,7 +11,7 @@ import { VendorService } from 'src/app/Services/vendor.service';
 })
 export class AddvendorComponent implements OnInit {
 
-constructor(private vtypeserv : VendortypeService,private vendserv : VendorService){}
+constructor(private vtypeserv : VendortypeService,private vendserv : VendorService,private router : Router){}
 
 vendor : Vendor = new Vendor();
 vtypelist : any
@@ -28,13 +29,13 @@ vtypelist : any
 savevendor() {
   this.vendserv.saveVendor(this.vendor).subscribe({
     complete : ()=>{
-      alert('saved vendor');
+      sessionStorage.setItem('response','Vendor '+this.vendor.vendor_name+' is saved successfully');
+      this.router.navigate(['viewvendors'])
     },
     error:(e)=> {
       alert('Not saved')
     }
   }
-
   )
 }
 

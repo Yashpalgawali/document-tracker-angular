@@ -10,30 +10,34 @@ import { VendortypeService } from 'src/app/Services/VendorType/vendortype.servic
 })
 export class ViewvendortypesComponent implements OnInit{
 
-  // vendortypelist : VendorType[] = []
   vendortypelist : any
-  constructor(private route: Router,private vendtypeserv : VendortypeService) {}
+  reserr : any
+  response :any
+  constructor(private route: Router,private vendtypeserv : VendortypeService) { }
 
   ngOnInit(): void {
     this.vendtypeserv.getAllVendorTypes().subscribe(data=>{
       this.vendortypelist = data
-      if(data!=null)
-        {
-          
-        }
-        else {
-          
-        }
-    }
+      
+        if(sessionStorage.getItem('reserr')!= null)
+          {this.reserr = sessionStorage.getItem('reserr');
+            setTimeout(() => {
+              sessionStorage.removeItem('reserr');
+              this.reserr=""
+            }, 3000);
+          }
+          if(sessionStorage.getItem('response')!= null)
+            {this.response = sessionStorage.getItem('response');
+              setTimeout(() => {
+                sessionStorage.removeItem('response');
+                this.response=""
+              }, 3000);
+            }
+      }
     )
-    // this.vendtypeserv.getAllVendorTypes().subscribe({
-    //   next:(data)=> {
-    //     this.vendortypelist =data
-        
-    //   },
-    //   error :(err) => {
-    //       alert('error');
-    //   },
-    // })
   }
+
+  getVendorTypeById(vid : number) {
+      this.route.navigate(['/edit/vendortype/',vid])
+    }
 }

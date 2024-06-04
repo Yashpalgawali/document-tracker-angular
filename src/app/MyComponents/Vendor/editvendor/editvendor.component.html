@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <h2>Edit Vendor</h2>
+    <form (ngSubmit)="updatevendor()" method="post">
+        <div class="form-group">
+            <label for="vendor_name">Vendor Name</label>
+            <input type="text" name="vendor_name" id="vendor_name" [(ngModel)]="vendor.vendor_name" class="form-control" placeholder="Enter vendor Name">
+        </div>
+        <div class="form-group">
+            <label for="vendor_email">Vendor Email</label>
+            <input type="text" name="vendor_email" id="vendor_email" [(ngModel)]="vendor.vendor_email" class="form-control" placeholder="Enter vendor email">
+        </div>
+        <div class="form-group">
+            <label for="vendor_contact"> Vendor Contact</label>
+            <input type="text" name="vendor_contact" id="vendor_contact" [(ngModel)]="vendor.vendor_contact" class="form-control" placeholder="Enter vendor Contact">
+        </div>
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" [(ngModel)]="vendor.username" class="form-control" placeholder="Enter username">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+                <input type="password" name="password" id="password" [(ngModel)]="vendor.password" class="form-control" placeholder="Enter Password">
+        </div>
+
+        <div class="form-group">
+            <label for="cnf_password">Confirm Password</label>
+                <input type="password" name="cnf_password" id="cnf_password" [(ngModel)]="vendor.cnf_password" class="form-control" placeholder="Confirm the Password">
+        </div>
+
+        <div class="form-group">
+            <select id="vendor_type" name="vendor_type" required [(ngModel)]="vendor.vendor_type" class="form-control">
+                <option selected disabled>Select Vendor Type</option>
+                <option *ngFor="let vtype of vtypelist" [ngValue]="vtype">{{vtype.vendor_type}}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary"  >Add vendor</button>
+
+    </form>
+
+</div>

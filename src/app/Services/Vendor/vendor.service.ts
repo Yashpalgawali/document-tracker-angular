@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { GlobalComponent } from '../GlobalComponents';
-import { Vendor } from '../Models/Vendor';
 import { Observable } from 'rxjs';
+import { GlobalComponent } from 'src/app/GlobalComponents';
+import { Vendor } from 'src/app/Models/Vendor';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +20,10 @@ export class VendorService {
   public getAllVendors():Observable<Vendor[]>
   { 
     return this.http.get<Vendor[]>(`${this.base_url}`);
+  }
+
+  public getVendorById(vid : number):Observable<Vendor>
+  { 
+    return this.http.get<Vendor>(`${this.base_url}${vid}`);
   }
 }

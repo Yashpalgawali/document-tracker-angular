@@ -3,6 +3,7 @@
     <tr>
         <th>Sr No.</th>
         <th>Vendor type</th>
+        <th>Action</th>
     </tr>
 </thead>
 
@@ -10,6 +11,7 @@
     <tr *ngFor="let vlist of vendortypelist; let i=index">
         <td>{{i+1}}</td>
         <td>{{vlist.vendor_type }}</td>
+        <td> <button (click)="getVendorTypeById(vlist.vendor_type_id)" class="btn btn-primary">Edit</button></td>
     </tr>
 </tbody>
 
