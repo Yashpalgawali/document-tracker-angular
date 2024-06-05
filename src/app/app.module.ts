@@ -10,12 +10,12 @@ import { ViewregulationsComponent } from './MyComponents/Regulation/viewregulati
 import { AddvendortypeComponent } from './MyComponents/VendorType/addvendortype/addvendortype.component';
 import { ViewvendortypesComponent } from './MyComponents/VendorType/viewvendortypes/viewvendortypes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { EditvendorComponent } from './MyComponents/Vendor/editvendor/editvendor.component';
-import { EditvendortypeComponent } from './MyComponents/Vendortype/editvendortype/editvendortype.component';
 import { EditregulationComponent } from './MyComponents/Regulation/editregulation/editregulation.component';
+import { EditvendortypeComponent } from './MyComponents/VendorType/editvendortype/editvendortype.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { EditregulationComponent } from './MyComponents/Regulation/editregulatio
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
 
   ],
   providers: [],

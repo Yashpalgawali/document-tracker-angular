@@ -8,7 +8,7 @@ export class Regulation {
     regulation_issued_date !: string
     file_path !: string
     file_name !: string
-
+    file !: File
     vendor !: Vendor ;
 
 }
