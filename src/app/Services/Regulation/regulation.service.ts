@@ -14,7 +14,12 @@ export class RegulationService {
   constructor(private http : HttpClient) { }
 
   public saveRegulation(regulation : FormData):Observable<any>
-  {alert(this.base_url+"\n data is " )
+  {
+    return this.http.post(this.base_url,regulation);
+  }
+
+  public saveRegulationUsingObject(regulation : Regulation):Observable<any>
+  {
     return this.http.post(this.base_url,regulation);
   }
 

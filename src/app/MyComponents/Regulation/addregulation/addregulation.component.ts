@@ -25,6 +25,11 @@ export class AddregulationComponent {
     });
   }
 
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    
+  }
   saveRegulation() {
     if (this.form.valid) {
 
@@ -35,6 +40,7 @@ export class AddregulationComponent {
       formData.append('regulation_frequency', this.form.get('regulation_frequency')?.value);
       formData.append('regulation_issued_date', this.form.get('regulation_issued_date')?.value);
       formData.append('file', this.form.get('file')?.value);
+      formData.append('vendor', this.form.get('vendor')?.value);
 
       if (this.file) {
         formData.append('file', this.file);
@@ -52,7 +58,17 @@ export class AddregulationComponent {
       });
     }
   }
-
+  saveRegulationUsingObject()
+  {
+    this.regulateserv.saveRegulationUsingObject(this.regulation).subscribe({
+      complete:() => {
+        alert('Regulation is saved')
+      },
+      error : (err) => {
+        alert('error')
+      }
+    })
+  }
   onFileSelect(event: any) {
     if (event.target.files.length > 0) {
       this.file = event.target.files[0];
