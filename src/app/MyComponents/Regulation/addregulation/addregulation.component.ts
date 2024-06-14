@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Regulation } from 'src/app/Models/Regulation';
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { VendorService } from 'src/app/Services/Vendor/vendor.service';
 
 @Component({
   selector: 'app-addregulation',
@@ -10,12 +12,33 @@ import { RegulationService } from 'src/app/Services/Regulation/regulation.servic
   styleUrls: ['./addregulation.component.css']
 })
 export class AddregulationComponent {
-
+  selectedDate : Date = new Date();
+  ate : Date = new Date();
   file: File | null = null;
   form: FormGroup;
 
+  selectedTime !: Date;
+  minTime !: Date
+    
+  time: Date = new Date();
+  
+  
+    
+  public datepickerConfig: Partial<BsDatepickerConfig> = {
+    containerClass : 'theme-dark-blue',
+    dateInputFormat: 'DD-MM-YYYY',
+    
+  };
+
+  getnextdate(event : any)
+  {
+    alert('getnextdate caleed '+event.target.value)
+  }
+
   regulation : Regulation = new Regulation()
-  constructor(private router: Router, private regulateserv: RegulationService, private fb: FormBuilder) {
+  constructor(private router: Router, private regulateserv: RegulationService, private fb: FormBuilder,
+              private vendserv : VendorService
+  ) {
     this.form = this.fb.group({
       regulation_name: [''],
       regulation_description: [''],

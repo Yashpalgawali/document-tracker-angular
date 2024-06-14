@@ -17,9 +17,30 @@
             <option value="3">Yearly</option>
         </select>
     </div>
+
+    <!-- <div class="form-group">
+        <label for="apdate">regulation_issued_date</label>
+        <input
+            placeholder="Select Date"
+            class="form-control"
+            bsDatepicker
+            [(bsValue)]="selectedDate"
+            value="selectedDate | date:'DD-MM-yyyy'"
+            formControlName="regulation_issued_date" 
+            [bsConfig]="datepickerConfig"
+            id="apdate" name="apdate"
+            autocomplete="off"
+            (blur)="getnextdate($event)"
+        />
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+     </div> -->
+ 
+
     <div class="form-group">
         <label for="regulation_issued_date"></label>
-            <input type="text" name="regulation_issued_date" id="regulation_issued_date" formControlName="regulation_issued_date"  class="form-control" placeholder="Enter regulation Issued date">
+            <input type="text" name="regulation_issued_date" id="regulation_issued_date" formControlName="regulation_issued_date"  class="form-control" placeholder="regulation Issued date">
     </div>
     <div class="form-group">
         <label for="vendor">Please select Vendor </label>

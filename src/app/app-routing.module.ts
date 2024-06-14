@@ -8,6 +8,8 @@ import { EditvendorComponent } from './MyComponents/Vendor/editvendor/editvendor
 import { AddregulationComponent } from './MyComponents/Regulation/addregulation/addregulation.component';
 import { EditregulationComponent } from './MyComponents/Regulation/editregulation/editregulation.component';
 import { ViewregulationsComponent } from './MyComponents/Regulation/viewregulations/viewregulations.component';
+import { AddregulationtypeComponent } from './MyComponents/RegulationType/addregulationtype/addregulationtype.component';
+import { ViewregulationtypesComponent } from './MyComponents/RegulationType/viewregulationtypes/viewregulationtypes.component';
 
 const routes: Routes = [
   { path : "addvendortype" , component: AddvendortypeComponent },
@@ -19,8 +21,9 @@ const routes: Routes = [
   { path : "addregulation" , component: AddregulationComponent },
   { path : "viewregulations" , component: ViewregulationsComponent },
   { path : "edit/regulation/:id" , component: EditregulationComponent },
+  { path : "addregulationtype" , component: AddregulationtypeComponent},
+  { path : "viewregulationtypes" , component: ViewregulationtypesComponent}
 
-  
 ];
 
 @NgModule({
