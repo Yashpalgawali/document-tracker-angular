@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddvendortypeComponent } from './MyComponents/VendorType/addvendortype/addvendortype.component';
-import { ViewvendortypesComponent } from './MyComponents/VendorType/viewvendortypes/viewvendortypes.component';
+
 import { AddvendorComponent } from './MyComponents/Vendor/addvendor/addvendor.component';
 import { ViewvendorsComponent } from './MyComponents/Vendor/viewvendors/viewvendors.component';
 import { EditvendorComponent } from './MyComponents/Vendor/editvendor/editvendor.component';
@@ -10,10 +9,10 @@ import { EditregulationComponent } from './MyComponents/Regulation/editregulatio
 import { ViewregulationsComponent } from './MyComponents/Regulation/viewregulations/viewregulations.component';
 import { AddregulationtypeComponent } from './MyComponents/RegulationType/addregulationtype/addregulationtype.component';
 import { ViewregulationtypesComponent } from './MyComponents/RegulationType/viewregulationtypes/viewregulationtypes.component';
+import { EditregulationtypeComponent } from './MyComponents/RegulationType/editregulationtype/editregulationtype.component';
 
 const routes: Routes = [
-  { path : "addvendortype" , component: AddvendortypeComponent },
-  { path : "viewvendortypes" , component: ViewvendortypesComponent},
+
   { path : "edit/vendortype/:id" , component: EditvendorComponent },
   { path : "addvendor" , component: AddvendorComponent },
   { path : "viewvendors" , component: ViewvendorsComponent },
@@ -22,7 +21,8 @@ const routes: Routes = [
   { path : "viewregulations" , component: ViewregulationsComponent },
   { path : "edit/regulation/:id" , component: EditregulationComponent },
   { path : "addregulationtype" , component: AddregulationtypeComponent},
-  { path : "viewregulationtypes" , component: ViewregulationtypesComponent}
+  { path : "viewregulationtypes" , component: ViewregulationtypesComponent},
+  { path : "edit/regulationtype/:id" , component: EditregulationtypeComponent}
 
 ];
 

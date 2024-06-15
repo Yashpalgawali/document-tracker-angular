@@ -1,4 +1,48 @@
 <div class="container">
+<form (ngSubmit)="onSubmit()" #fileUploadForm="ngForm">
+    <div>
+        <label for="regulation_name">Regulation Name:</label>
+        <input type="text" id="regulation_name" name="regulation_name" class="form-control" ngModel>
+    </div>
+    <div>
+        <label for="regulation_description">Description:</label>
+        <input type="text" id="regulation_description" name="regulation_description"  class="form-control" ngModel>
+    </div>
+    <div >
+        <label for="regulation_issued_date">regulation_issued_date</label>
+            <input type="text" name="regulation_issued_date" id="regulation_issued_date"  class="form-control" formControlName="regulation_issued_date" placeholder="regulation Issued date">
+    </div>
+    <div class="form-group">
+        <label for="regulation_frequency">Please select Frequency </label>
+        <select id="regulation_frequency" name="regulation_frequency " class="form-control" formControlName="regulation_frequency" >
+            <option selected disabled>Please select Frequency </option>
+            <option value="1">Monthly</option>
+            <option value="2">Quarterly</option>
+            <option value="3">Yearly</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="regulation_type_id">Regulation Type </label>
+        <select id="regulation_type_id" name="regulation_type_id " class="form-control" formControlName="regulation_type_id" >
+            <option selected disabled>Please Select Regulation Type </option>
+            <option *ngFor="let regtype of regulationtype" [value]="regtype.regulation_type_id">{{regtype.regulation_type}}</option>
+        </select>
+    </div>
+    <div>
+        <label for="file">File:</label>
+        <input type="file" id="file" (change)="onFileChange($event)"  class="form-control mb-3" accept=".pdf">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Regulation </button>
+</form>
+
+</div>
+
+
+
+
+
+
+<!-- <div class="container">
    <form  [formGroup]="form"  method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="regulation_name">Regulation Name</label>
@@ -17,8 +61,7 @@
             <option value="3">Yearly</option>
         </select>
     </div>
-
-    <!-- <div class="form-group">
+<div class="form-group">
         <label for="apdate">regulation_issued_date</label>
         <input
             placeholder="Select Date"
@@ -37,22 +80,22 @@
           </span>
      </div> -->
  
-
+<!-- 
     <div class="form-group">
-        <label for="regulation_issued_date"></label>
-            <input type="text" name="regulation_issued_date" id="regulation_issued_date" formControlName="regulation_issued_date"  class="form-control" placeholder="regulation Issued date">
+        <label for="regulation_issued_date">regulation_issued_date</label>
+            <input type="text" name="regulation_issued_date" id="regulation_issued_date"  class="form-control" formControlName="regulation_issued_date" placeholder="regulation Issued date">
     </div>
     <div class="form-group">
-        <label for="vendor">Please select Vendor </label>
-        <select id="vendor" name="vendor " class="form-control" formControlName="vendor" >
-            <option selected disabled>Please select Frequency </option>
-            <!-- <option *ngFor="let item of items" [ngValue]=""></option> -->
+        <label for="regulation_type_id">Regulation Type </label>
+        <select id="regulation_type_id" name="regulation_type_id " class="form-control" formControlName="regulation_type_id" >
+            <option selected disabled>Please Select Regulation Type </option>
+            <option *ngFor="let regtype of regulationtype" [ngValue]="regtype.regulation_type_id">{{regtype.regulation_type}}</option>
         </select>
     </div>
     <div class="form-group">
         <label for="file">Select File</label>
-        <input type="file" name="file" id="file" (change)="onFileSelect($event)" accept=".pdf" required class="form-control" placeholder="Enter regulation name">
+        <input type="file" name="file" id="file" (change)="onFileChange($event)" accept=".pdf" required class="form-control" placeholder="Enter regulation name">
     </div>
     <button (click)="saveRegulation()" class="btn btn-primary">Submit</button>
 </form>
-</div>
+</div> --> 

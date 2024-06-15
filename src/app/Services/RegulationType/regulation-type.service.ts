@@ -11,14 +11,24 @@ export class RegulationTypeService {
 
   
   constructor(private http : HttpClient) { }
-  base_url = GlobalComponent.app_url+"vendor/";
+  base_url = GlobalComponent.app_url+"regulationtype/";
 
   public saveRegulationType(reg_type : RegulationType):Observable<RegulationType>
   {
     return this.http.post<RegulationType>(`${this.base_url}`,reg_type);
   }
-
+ 
   public getAllRegulationTypes():Observable<RegulationType[]>{
     return this.http.get<RegulationType[]>(`${this.base_url}`);
   }
+
+  public getRegulationTypeById(regtypeid : number):Observable<RegulationType>{
+    return this.http.get<RegulationType>(`${this.base_url}${regtypeid}`);
+  }
+
+  public updateRegulationType(reg_type : RegulationType):Observable<RegulationType>
+  {
+    return this.http.put<RegulationType>(`${this.base_url}`,reg_type);
+  }
+
 }

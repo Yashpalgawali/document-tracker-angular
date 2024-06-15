@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import { RegulationTypeService } from 'src/app/Services/RegulationType/regulation-type.service';
 
 @Component({
@@ -23,5 +23,11 @@ export class ViewregulationtypesComponent {
 
       },
     })
+  }
+
+
+  getRegulationTypeById(rid : number)
+  {
+    this.router.navigate(['/edit/regulationtype/',rid]);
   }
 }

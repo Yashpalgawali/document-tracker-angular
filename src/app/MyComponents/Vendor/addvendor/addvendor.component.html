@@ -28,12 +28,6 @@
                 <input type="password" name="cnf_password" id="cnf_password" [(ngModel)]="vendor.cnf_password" class="form-control" placeholder="Confirm the Password">
         </div>
 
-        <div class="form-group">
-            <select id="vendor_type" name="vendor_type" required [(ngModel)]="vendor.vendor_type" class="form-control">
-                <option selected disabled>Select Vendor Type</option>
-                <option *ngFor="let vtype of vtypelist" [ngValue]="vtype">{{vtype.vendor_type}}</option>
-            </select>
-        </div>
         <button type="submit" class="btn btn-primary"  >Add vendor</button>
 
     </form>

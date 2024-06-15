@@ -1,1 +1,13 @@
-<p>editregulationtype works!</p>
+
+<div class="container-fluid">
+    <h1>Add Regulation Type</h1>
+    <form (ngSubmit)="updateRegulationType()" method="POST"  >	
+    
+        <div class="form-control">
+            <label for="regulation_type"><strong> Regulation Type</strong></label>
+            <input type="text" name="regulation_type" id="regulation_type" [(ngModel)]="regtype.regulation_type" class="form-control" placeholder="Enter Regulation Type">  
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button> 
+    </form>
+
+</div>

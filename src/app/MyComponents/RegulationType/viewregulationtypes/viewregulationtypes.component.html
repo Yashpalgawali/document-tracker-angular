@@ -2,8 +2,8 @@
     <thead>
         <tr>
             <th>Sr No.</th>
-            <th>Vendor type</th>
-            <!-- <th>Action</th> -->
+            <th>Regulation type</th>
+            <th>Action</th>
         </tr>
     </thead>
     
@@ -11,7 +11,7 @@
         <tr *ngFor="let rlist of regtypelist; let i=index">
             <td>{{i+1}}</td>
             <td>{{rlist.regulation_type }}</td>
-            <!-- <td> <button (click)="getVendorTypeById(vlist.vendor_type_id)" class="btn btn-primary">Edit</button></td> -->
+            <td> <button (click)="getRegulationTypeById(rlist.regulation_type_id)" class="btn btn-primary">Edit</button></td>
         </tr>
     </tbody>
     

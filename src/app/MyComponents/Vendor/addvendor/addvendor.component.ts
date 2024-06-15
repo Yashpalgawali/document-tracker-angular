@@ -16,14 +16,7 @@ constructor(private vtypeserv : VendortypeService,private vendserv : VendorServi
 vendor : Vendor = new Vendor();
 vtypelist : any
  ngOnInit(): void {
-   this.vtypeserv.getAllVendorTypes().subscribe({
-    next:(data)=>{
-      this.vtypelist=data
-    },
-    error :(e) =>{
-
-    }
-  })
+   
 }
 
 savevendor() {
