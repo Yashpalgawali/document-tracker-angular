@@ -38,7 +38,8 @@ export class AddregulationComponent  {
 
     this.regulateserv.saveRegulation(formData).subscribe({
       complete :() => {
-        alert('saved');
+        
+        this.router.navigate(['viewregulations']);
       },
       error : (err) => {
         alert('NOT saved');
