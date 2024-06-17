@@ -11,6 +11,8 @@ import { AddregulationtypeComponent } from './MyComponents/RegulationType/addreg
 import { ViewregulationtypesComponent } from './MyComponents/RegulationType/viewregulationtypes/viewregulationtypes.component';
 import { EditregulationtypeComponent } from './MyComponents/RegulationType/editregulationtype/editregulationtype.component';
 import { ViewregulationsbyvendorComponent } from './MyComponents/Regulation/viewregulationsbyvendor/viewregulationsbyvendor.component';
+import { AddnotificationComponent } from './MyComponents/Notification/addnotification/addnotification.component';
+import { ViewnotificationsComponent } from './MyComponents/Notification/viewnotifications/viewnotifications.component';
 
 const routes: Routes = [
 
@@ -24,7 +26,10 @@ const routes: Routes = [
   { path : "addregulationtype" , component: AddregulationtypeComponent},
   { path : "viewregulationtypes" , component: ViewregulationtypesComponent},
   { path : "edit/regulationtype/:id" , component: EditregulationtypeComponent},
-  { path : "vendor/viewregulations" , component: ViewregulationsbyvendorComponent }
+  { path : "vendor/viewregulations" , component: ViewregulationsbyvendorComponent },
+  { path : "addnotification" , component: AddnotificationComponent },
+  { path : "viewnotification" , component: ViewnotificationsComponent }
+  
 
 ];
 
