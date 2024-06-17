@@ -10,6 +10,7 @@ import { ViewregulationsComponent } from './MyComponents/Regulation/viewregulati
 import { AddregulationtypeComponent } from './MyComponents/RegulationType/addregulationtype/addregulationtype.component';
 import { ViewregulationtypesComponent } from './MyComponents/RegulationType/viewregulationtypes/viewregulationtypes.component';
 import { EditregulationtypeComponent } from './MyComponents/RegulationType/editregulationtype/editregulationtype.component';
+import { ViewregulationsbyvendorComponent } from './MyComponents/Regulation/viewregulationsbyvendor/viewregulationsbyvendor.component';
 
 const routes: Routes = [
 
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path : "edit/regulation/:id" , component: EditregulationComponent },
   { path : "addregulationtype" , component: AddregulationtypeComponent},
   { path : "viewregulationtypes" , component: ViewregulationtypesComponent},
-  { path : "edit/regulationtype/:id" , component: EditregulationtypeComponent}
+  { path : "edit/regulationtype/:id" , component: EditregulationtypeComponent},
+  { path : "vendor/viewregulations" , component: ViewregulationsbyvendorComponent }
 
 ];
 

@@ -32,4 +32,9 @@ export class RegulationService {
   {
     return this.http.get<Regulation>(`${this.base_url}${rid}`);
   }
+
+  public getRegulationbyVendorId(vendorid : number):Observable<Regulation[]>
+  {
+    return this.http.get<Regulation[]>(`${this.base_url}vendor/${vendorid}`);
+  }
 }

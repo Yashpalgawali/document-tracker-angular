@@ -1,0 +1,38 @@
+
+<div class="container">
+    <div *ngIf="response">
+        <h6 class="alert alert-success">{{response}}</h6>
+    </div>
+    <div *ngIf="reserr">
+        <h6 class="alert alert-danger">{{reserr}}</h6>
+    </div>
+    
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>Regulation Name</th>
+                <th>Regulation Description</th>
+                <th>Regulation Frequency</th>
+                <th>Regulation Issued Date</th>
+                <th>File Name</th>
+                <th>File Path</th>
+                <!-- <th>Action</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let regulation of regualtionlist; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{regulation.regulation_name}}</td>
+                <td>{{regulation.regulation_description}}</td>
+                <td  *ngIf="regulation.regulation_frequency==1" >Monthly</td>
+                <td  *ngIf="regulation.regulation_frequency==2" >Quarterly</td>
+                <td  *ngIf="regulation.regulation_frequency==3" >Yearly</td>
+                <td>{{regulation.regulation_issued_date}}</td>
+                <td>{{regulation.file_name}}</td>
+                <td>{{regulation.file_path}}</td> 
+                <!-- <td> <button (click)="getRegulationById(regulation.regulation_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> Edit</button>  </td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>

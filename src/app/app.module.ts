@@ -20,6 +20,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AddregulationtypeComponent } from './MyComponents/RegulationType/addregulationtype/addregulationtype.component';
 import { ViewregulationtypesComponent } from './MyComponents/RegulationType/viewregulationtypes/viewregulationtypes.component';
 import { EditregulationtypeComponent } from './MyComponents/RegulationType/editregulationtype/editregulationtype.component';
+import { ViewregulationsbyvendorComponent } from './MyComponents/Regulation/viewregulationsbyvendor/viewregulationsbyvendor.component';
+import { AddnotificationComponent } from './MyComponents/Notification/addnotification/addnotification.component';
+import { ViewnotificationsComponent } from './MyComponents/Notification/viewnotifications/viewnotifications.component';
+import { EdinotificationComponent } from './MyComponents/Notification/edinotification/edinotification.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { EditregulationtypeComponent } from './MyComponents/RegulationType/editr
     EditregulationComponent,
     AddregulationtypeComponent,
     ViewregulationtypesComponent,
-    EditregulationtypeComponent
+    EditregulationtypeComponent,
+    ViewregulationsbyvendorComponent,
+    AddnotificationComponent,
+    ViewnotificationsComponent,
+    EdinotificationComponent
   ],
   imports: [
     BrowserModule,

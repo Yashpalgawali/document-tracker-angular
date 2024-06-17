@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GlobalComponent } from 'src/app/GlobalComponents';
+import { Regulation } from 'src/app/Models/Regulation';
 import { Vendor } from 'src/app/Models/Vendor';
 
 @Injectable({
@@ -26,4 +27,6 @@ export class VendorService {
   { 
     return this.http.get<Vendor>(`${this.base_url}${vid}`);
   }
+
+ 
 }
