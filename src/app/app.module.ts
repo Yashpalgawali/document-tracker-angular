@@ -23,7 +23,7 @@ import { EditregulationtypeComponent } from './MyComponents/RegulationType/editr
 import { ViewregulationsbyvendorComponent } from './MyComponents/Regulation/viewregulationsbyvendor/viewregulationsbyvendor.component';
 import { AddnotificationComponent } from './MyComponents/Notification/addnotification/addnotification.component';
 import { ViewnotificationsComponent } from './MyComponents/Notification/viewnotifications/viewnotifications.component';
-import { EdinotificationComponent } from './MyComponents/Notification/edinotification/edinotification.component';
+import { EditnotificationComponent } from './MyComponents/Notification/editnotification/editnotification.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,8 @@ import { EdinotificationComponent } from './MyComponents/Notification/edinotific
     ViewregulationsbyvendorComponent,
     AddnotificationComponent,
     ViewnotificationsComponent,
-    EdinotificationComponent
+    EditnotificationComponent
+    
   ],
   imports: [
     BrowserModule,

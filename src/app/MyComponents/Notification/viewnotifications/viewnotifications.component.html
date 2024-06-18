@@ -1,1 +1,33 @@
-<p>viewnotifications works!</p>
+<div class="container">
+
+    <div *ngIf="response!=null">
+        <h6 class="alert alert-success">{{response}}</h6>
+    </div>
+    <div *ngIf="reserr!=null">
+        <h6 class="alert alert-danger">{{reserr}}</h6>
+    </div>
+    
+    <caption>View Notifications</caption>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Sr no.</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let notification of notificationlist; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{notification.notification_name}}</td>
+                <td>{{notification.notification_description}}</td>
+                <td>{{notification.notification_start_date}}</td>
+                <td>{{notification.notification_end_date}}</td>
+                <td> <button (click)="getNotificationById(notification.notification_id)" class="btn btn-primary">Edit </button> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

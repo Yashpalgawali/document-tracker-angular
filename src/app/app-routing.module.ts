@@ -13,6 +13,7 @@ import { EditregulationtypeComponent } from './MyComponents/RegulationType/editr
 import { ViewregulationsbyvendorComponent } from './MyComponents/Regulation/viewregulationsbyvendor/viewregulationsbyvendor.component';
 import { AddnotificationComponent } from './MyComponents/Notification/addnotification/addnotification.component';
 import { ViewnotificationsComponent } from './MyComponents/Notification/viewnotifications/viewnotifications.component';
+import { EditnotificationComponent } from './MyComponents/Notification/editnotification/editnotification.component';
 
 const routes: Routes = [
 
@@ -23,12 +24,13 @@ const routes: Routes = [
   { path : "addregulation" , component: AddregulationComponent },
   { path : "viewregulations" , component: ViewregulationsComponent },
   { path : "edit/regulation/:id" , component: EditregulationComponent },
-  { path : "addregulationtype" , component: AddregulationtypeComponent},
-  { path : "viewregulationtypes" , component: ViewregulationtypesComponent},
+  { path : "addregulationtype" , component: AddregulationtypeComponent },
+  { path : "viewregulationtypes" , component: ViewregulationtypesComponent },
   { path : "edit/regulationtype/:id" , component: EditregulationtypeComponent},
   { path : "vendor/viewregulations" , component: ViewregulationsbyvendorComponent },
   { path : "addnotification" , component: AddnotificationComponent },
-  { path : "viewnotification" , component: ViewnotificationsComponent }
+  { path : "viewnotification" , component: ViewnotificationsComponent },
+  { path : "notification/edit/:id" , component: EditnotificationComponent},
   
 
 ];

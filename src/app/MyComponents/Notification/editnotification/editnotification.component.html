@@ -1,6 +1,7 @@
 <div class="container">
-    <h3>Add Notification</h3>
-    <form (ngSubmit)="onSubmit()"  method="post">
+    <h3>Update Notification</h3>
+    <form (ngSubmit)="updateNotification()"  method="post">
+        <input type="hidden" name="notification_id" [(ngModel)]="notification.notification_id">
     <div class="form-group">
         <label for="notification_name">Notification Name</label>
         <input type="text" name="notification_name" id="notification_name" class="form-control" [(ngModel)]="notification.notification_name" placeholder="Enter Notification Name">
@@ -17,7 +18,24 @@
         <label for="notification_end_date">Notification End Date</label>
         <input type="text" name="notification_end_date" id="notification_end_date" class="form-control" [(ngModel)]="notification.notification_end_date" placeholder="Enter Notification End Date">
     </div>
-    <button type="submit" class="btn btn-primary">Add Notification</button>
+
+    <div class="form-group">
+        <label for="status">Status of Notification</label>
+        <select name="status" id="status" [(ngModel)]="notification.status"  class="form-control">
+            <option disabled>Please Select Status of Notification</option>
+            <ng-container *ngIf="notification.status==1">
+                <option selected  value="1">Active</option>
+                <option value="0">InActive</option>
+            </ng-container>
+
+            <ng-container *ngIf="notification.status==0">
+                <option  value="1">Active</option>
+                <option selected  value="0">InActive</option>
+            </ng-container>
+            
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Notification</button>
 
 </form>
 </div>
