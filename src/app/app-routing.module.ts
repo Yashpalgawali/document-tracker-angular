@@ -16,6 +16,8 @@ import { ViewnotificationsComponent } from './MyComponents/Notification/viewnoti
 import { EditnotificationComponent } from './MyComponents/Notification/editnotification/editnotification.component';
 import { HomeComponent } from './MyComponents/Home/home/home.component';
 import { LoginComponent } from './MyComponents/Login/login/login.component';
+import { ActivityComponent } from './MyComponents/Activities/activity/activity.component';
+import { RegistervendorComponent } from './MyComponents/Register/registervendor/registervendor.component';
 
 const routes: Routes = [
 
@@ -34,7 +36,10 @@ const routes: Routes = [
   { path : "viewnotification" , component: ViewnotificationsComponent },
   { path : "notification/edit/:id" , component: EditnotificationComponent},
   { path : "" , component : HomeComponent ,pathMatch :'full'},
-  { path : "login" , component : LoginComponent}
+  { path : "login" , component : LoginComponent},
+  { path : "activities", component : ActivityComponent},
+  { path : "registervendor", component : RegistervendorComponent}
+
 
 
 ];

@@ -1,18 +1,39 @@
 <div class="container">
-    <div class="form-group">
-        <label for="regulation_name"> Regulation Name</label>
-        <input type="text" name="regulation_name" id="regulation_name" [(ngModel)]="regulation.regulation_name" class="form-control" placeholder="Enter regulation name">
+    <form (ngSubmit)="updateRegulation()" #fileUploadForm="ngForm">
+        <div>
+            <label for="regulation_name">Regulation Name:</label>
+            <input type="hidden" name="regulation_id" value="{{regulation.regulation_id}}">
+            <input type="text" id="regulation_name" name="regulation_name" class="form-control" ngModel value="{{regulation.regulation_name}}">
+        </div>
+        <div>
+            <label for="regulation_description">Description:</label>
+            <input type="text" id="regulation_description" name="regulation_description"  class="form-control" ngModel value="{{regulation.regulation_description}}">
+        </div>
+        <div >
+            <label for="regulation_issued_date">regulation_issued_date</label>
+                <input type="text" name="regulation_issued_date" id="regulation_issued_date"  class="form-control" formControlName="regulation_issued_date" placeholder="regulation Issued date">
+        </div>
+        <div class="form-group">
+            <label for="regulation_frequency">Please select Frequency </label>
+            <select id="regulation_frequency" name="regulation_frequency " class="form-control" formControlName="regulation_frequency" >
+                <option selected disabled>Please select Frequency </option>
+                <option value="1">Monthly</option>
+                <option value="2">Quarterly</option>
+                <option value="3">Yearly</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="regulation_type_id">Regulation Type </label>
+            <select id="regulation_type_id" name="regulation_type_id " class="form-control" formControlName="regulation_type_id" >
+                <option selected disabled>Please Select Regulation Type </option>
+                <option *ngFor="let regtype of regulationtype" [value]="regtype.regulation_type_id">{{regtype.regulation_type}}</option>
+            </select>
+        </div>
+        <div>
+            <label for="file">File:</label>
+            <input type="file" id="file" (change)="onFileChange($event)"  class="form-control mb-3" accept=".pdf">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Regulation </button>
+    </form>
+    
     </div>
-    <div class="form-group">
-        <label for="regulation_description">Regulation Description</label>
-        <input type="text" name="regulation_description" id="regulation_description" [(ngModel)]="regulation.regulation_description" class="form-control" placeholder="Enter regulation description">
-    </div>
-    <div class="form-group">
-        <label for="regulation_frequency">Regulation Frequency</label>
-        <input type="text" name="regulation_frequency" id="regulation_frequency" [(ngModel)]="regulation.regulation_frequency" class="form-control" placeholder="Enter regulation Frequency">
-    </div>
-    <div class="form-group">
-        <label for="regulation_issued_date">Regulation Issued Date</label>
-        <input type="text" name="regulation_issued_date" id="regulation_issued_date" [(ngModel)]="regulation.regulation_issued_date" class="form-control" placeholder="Enter regulation Issued date">
-    </div>
-</div>

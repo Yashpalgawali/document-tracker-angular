@@ -18,6 +18,11 @@ export class RegulationService {
     return this.http.post(this.base_url,regulation);
   }
 
+  public udpateRegulation(regulation : FormData):Observable<any>
+  {
+    return this.http.put(`${this.base_url}`,regulation);
+  }
+
   public saveRegulationUsingObject(regulation : Regulation):Observable<any>
   {
     return this.http.post(this.base_url,regulation);
