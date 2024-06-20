@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AddvendorComponent } from './MyComponents/Vendor/addvendor/addvendor.component';
@@ -14,6 +14,8 @@ import { ViewregulationsbyvendorComponent } from './MyComponents/Regulation/view
 import { AddnotificationComponent } from './MyComponents/Notification/addnotification/addnotification.component';
 import { ViewnotificationsComponent } from './MyComponents/Notification/viewnotifications/viewnotifications.component';
 import { EditnotificationComponent } from './MyComponents/Notification/editnotification/editnotification.component';
+import { HomeComponent } from './MyComponents/Home/home/home.component';
+import { LoginComponent } from './MyComponents/Login/login/login.component';
 
 const routes: Routes = [
 
@@ -31,7 +33,9 @@ const routes: Routes = [
   { path : "addnotification" , component: AddnotificationComponent },
   { path : "viewnotification" , component: ViewnotificationsComponent },
   { path : "notification/edit/:id" , component: EditnotificationComponent},
-  
+  { path : "" , component : HomeComponent ,pathMatch :'full'},
+  { path : "login" , component : LoginComponent}
+
 
 ];
 

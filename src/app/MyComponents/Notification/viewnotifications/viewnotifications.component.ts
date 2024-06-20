@@ -24,24 +24,24 @@ ngOnInit(): void {
   this.notificationserv.getAllNotifications().subscribe({
     next:(data)=> {
       this.notificationlist=data
-
       if(sessionStorage.getItem('response')!=null)
-        {
+      {
           this.response=sessionStorage.getItem('response')
           setTimeout(() => {
-            sessionStorage.removeItem('response')
             this.response=""
+            sessionStorage.removeItem('response')
           }, 3000);
-        }
+      }
 
-        if(sessionStorage.getItem('reserr')!=null)
-          {
-            this.reserr=sessionStorage.getItem('reserr')
-            setTimeout(() => {
-              sessionStorage.removeItem('reserr')
-              this.reserr=""
-            }, 3000);
-          }
+      if(sessionStorage.getItem('reserr')!=null)
+      {
+        this.reserr=sessionStorage.getItem('reserr')
+        setTimeout(() => {
+          this.reserr=""
+          sessionStorage.removeItem('reserr')
+          
+        }, 3000);
+      }
     },
     error:(err)=>{
 

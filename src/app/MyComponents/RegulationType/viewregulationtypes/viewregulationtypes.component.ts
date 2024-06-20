@@ -20,7 +20,21 @@ export class ViewregulationtypesComponent {
     this.regtypeserv.getAllRegulationTypes().subscribe({
       next:(data) => {
         this.regtypelist = data
+        if(sessionStorage.getItem('response') !=null) {
+          this.response = sessionStorage.getItem('response');
+          setTimeout(() => {
+            sessionStorage.removeItem('response');
+            this.response=""
+          }, 3000);
+        }
 
+        if(sessionStorage.getItem('reserr') !=null) {
+          this.reserr = sessionStorage.getItem('reserr');
+          setTimeout(() => {
+            this.reserr=""
+            sessionStorage.removeItem('reserr');
+          }, 3000);
+        }
       },
     })
   }

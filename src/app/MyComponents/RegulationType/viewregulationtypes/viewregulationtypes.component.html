@@ -1,4 +1,14 @@
-<table class="table table-hover table-striped">
+<div class="container">
+    <div *ngIf="response!=null">
+        <h6 class="alert alert-success">{{response}}</h6>
+    </div>
+    <div *ngIf="reserr!=null">
+        <h6 class="alert alert-danger">{{reserr}}</h6>
+    </div>
+    <h5>View Regulation Types  <a routerLink="/addregulationtype" class="btn btn-primary" style="float : right;"> Add Regulation Type</a> </h5>
+<table class="table table-hover table-striped" width="100%">
+    
+    <caption>View Regulation Types</caption>
     <thead>
         <tr>
             <th>Sr No.</th>
@@ -11,8 +21,9 @@
         <tr *ngFor="let rlist of regtypelist; let i=index">
             <td>{{i+1}}</td>
             <td>{{rlist.regulation_type }}</td>
-            <td> <button (click)="getRegulationTypeById(rlist.regulation_type_id)" class="btn btn-primary">Edit</button></td>
+            <td> <button (click)="getRegulationTypeById(rlist.regulation_type_id)" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp;Edit</button></td>
         </tr>
     </tbody>
     
     </table>
+</div>

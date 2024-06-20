@@ -21,13 +21,13 @@ export class EditregulationtypeComponent implements OnInit {
       next:(data)=>{
         this.regtype=data
       },
-      error : (err) =>{
-        sessionStorage.setItem('','No  regulation Type found');
+      error : (err) => {
+        sessionStorage.setItem('reserr','No  regulation Type found');
         this.router.navigate(['viewregulationtypes']);
       }
      })
-    
   }
+  
   public updateRegulationType()
   {
     this.regtypeserv.updateRegulationType(this.regtype).subscribe({

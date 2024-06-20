@@ -24,6 +24,10 @@ import { ViewregulationsbyvendorComponent } from './MyComponents/Regulation/view
 import { AddnotificationComponent } from './MyComponents/Notification/addnotification/addnotification.component';
 import { ViewnotificationsComponent } from './MyComponents/Notification/viewnotifications/viewnotifications.component';
 import { EditnotificationComponent } from './MyComponents/Notification/editnotification/editnotification.component';
+import { HomeComponent } from './MyComponents/Home/home/home.component';
+import { RegistervendorComponent } from './MyComponents/Register/registervendor/registervendor.component';
+import { LoginComponent } from './MyComponents/Login/login/login.component';
+import { ActivityComponent } from './MyComponents/Activities/activity/activity.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,11 @@ import { EditnotificationComponent } from './MyComponents/Notification/editnotif
     ViewregulationsbyvendorComponent,
     AddnotificationComponent,
     ViewnotificationsComponent,
-    EditnotificationComponent
+    EditnotificationComponent,
+    HomeComponent,
+    RegistervendorComponent,
+    LoginComponent,
+    ActivityComponent
     
   ],
   imports: [
@@ -53,7 +61,6 @@ import { EditnotificationComponent } from './MyComponents/Notification/editnotif
     ReactiveFormsModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(), // Add this line
-
   ],
   providers: [],
   bootstrap: [AppComponent]
