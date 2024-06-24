@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Regulation } from 'src/app/Models/Regulation';
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
@@ -13,11 +13,17 @@ import { RegulationTypeService } from 'src/app/Services/RegulationType/regulatio
   styleUrls: ['./addregulation.component.css']
 })
 export class AddregulationComponent  {
-
+  myGroup: FormGroup;
   constructor(private router: Router, private regulateserv: RegulationService, private fb: FormBuilder,
                 private vendserv : VendorService, private regtypeserv : RegulationTypeService)
   {
-
+    this.myGroup = this.fb.group({
+      regulation_name: ['', Validators.required],
+      regulation_description: ['', Validators.required],
+      regulation_issued_date: ['', Validators.required],
+      regulation_frequency: ['', Validators.required],
+      regulation_type_id: ['', Validators.required]
+    });
   }
   selectedFile: File | null = null;
   onFileChange(event: any) {
@@ -25,13 +31,21 @@ export class AddregulationComponent  {
   }
 
   onSubmit() {
-    const formData = new FormData();
-    formData.append('regulation_name', (document.getElementById('regulation_name') as HTMLInputElement).value);
-    formData.append('regulation_description', (document.getElementById('regulation_description') as HTMLInputElement).value);
-    formData.append('regulation_frequency', (document.getElementById('regulation_frequency') as HTMLInputElement).value);
-    formData.append('regulation_issued_date', (document.getElementById('regulation_issued_date') as HTMLInputElement).value);
-    formData.append('regulation_type_id', (document.getElementById('regulation_type_id') as HTMLInputElement).value);
+    // const formData = new FormData();
+    // formData.append('regulation_name', (document.getElementById('regulation_name') as HTMLInputElement).value);
+    // formData.append('regulation_description', (document.getElementById('regulation_description') as HTMLInputElement).value);
+    // formData.append('regulation_frequency', (document.getElementById('regulation_frequency') as HTMLInputElement).value);
+    // formData.append('regulation_issued_date', (document.getElementById('regulation_issued_date') as HTMLInputElement).value);
+    // formData.append('regulation_type_id', (document.getElementById('regulation_type_id') as HTMLInputElement).value);
     
+    const formData = new FormData();
+    formData.append('regulation_name', this.myGroup.get('regulation_name')?.value);
+    formData.append('regulation_description', this.myGroup.get('regulation_description')?.value);
+    formData.append('regulation_issued_date', this.myGroup.get('regulation_issued_date')?.value);
+    formData.append('regulation_frequency', this.myGroup.get('regulation_frequency')?.value);
+    formData.append('regulation_type_id', this.myGroup.get('regulation_type_id')?.value);
+    
+
     if (this.selectedFile) {
       formData.append('file', this.selectedFile);
     }

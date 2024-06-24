@@ -1,12 +1,12 @@
 <div class="container">
-<form (ngSubmit)="onSubmit()" #fileUploadForm="ngForm">
+<form (ngSubmit)="onSubmit()" [formGroup]="myGroup" #fileUploadForm="ngForm" enctype="multipart/form-data">
     <div>
         <label for="regulation_name">Regulation Name:</label>
-        <input type="text" id="regulation_name" name="regulation_name" class="form-control" ngModel>
+        <input type="text" id="regulation_name" name="regulation_name" class="form-control" formControlName="regulation_name"ngModel>
     </div>
     <div>
         <label for="regulation_description">Description:</label>
-        <input type="text" id="regulation_description" name="regulation_description"  class="form-control" ngModel>
+        <input type="text" id="regulation_description" name="regulation_description"  class="form-control" formControlName="regulation_description" ngModel>
     </div>
     <div >
         <label for="regulation_issued_date">regulation_issued_date</label>
