@@ -20,6 +20,12 @@ vtypelist : any
 }
 
 savevendor() {
+
+  if (this.vendor.password !== this.vendor.cnf_password) {
+    alert('Passwords do not match!');
+    return;
+  }
+
   this.vendserv.saveVendor(this.vendor).subscribe({
     complete : ()=>{
       sessionStorage.setItem('response','Vendor '+this.vendor.vendor_name+' is saved successfully');
@@ -28,8 +34,11 @@ savevendor() {
     error:(e)=> {
       alert('Not saved')
     }
-  }
-  )
+  })
 }
 
+checkpass()
+{
+
+}
 }

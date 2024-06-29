@@ -52,7 +52,7 @@ export class AddregulationComponent  {
 
     this.regulateserv.saveRegulation(formData).subscribe({
       complete :() => {
-        
+        sessionStorage.setItem('response','Regulation '+this.myGroup.get('regulation_name')?.value+' is saved successfully');
         this.router.navigate(['viewregulations']);
       },
       error : (err) => {

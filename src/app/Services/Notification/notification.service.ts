@@ -23,6 +23,11 @@ export class NotificationService {
     return this.http.get<Notification[]>(`${this.base_url}`);
   }
 
+  public getAllActiveNotifications():Observable<Notification[]>
+  {
+    return this.http.get<Notification[]>(`${this.base_url}active`);
+  }
+
   public getNotificationById(nid : number):Observable<Notification>
   {
     return this.http.get<Notification>(`${this.base_url}edit/${nid}`);

@@ -15,8 +15,7 @@ export class EditvendorComponent implements OnInit{
   vendor_id !: number
   vtypelist : any
   constructor(private vtypeserv : VendortypeService,private route : ActivatedRoute,
-              private vendserv : VendorService,private router : Router) { 
-    
+              private vendserv : VendorService,private router : Router) {
    }
 
   ngOnInit(): void {
@@ -31,11 +30,7 @@ export class EditvendorComponent implements OnInit{
         this.router.navigate(['viewvendors'])
       }
     })
-    this.vtypeserv.getAllVendorTypes().subscribe({
-      next: (data)=> {
-          this.vtypelist = data
-      },
-    })
+
   }
 
   updatevendor() {

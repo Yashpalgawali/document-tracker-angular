@@ -1,30 +1,34 @@
 <div class="container">
     <h4>Add Vendor</h4><hr>
-    <form (ngSubmit)="savevendor()" method="post">
+    <form (ngSubmit)="savevendor()" #vendorForm="ngForm" method="post">
         <div class="form-group">
-            <label for="vendor_name">Vendor Name</label>
-            <input type="text" name="vendor_name" id="vendor_name" [(ngModel)]="vendor.vendor_name" class="form-control" placeholder="Enter vendor Name">
+            <label for="vendor_name">Vendor Name</label><span style="color : red;"><strong>*</strong></span>
+            <input type="text" name="vendor_name" id="vendor_name" [(ngModel)]="vendor.vendor_name" class="form-control" placeholder="Enter vendor Name" required>
         </div>
         <div class="form-group">
-            <label for="vendor_email">Vendor Email</label>
-            <input type="text" name="vendor_email" id="vendor_email" [(ngModel)]="vendor.vendor_email" class="form-control" placeholder="Enter vendor email">
+            <label for="vendor_email">Vendor Email</label><span style="color : red;"><strong>*</strong></span>
+            <input type="text" name="vendor_email" id="vendor_email" [(ngModel)]="vendor.vendor_email" class="form-control" placeholder="Enter vendor email" required>
         </div>
         <div class="form-group">
-            <label for="vendor_contact"> Vendor Contact</label>
-            <input type="text" name="vendor_contact" id="vendor_contact" [(ngModel)]="vendor.vendor_contact" class="form-control" placeholder="Enter vendor Contact">
+            <label for="vendor_contact"> Vendor Contact</label><span style="color : red;"><strong>*</strong></span>
+            <input type="text" name="vendor_contact" id="vendor_contact" [(ngModel)]="vendor.vendor_contact" class="form-control" placeholder="Enter vendor Contact" required>
         </div>
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" [(ngModel)]="vendor.username" class="form-control" placeholder="Enter username">
+            <input type="text" name="username" id="username" [(ngModel)]="vendor.username" class="form-control" placeholder="Enter username" required>
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
-                <input type="password" name="password" id="password" [(ngModel)]="vendor.password" class="form-control" placeholder="Enter Password">
+            <label for="password">Password</label><span style="color : red;"><strong>*</strong></span>
+                <input type="password" name="password" id="password" [(ngModel)]="vendor.password"  class="form-control" placeholder="Enter Password" required>
         </div>
         <div class="form-group">
-            <label for="cnf_password">Confirm Password</label>
-                <input type="password" name="cnf_password" id="cnf_password" [(ngModel)]="vendor.cnf_password" class="form-control" placeholder="Confirm the Password">
+            <label for="cnf_password">Confirm Password</label><span style="color : red;"><strong>*</strong></span>
+                <input type="password" name="cnf_password" id="cnf_password" [(ngModel)]="vendor.cnf_password" class="form-control"  placeholder="Confirm the Password" required>
+                <div *ngIf="vendor.password !== vendor.cnf_password && vendorForm.submitted" class="text-danger">
+                    Passwords do not match!
+                  </div>
         </div>
-        <button type="submit" class="btn btn-primary"  >Add vendor</button>
+        <button type="submit" class="btn btn-primary"  >Add vendor</button>&nbsp;&nbsp;
+        <button type="reset" class="btn btn-primary">Clear </button>
     </form>
 </div>

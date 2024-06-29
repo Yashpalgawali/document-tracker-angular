@@ -28,6 +28,9 @@ import { HomeComponent } from './MyComponents/Home/home/home.component';
 import { RegistervendorComponent } from './MyComponents/Register/registervendor/registervendor.component';
 import { LoginComponent } from './MyComponents/Login/login/login.component';
 import { ActivityComponent } from './MyComponents/Activities/activity/activity.component';
+import { DatePipe } from '@angular/common';
+import { DpDatePickerModule } from 'ng2-date-picker';
+
 
 @NgModule({
   declarations: [
@@ -61,8 +64,10 @@ import { ActivityComponent } from './MyComponents/Activities/activity/activity.c
     ReactiveFormsModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(), // Add this line
+    DatePipe,
+    DpDatePickerModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

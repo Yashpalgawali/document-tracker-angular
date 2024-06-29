@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
     <h2>Edit Vendor</h2>
     <form (ngSubmit)="updatevendor()" method="post">
         <div class="form-group">
@@ -29,13 +29,7 @@
                 <input type="password" name="cnf_password" id="cnf_password" [(ngModel)]="vendor.cnf_password" class="form-control" placeholder="Confirm the Password">
         </div>
 
-        <div class="form-group">
-            <select id="vendor_type" name="vendor_type" required [(ngModel)]="vendor.vendor_type" class="form-control">
-                <option selected disabled>Select Vendor Type</option>
-                <option *ngFor="let vtype of vtypelist" [ngValue]="vtype">{{vtype.vendor_type}}</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary"  >Add vendor</button>
+        <button type="submit" class="btn btn-primary"> Update vendor</button>
 
     </form>
 

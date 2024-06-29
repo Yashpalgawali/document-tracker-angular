@@ -22,6 +22,8 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "datatables.net-dt": "^2.0.8",
+    "date-fns": "^3.6.0",
+    "ng2-date-picker": "^16.0.0",
     "ngx-bootstrap": "^11.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

@@ -38,8 +38,6 @@ export class EditregulationComponent implements OnInit{
         }
       });
 
-
-   
       this.regulateserv.getRegulationbyId(this.rid).subscribe({
         next:(data) => {
           if(data!=null)
