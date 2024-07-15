@@ -29,8 +29,9 @@
                 <td  *ngIf="regulation.regulation_frequency==2" >Quarterly</td>
                 <td  *ngIf="regulation.regulation_frequency==3" >Yearly</td>
                 <td>{{regulation.regulation_issued_date}}</td>
-                <td>{{regulation.file_name}}</td>
-                <td>{{regulation.file_path}}</td> 
+                <!-- <td><button  (click)="downloadFile(regulation.file_path,regulation.file_name)">{{regulation.file_name}}</button> </td> -->
+                <td> <a href="" target="_blank"> {{regulation.file_name}}</a> </td>
+                 <td>{{regulation.file_path}}\{{regulation.file_name}}</td> 
                 <td> <button (click)="getRegulationById(regulation.regulation_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> Edit</button>  </td>
             </tr>
         </tbody>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalComponent } from 'src/app/GlobalComponents';
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
 
 @Component({
@@ -12,6 +13,20 @@ export class ViewregulationsComponent implements OnInit{
   reserr : any
   response : any
   regualtionlist : any
+
+  app_url = GlobalComponent.app_url
+
+
+  downloadFile(path : any ,fname  :any){
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', path);
+    link.setAttribute('download', fname);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
 
   constructor (private router : Router,private regulateserv :RegulationService) { }
 

@@ -19,18 +19,22 @@ export class ViewvendorsComponent implements OnInit{
       next : (data) => {
           this.vendlist=data
           if( sessionStorage.getItem('reserr') !=null)
-            {
+          {
               setTimeout(() => {
                 this.reserr = sessionStorage.getItem('reserr');
-              }, 300);
-            }
+                sessionStorage.removeItem('reserr')
+                  this.reserr=''
+              }, 3000);
+          }
 
-            if( sessionStorage.getItem('response') !=null)
-              {
+          if( sessionStorage.getItem('response') !=null)
+          {
                 setTimeout(() => {
-                  this.reserr = sessionStorage.getItem('response');
-                }, 300);
-              }
+                  this.response = sessionStorage.getItem('response');
+                  sessionStorage.removeItem('response')
+                  this.response=''
+                }, 3000);
+          }
       },
       error:(err)=> {
           this.router.navigate(['viewvendors'])

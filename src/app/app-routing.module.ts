@@ -18,26 +18,27 @@ import { HomeComponent } from './MyComponents/Home/home/home.component';
 import { LoginComponent } from './MyComponents/Login/login/login.component';
 import { ActivityComponent } from './MyComponents/Activities/activity/activity.component';
 import { RegistervendorComponent } from './MyComponents/Register/registervendor/registervendor.component';
+import { RouteGuardService } from './Services/routeguard.service';
 
 const routes: Routes = [
 
-  { path : "edit/vendortype/:id" , component: EditvendorComponent },
-  { path : "addvendor" , component: AddvendorComponent },
-  { path : "viewvendors" , component: ViewvendorsComponent },
-  { path : "edit/vendor/:id" , component: EditvendorComponent },
+  { path : "edit/vendortype/:id" , component: EditvendorComponent , canActivate : [RouteGuardService] },
+  { path : "addvendor" , component: AddvendorComponent, canActivate : [RouteGuardService]},
+  { path : "viewvendors" , component: ViewvendorsComponent , canActivate : [RouteGuardService]},
+  { path : "edit/vendor/:id" , component: EditvendorComponent , canActivate : [RouteGuardService]},
   { path : "addregulation" , component: AddregulationComponent },
   { path : "viewregulations" , component: ViewregulationsComponent },
-  { path : "edit/regulation/:id" , component: EditregulationComponent },
-  { path : "addregulationtype" , component: AddregulationtypeComponent },
-  { path : "viewregulationtypes" , component: ViewregulationtypesComponent },
-  { path : "edit/regulationtype/:id" , component: EditregulationtypeComponent},
-  { path : "vendor/viewregulations" , component: ViewregulationsbyvendorComponent },
-  { path : "addnotification" , component: AddnotificationComponent },
-  { path : "viewnotification" , component: ViewnotificationsComponent },
-  { path : "notification/edit/:id" , component: EditnotificationComponent},
-  { path : "" , component : HomeComponent ,pathMatch :'full'},
-  { path : "login" , component : LoginComponent},
-  { path : "activities", component : ActivityComponent},
+  { path : "edit/regulation/:id" , component: EditregulationComponent , canActivate : [RouteGuardService]},
+  { path : "addregulationtype" , component: AddregulationtypeComponent , canActivate : [RouteGuardService]},
+  { path : "viewregulationtypes" , component: ViewregulationtypesComponent , canActivate : [RouteGuardService]},
+  { path : "edit/regulationtype/:id" , component: EditregulationtypeComponent , canActivate : [RouteGuardService]},
+  { path : "vendor/viewregulations" , component: ViewregulationsbyvendorComponent , canActivate : [RouteGuardService]},
+  { path : "addnotification" , component: AddnotificationComponent , canActivate : [RouteGuardService]},
+  { path : "viewnotification" , component: ViewnotificationsComponent , canActivate : [RouteGuardService]},
+  { path : "notification/edit/:id" , component: EditnotificationComponent, canActivate : [RouteGuardService]},
+  { path : "" , component : LoginComponent  },
+  { path : "login" , component : LoginComponent  },
+  { path : "activities", component : ActivityComponent , canActivate : [RouteGuardService]},
   { path : "registervendor", component : RegistervendorComponent}
 
 
