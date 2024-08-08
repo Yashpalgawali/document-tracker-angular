@@ -7,7 +7,7 @@ import { BasicAuthenticationService } from './Services/basic-authentication.serv
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'document-tracker';
+  // title = 'document-tracker';
 
   constructor( private basicauthserv : BasicAuthenticationService) {}
 
@@ -22,6 +22,5 @@ export class AppComponent implements OnInit {
     else {
       this.isUserLoggedIn = false
     }
-    
   }
 }

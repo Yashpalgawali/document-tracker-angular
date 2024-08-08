@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Vendor } from 'src/app/Models/Vendor';
 import { VendortypeService } from 'src/app/Services/VendorType/vendortype.service';
 import { VendorService } from 'src/app/Services/Vendor/vendor.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-addvendor',
@@ -11,7 +12,8 @@ import { VendorService } from 'src/app/Services/Vendor/vendor.service';
 })
 export class AddvendorComponent implements OnInit {
 
-constructor(private vtypeserv : VendortypeService,private vendserv : VendorService,private router : Router){}
+constructor(private vtypeserv : VendortypeService,private vendserv : VendorService,private router : Router,
+            private fb: FormBuilder){ }
 
 vendor : Vendor = new Vendor();
 vtypelist : any
@@ -19,8 +21,7 @@ vtypelist : any
    
 }
 
-savevendor() {
-
+savevendor() { 
   if (this.vendor.password !== this.vendor.cnf_password) {
     alert('Passwords do not match!');
     return;

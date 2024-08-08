@@ -8,15 +8,13 @@ import { VendorService } from 'src/app/Services/Vendor/vendor.service';
   templateUrl: './registervendor.component.html',
   styleUrls: ['./registervendor.component.css']
 })
-export class RegistervendorComponent implements OnInit{
+export class RegistervendorComponent implements OnInit {
 
   vendor : Vendor = new Vendor()
   
   constructor(private router : Router,private vendserv : VendorService) {}
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
   registerVendor()
   {

@@ -30,6 +30,7 @@ import { LoginComponent } from './MyComponents/Login/login/login.component';
 import { ActivityComponent } from './MyComponents/Activities/activity/activity.component';
 import { DatePipe } from '@angular/common';
 import { DpDatePickerModule } from 'ng2-date-picker';
+import { VendorhomeComponent } from './MyComponents/VendorDashBoard/vendorhome/vendorhome.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { DpDatePickerModule } from 'ng2-date-picker';
     HomeComponent,
     RegistervendorComponent,
     LoginComponent,
-    ActivityComponent
+    ActivityComponent,
+    VendorhomeComponent
     
   ],
   imports: [

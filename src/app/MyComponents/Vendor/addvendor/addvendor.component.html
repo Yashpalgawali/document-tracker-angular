@@ -1,25 +1,73 @@
 <div class="container">
     <h4>Add Vendor</h4><hr>
-    <form (ngSubmit)="savevendor()" #vendorForm="ngForm" method="post">
+    <form (ngSubmit)="savevendor()"   #vendorForm="ngForm" method="post">
         <div class="form-group">
             <label for="vendor_name">Vendor Name</label><span style="color : red;"><strong>*</strong></span>
-            <input type="text" name="vendor_name" id="vendor_name" [(ngModel)]="vendor.vendor_name" class="form-control" placeholder="Enter vendor Name" required>
+            <input type="text" 
+                   name="vendor_name" id="vendor_name" [(ngModel)]="vendor.vendor_name" class="form-control"
+                   placeholder="Enter vendor Name" 
+                   required 
+                   #vendor_name="ngModel"
+                   [ngClass]="{'is-invalid': (vendor_name.touched || vendor_name.dirty) && !vendor_name.valid }"
+            />
+            <span class="invalid-feedback">
+                <span *ngIf="vendor_name.errors?.['required']">
+                  User name is required.
+                </span>
+          </span>
         </div>
         <div class="form-group">
             <label for="vendor_email">Vendor Email</label><span style="color : red;"><strong>*</strong></span>
-            <input type="text" name="vendor_email" id="vendor_email" [(ngModel)]="vendor.vendor_email" class="form-control" placeholder="Enter vendor email" required>
+            <input type="text" name="vendor_email" id="vendor_email" [(ngModel)]="vendor.vendor_email" 
+                   class="form-control" placeholder="Enter vendor email" required
+                   #vendor_email="ngModel"
+                   [ngClass]="{'is-invalid': (vendor_email.touched || vendor_email.dirty) && !vendor_email.valid }"
+            />
+            <span class="invalid-feedback">
+                <span *ngIf="vendor_email.errors?.['required']">
+                    Vendor Email is required.
+                </span>
+          </span>
         </div>
         <div class="form-group">
             <label for="vendor_contact"> Vendor Contact</label><span style="color : red;"><strong>*</strong></span>
-            <input type="text" name="vendor_contact" id="vendor_contact" [(ngModel)]="vendor.vendor_contact" class="form-control" placeholder="Enter vendor Contact" required>
+            <input type="text" name="vendor_contact" id="vendor_contact" [(ngModel)]="vendor.vendor_contact" 
+                   class="form-control" placeholder="Enter vendor Contact" required 
+                   #vendor_contact="ngModel"
+                   [ngClass]="{'is-invalid': (vendor_contact.touched || vendor_contact.dirty) && !vendor_contact.valid }"
+            />
+            <span class="invalid-feedback">
+                <span *ngIf="vendor_contact.errors?.['required']">
+                    Vendor Contact is required.
+                </span>
+          </span>
         </div>
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" [(ngModel)]="vendor.username" class="form-control" placeholder="Enter username" required>
+            <input type="text" name="username" id="username" [(ngModel)]="vendor.username" class="form-control"
+                   placeholder="Enter username" required 
+                   #username="ngModel"
+                   [ngClass]="{'is-invalid': (username.touched || username.dirty) && !username.valid }"       
+            />
+            <span class="invalid-feedback">
+                <span *ngIf="vendor_contact.errors?.['required']">
+                    Username is required.
+                </span>
+          </span>
         </div>
         <div class="form-group">
             <label for="password">Password</label><span style="color : red;"><strong>*</strong></span>
-                <input type="password" name="password" id="password" [(ngModel)]="vendor.password"  class="form-control" placeholder="Enter Password" required>
+                <input type="password" name="password" id="password" [(ngModel)]="vendor.password" 
+                     class="form-control" placeholder="Enter Password" required 
+                     #password="ngModel"
+                     [ngClass]="{'is-invalid': (password.touched || password.dirty) && !password.valid }"     
+                     
+                 />
+                <span class="invalid-feedback">
+                    <span *ngIf="password.errors?.['required']">
+                        Enter Password                    
+                    </span>
+                </span>
         </div>
         <div class="form-group">
             <label for="cnf_password">Confirm Password</label><span style="color : red;"><strong>*</strong></span>
@@ -28,7 +76,7 @@
                     Passwords do not match!
                   </div>
         </div>
-        <button type="submit" class="btn btn-primary"  >Add vendor</button>&nbsp;&nbsp;
+        <button type="submit" class="btn btn-primary"  [disabled]="!vendorForm.valid" >Add vendor</button>&nbsp;&nbsp;
         <button type="reset" class="btn btn-primary">Clear </button>
     </form>
 </div>
