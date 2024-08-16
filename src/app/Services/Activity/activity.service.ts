@@ -14,6 +14,6 @@ export class ActivityService {
 
   public getAllActivities():Observable<Activity[]>
   {
-    return this.http.get<Activity[]>(`this.base_url`);
+    return this.http.get<Activity[]>(`${this.base_url}`);
   }
 }

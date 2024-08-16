@@ -1,6 +1,8 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { end } from '@popperjs/core';
 import { NotificationService } from 'src/app/Services/Notification/notification.service';
+import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
 
 @Component({
   selector: 'app-home',
@@ -11,28 +13,35 @@ export class HomeComponent implements OnInit {
 
   reserr  : any
   response : any
-res : any
-  notificationlist : any;
-  constructor(private notificationserv : NotificationService) {}
+  res : any
+  notificationlist : any
+  constructor(private notificationserv : NotificationService,private regserv : RegulationService) {}
 
   ngOnInit(): void {
     this.notificationserv.getAllActiveNotifications().subscribe({
       next:(data)=> {
         this.notificationlist = data
         
+        
       },
     })
   }
 
-  isNotificationActive(endDate: Date): boolean {
-    const currentDate = new Date();
-    const dateFormat = "MM-dd-yyyy"
+  isNotificationActive(endDate: any): boolean {
 
-    const formattedDate = formatDate(endDate , dateFormat,'en-us' );
+      const currentDate = new Date();
+      const dateFormat = "dd-MM-yyyy"
 
-    //this.res = new Date(endDate) < currentDate
+      const [day, month, year] = endDate.split('-').map(Number);
+      const eddate = new Date(year, month -1,day)
+
+     // const formattedDate = formatDate(eddate , dateFormat,'en-us' );
+ 
+      return eddate < currentDate;
+ 
+  }
+
+  getExpiredRegulations(){
     
-   // alert("End date is "+endDate+"\n Todays date is "+currentDate+"\n NEW date "+new Date(formattedDate))
-    return new Date(formattedDate) < currentDate;
   }
 }

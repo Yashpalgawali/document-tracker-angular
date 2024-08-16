@@ -6,6 +6,7 @@ import { RegulationService } from 'src/app/Services/Regulation/regulation.servic
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { VendorService } from 'src/app/Services/Vendor/vendor.service';
 import { RegulationTypeService } from 'src/app/Services/RegulationType/regulation-type.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-addregulation',
@@ -13,6 +14,16 @@ import { RegulationTypeService } from 'src/app/Services/RegulationType/regulatio
   styleUrls: ['./addregulation.component.css']
 })
 export class AddregulationComponent  {
+  startDate : Date = new Date();
+  endDate : Date = new Date();
+  ate : Date = new Date();
+ 
+  public datepickerConfig: Partial<BsDatepickerConfig> = {
+    containerClass : 'theme-dark-blue',
+    dateInputFormat: 'DD-MM-YYYY',
+    
+  };
+
   myGroup: FormGroup;
   constructor(private router: Router, private regulateserv: RegulationService, private fb: FormBuilder,
                 private vendserv : VendorService, private regtypeserv : RegulationTypeService)
@@ -38,10 +49,14 @@ export class AddregulationComponent  {
     // formData.append('regulation_issued_date', (document.getElementById('regulation_issued_date') as HTMLInputElement).value);
     // formData.append('regulation_type_id', (document.getElementById('regulation_type_id') as HTMLInputElement).value);
     
+    const dat = this.myGroup.get('regulation_issued_date')?.value
+    const formattedDate = formatDate(dat , 'dd-MM-yyyy', 'en-US');
+
     const formData = new FormData();
     formData.append('regulation_name', this.myGroup.get('regulation_name')?.value);
     formData.append('regulation_description', this.myGroup.get('regulation_description')?.value);
-    formData.append('regulation_issued_date', this.myGroup.get('regulation_issued_date')?.value);
+   // formData.append('regulation_issued_date', this.myGroup.get('regulation_issued_date')?.value);
+    formData.append('regulation_issued_date', formattedDate);
     formData.append('regulation_frequency', this.myGroup.get('regulation_frequency')?.value);
     formData.append('regulation_type_id', this.myGroup.get('regulation_type_id')?.value);
     

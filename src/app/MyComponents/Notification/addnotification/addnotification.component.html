@@ -1,13 +1,13 @@
 <div class="container">
     <h3>Add Notification</h3>
-    <form (ngSubmit)="onSubmit()"  method="post">
+    <form (ngSubmit)="onSubmit()"  method="POST">
     <div class="form-group">
         <label for="notification_name">Notification Name</label>
-        <input type="text" name="notification_name" id="notification_name" class="form-control" [(ngModel)]="notification.notification_name" placeholder="Enter Notification Name">
+            <input type="text" name="notification_name" id="notification_name" class="form-control" [(ngModel)]="notification.notification_name" placeholder="Enter Notification Name">
     </div>
     <div class="form-group">
         <label for="notification_description">Description</label>
-        <input type="text" name="notification_description" id="notification_description" [(ngModel)]="notification.notification_description" class="form-control" placeholder="Enter Notification Description">
+            <input type="text" name="notification_description" id="notification_description" [(ngModel)]="notification.notification_description" class="form-control" placeholder="Enter Notification Description">
     </div>
 
     <div class="form-group">

@@ -16,9 +16,7 @@ export class ViewnotificationsComponent implements OnInit{
   notificationlist : any
   reserr : any
   response : any
-  constructor(private notificationserv : NotificationService,private router : Router) {
-
-  }
+  constructor(private notificationserv : NotificationService,private router : Router) { }
 
 ngOnInit(): void {
   this.notificationserv.getAllNotifications().subscribe({

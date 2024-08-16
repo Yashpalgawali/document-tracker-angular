@@ -26,18 +26,26 @@ const routes: Routes = [
   { path : "addvendor" , component: AddvendorComponent, canActivate : [RouteGuardService]},
   { path : "viewvendors" , component: ViewvendorsComponent , canActivate : [RouteGuardService]},
   { path : "edit/vendor/:id" , component: EditvendorComponent , canActivate : [RouteGuardService]},
+  
+  { path : "vendor/viewregulations" , component: ViewregulationsbyvendorComponent , canActivate : [RouteGuardService]},
+
   { path : "addregulation" , component: AddregulationComponent },
   { path : "viewregulations" , component: ViewregulationsComponent },
   { path : "edit/regulation/:id" , component: EditregulationComponent , canActivate : [RouteGuardService]},
+
   { path : "addregulationtype" , component: AddregulationtypeComponent , canActivate : [RouteGuardService]},
   { path : "viewregulationtypes" , component: ViewregulationtypesComponent , canActivate : [RouteGuardService]},
   { path : "edit/regulationtype/:id" , component: EditregulationtypeComponent , canActivate : [RouteGuardService]},
-  { path : "vendor/viewregulations" , component: ViewregulationsbyvendorComponent , canActivate : [RouteGuardService]},
+  
   { path : "addnotification" , component: AddnotificationComponent , canActivate : [RouteGuardService]},
   { path : "viewnotification" , component: ViewnotificationsComponent , canActivate : [RouteGuardService]},
   { path : "notification/edit/:id" , component: EditnotificationComponent, canActivate : [RouteGuardService]},
-  { path : "" , component : LoginComponent  },
+  
+  { path : "" , component : HomeComponent  },
   { path : "login" , component : LoginComponent  },
+
+  { path : "home" , component : HomeComponent  },
+  
   { path : "activities", component : ActivityComponent , canActivate : [RouteGuardService]},
   { path : "registervendor", component : RegistervendorComponent}
 

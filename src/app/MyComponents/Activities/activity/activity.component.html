@@ -1,17 +1,20 @@
-<div class="container">
+<div class="container"> 
+    <caption>View Activities</caption>
     <table class="table table-hover table-striped">
         <thead>
-            <th>Sr No.</th>
-            <th>Activity</th>
-            <th>Date</th>
-            <th>Time</th>
+            <tr>
+                <th>Sr no.</th>
+                <th>Activity</th>
+                <th>Activity Date</th>
+                <th>Activity Time</th>
+            </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let act as actlist; let i=index">
-                <th>{{i+1}}</th>
-                <th>{{act.activity }}</th>
-                <th>{{act.activity_date }}</th>
-                <th>{{act.activity_time }}</th> 
+            <tr *ngFor="let act of actlist; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{act.activity}}</td>
+                <td>{{act.activity_date}}</td>
+                <td>{{act.activity_time}}</td>
             </tr>
         </tbody>
     </table>

@@ -16,6 +16,7 @@ export class ActivityComponent implements OnInit {
 
     this.actserv.getAllActivities().subscribe({
       next:(data)=> {
+        
           this.actlist=data
       },
 

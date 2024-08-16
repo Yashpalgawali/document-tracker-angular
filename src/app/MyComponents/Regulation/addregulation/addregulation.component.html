@@ -1,21 +1,40 @@
 <div class="container">
+<h3>Add Regulation</h3>
 <form (ngSubmit)="onSubmit()" [formGroup]="myGroup" #fileUploadForm="ngForm" enctype="multipart/form-data">
-    <div>
+    <div class="form-group">
         <label for="regulation_name">Regulation Name:</label>
-        <input type="text" id="regulation_name" name="regulation_name" class="form-control" formControlName="regulation_name"ngModel>
-    </div>
-    <div>
-        <label for="regulation_description">Description:</label>
-        <input type="text" id="regulation_description" name="regulation_description"  class="form-control" formControlName="regulation_description" ngModel>
-    </div>
-    <div >
-        <label for="regulation_issued_date">regulation_issued_date</label>
-            <input type="text" name="regulation_issued_date" id="regulation_issued_date"  class="form-control" formControlName="regulation_issued_date" placeholder="regulation Issued date">
+        <input type="text" id="regulation_name" name="regulation_name" class="form-control mb-3" formControlName="regulation_name" placeholder="Enter Regulation Name" ngModel>
     </div>
     <div class="form-group">
-        <label for="regulation_frequency">Please select Frequency </label>
-        <select id="regulation_frequency" name="regulation_frequency " class="form-control" formControlName="regulation_frequency" >
-            <option selected disabled>Please select Frequency </option>
+        <label for="regulation_description">Description:</label>
+        <input type="text" id="regulation_description" name="regulation_description"  class="form-control mb-3" formControlName="regulation_description" placeholder="Enter Regulation Description" ngModel>
+    </div>
+    <!-- <div class="form-group">
+        <label for="regulation_issued_date">Regulation Issued Date</label>
+            <input type="text" name="regulation_issued_date" id="regulation_issued_date"  class="form-control" formControlName="regulation_issued_date" placeholder="Regulation Issued Date">
+    </div> -->
+    
+    <div class="form-group">
+        <label for="regulation_issued_date">Regulation Issued Date</label>
+        <input
+            placeholder="Select Date"
+            class="form-control"
+            bsDatepicker
+            [(bsValue)]="startDate"
+            value="selectedDate |  date:'DD-MM-yyyy'"
+            formControlName="regulation_issued_date"
+            [bsConfig]="datepickerConfig"
+            id="regulation_issued_date" name="regulation_issued_date"
+            autocomplete="off"
+        />
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+     </div>
+    <div class="form-group">
+        <label for="regulation_frequency">Please Select Frequency </label>
+        <select id="regulation_frequency" name="regulation_frequency " class="form-control mb-3" formControlName="regulation_frequency" >
+            <option selected disabled>Please Select Frequency </option>
             <option value="1">Monthly</option>
             <option value="2">Quarterly</option>
             <option value="3">Yearly</option>
@@ -23,12 +42,12 @@
     </div>
     <div class="form-group">
         <label for="regulation_type_id">Regulation Type </label>
-        <select id="regulation_type_id" name="regulation_type_id " class="form-control" formControlName="regulation_type_id" >
+        <select id="regulation_type_id" name="regulation_type_id " class="form-control mb-3" formControlName="regulation_type_id" >
             <option selected disabled>Please Select Regulation Type </option>
             <option *ngFor="let regtype of regulationtype" [value]="regtype.regulation_type_id">{{regtype.regulation_type}}</option>
         </select>
     </div>
-    <div>
+    <div class="form-group">
         <label for="file">File:</label>
         <input type="file" id="file" (change)="onFileChange($event)"  class="form-control mb-3" accept=".pdf">
     </div>
