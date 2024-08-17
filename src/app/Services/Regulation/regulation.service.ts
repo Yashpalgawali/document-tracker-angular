@@ -42,4 +42,10 @@ export class RegulationService {
   {
     return this.http.get<Regulation[]>(`${this.base_url}vendor/${vendorid}`);
   }
+
+  public getPdf(regid : number): Observable<Blob> {
+    return this.http.get(`${this.base_url}pdf/id/${regid}`, { responseType: 'blob' });
+  }
+
+
 }

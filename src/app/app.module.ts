@@ -67,7 +67,7 @@ import { VendorhomeComponent } from './MyComponents/VendorDashBoard/vendorhome/v
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(), // Add this line
     DatePipe,
-    DpDatePickerModule
+    DpDatePickerModule 
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

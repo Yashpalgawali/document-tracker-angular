@@ -1,11 +1,7 @@
 
 <div class="container">
-    <div *ngIf="response">
-        <h6 class="alert alert-success">{{response}}</h6>
-    </div>
-    <div *ngIf="reserr">
-        <h6 class="alert alert-danger">{{reserr}}</h6>
-    </div>
+    <div *ngIf="response"> <h6 class="alert alert-success">{{response}}</h6> </div>
+    <div *ngIf="reserr"> <h6 class="alert alert-danger">{{reserr}}</h6> </div>
     
     <table class="table table-striped table-hover">
         <thead>
@@ -30,7 +26,8 @@
                 <td  *ngIf="regulation.regulation_frequency==3" >Yearly</td>
                 <td>{{regulation.regulation_issued_date}}</td>
                 <!-- <td><button  (click)="downloadFile(regulation.file_path,regulation.file_name)">{{regulation.file_name}}</button> </td> -->
-                <td> <a href="" target="_blank"> {{regulation.file_name}}</a> </td>
+                <td> <button (click)="openPdf(regulation.regulation_id )" target="_blank" class="btn btn-primary" > <i class="fa fa-download"></i>  {{regulation.file_name}}</button> </td>
+                <!-- <td> <a [href]="regulation.file_path" target="_blank"> {{regulation.file_name}}</a> </td> -->
                  <td>{{regulation.file_path}}\{{regulation.file_name}}</td> 
                 <td> <button (click)="getRegulationById(regulation.regulation_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> Edit</button>  </td>
             </tr>
