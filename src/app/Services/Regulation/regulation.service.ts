@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GlobalComponent } from 'src/app/GlobalComponents';
@@ -47,5 +47,6 @@ export class RegulationService {
     return this.http.get(`${this.base_url}pdf/id/${regid}`, { responseType: 'blob' });
   }
 
-
+  
+   
 }

@@ -9,11 +9,17 @@
         <label for="regulation_description">Description:</label>
         <input type="text" id="regulation_description" name="regulation_description"  class="form-control mb-3" formControlName="regulation_description" placeholder="Enter Regulation Description" ngModel>
     </div>
-    <!-- <div class="form-group">
-        <label for="regulation_issued_date">Regulation Issued Date</label>
-            <input type="text" name="regulation_issued_date" id="regulation_issued_date"  class="form-control" formControlName="regulation_issued_date" placeholder="Regulation Issued Date">
-    </div> -->
-    
+
+    <div class="form-group">
+        <label for="regulation_frequency">Please Select Frequency </label>
+        <select id="regulation_frequency" name="regulation_frequency " class="form-control mb-3" formControlName="regulation_frequency" >
+            <option selected disabled>Please Select Frequency </option>
+            <option value="1">Monthly</option>
+            <option value="2">Quarterly</option>
+            <option value="3">Yearly</option>
+        </select>
+    </div>
+
     <div class="form-group">
         <label for="regulation_issued_date">Regulation Issued Date</label>
         <input
@@ -26,20 +32,32 @@
             [bsConfig]="datepickerConfig"
             id="regulation_issued_date" name="regulation_issued_date"
             autocomplete="off"
+            (bsValueChange)="updateNextUpdateDate($event)"
         />
         <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
      </div>
-    <div class="form-group">
-        <label for="regulation_frequency">Please Select Frequency </label>
-        <select id="regulation_frequency" name="regulation_frequency " class="form-control mb-3" formControlName="regulation_frequency" >
-            <option selected disabled>Please Select Frequency </option>
-            <option value="1">Monthly</option>
-            <option value="2">Quarterly</option>
-            <option value="3">Yearly</option>
-        </select>
-    </div>
+   
+     <div class="form-group">
+        <label for="next_renewal_date">Next Renewal Date</label>
+        <input
+            placeholder="Select Date"
+            class="form-control"
+            bsDatepicker
+            [(bsValue)]="next_renewal_date"
+            value="next_renewal_date | date:'DD-MM-yyyy'"
+            formControlName="next_renewal_date"
+            [bsConfig]="datepickerConfig"
+            id="next_renewal_date" name="next_renewal_date"
+            autocomplete="off"
+            
+        />
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+     </div>
+
     <div class="form-group">
         <label for="regulation_type_id">Regulation Type </label>
         <select id="regulation_type_id" name="regulation_type_id " class="form-control mb-3" formControlName="regulation_type_id" >

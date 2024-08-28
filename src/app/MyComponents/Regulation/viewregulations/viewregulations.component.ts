@@ -16,17 +16,7 @@ export class ViewregulationsComponent implements OnInit{
 
   app_url = GlobalComponent.app_url
 
- 
   
-  // downloadFile(path : any ,fname  :any){
-  //   const link = document.createElement('a');
-  //   link.setAttribute('target', '_blank');
-  //   link.setAttribute('href', path);
-  //   link.setAttribute('download', fname);
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   link.remove();
-  // }
   pdfUrl : any
 
   constructor (private router : Router,private regulateserv :RegulationService) { }
@@ -38,6 +28,9 @@ export class ViewregulationsComponent implements OnInit{
     })
   }
 
+ 
+  
+  
   ngOnInit(): void {
    
     this.regulateserv.getAllRegulation().subscribe({
