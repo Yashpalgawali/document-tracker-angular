@@ -10,26 +10,14 @@ import { RegulationService } from 'src/app/Services/Regulation/regulation.servic
 })
 export class ViewregulationsComponent implements OnInit {
 
-   // Method to check if a date is greater than today
-   isDateGreaterThanToday(dateStr: string): boolean {
- 
-    const today = new Date();
-    const regulationDate = new Date(dateStr);
-    
-    return regulationDate < today;
-  }
-
-     
-
   reserr : any
   response : any
   regulationlist : any
-   
+  isExpired : any
   app_url = GlobalComponent.app_url 
   
   pdfUrl : any
-  
-  
+   
   date: Date = new Date(); // Example date to compare
   
   constructor (private router : Router,private regulateserv :RegulationService) { }
@@ -41,9 +29,36 @@ export class ViewregulationsComponent implements OnInit {
     })
   }
 
-   
+// Method to check if a date is greater than today
+isDateGreaterThanToday(dateStr: string): boolean {
  
+  const today = new Date();
+  const regulationDate = new Date(dateStr);
+  
 
+  if (regulationDate > today) {
+    return true; // Date is in the future
+  } else if (regulationDate < today) {
+    this.isExpired = "Expired";
+  } else {
+    this.isExpired = "Due today";
+  }
+
+  return false; // Date is today
+  
+  // if(regulationDate > today) {
+  //   this.isExpired = " "
+  // }
+  // if(regulationDate < today) {
+  //   this.isExpired = "Expired"
+  // }
+  // if(regulationDate == today) {
+  //   this.isExpired = "Due today"
+  // }
+  
+  // return regulationDate > today;
+}
+   
   ngOnInit(): void {
    
     this.regulateserv.getAllRegulation().subscribe({
@@ -70,18 +85,7 @@ export class ViewregulationsComponent implements OnInit {
       },
     })
   }
-// Method to parse date from "dd-MM-yyyy" format to a Date object
-// parseDate(dateString: string): Date {
-//   const [day, month, year] = dateString.split('-').map(Number);
-//   return new Date(year, month - 1, day);
-// }
-
-// // Method to check if the regulation date is less than today's date
-// isDateLessThanToday(date: string): boolean {
-//   const today = new Date();
-//   const regulationDate = this.parseDate(date);
-//   return regulationDate < today;
-// }
+ 
   public getRegulationById(rid : number)
   {
     this.router.navigate(['/edit/regulation/',rid])

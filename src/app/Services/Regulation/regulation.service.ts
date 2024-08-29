@@ -33,6 +33,11 @@ export class RegulationService {
     return this.http.get<Regulation[]>(`${this.base_url}`);
   }
 
+  public getExpiredRegulations():Observable<Regulation[]>
+  {
+    return this.http.get<Regulation[]>(`${this.base_url}expired/regulation/`);
+  }
+
   public getRegulationbyId(rid : number)
   {
     return this.http.get<Regulation>(`${this.base_url}${rid}`);
@@ -46,7 +51,5 @@ export class RegulationService {
   public getPdf(regid : number): Observable<Blob> {
     return this.http.get(`${this.base_url}pdf/id/${regid}`, { responseType: 'blob' });
   }
-
-  
    
 }

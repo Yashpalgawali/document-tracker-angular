@@ -15,14 +15,22 @@ export class HomeComponent implements OnInit {
   response : any
   res : any
   notificationlist : any
+  expiredregulationlist : any
+
   constructor(private notificationserv : NotificationService,private regserv : RegulationService) {}
 
   ngOnInit(): void {
     this.notificationserv.getAllActiveNotifications().subscribe({
       next:(data)=> {
-        this.notificationlist = data
-        
-        
+          this.notificationlist = data 
+      }
+    })
+    this.regserv.getExpiredRegulations().subscribe({
+      next:(data) =>{
+        this.expiredregulationlist = data
+      },
+      error:(err) =>{
+          
       },
     })
   }
@@ -38,10 +46,9 @@ export class HomeComponent implements OnInit {
      // const formattedDate = formatDate(eddate , dateFormat,'en-us' );
  
       return eddate < currentDate;
- 
   }
 
   getExpiredRegulations(){
-    
+      
   }
 }

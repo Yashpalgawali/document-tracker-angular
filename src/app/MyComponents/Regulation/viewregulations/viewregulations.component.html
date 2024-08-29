@@ -18,8 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let regulation of regulationlist; let i=index " 
-                    >
+            <tr *ngFor="let regulation of regulationlist; let i=index " >
                 <td>{{i+1}}</td>
                 <td>{{regulation.regulation_name}}</td>
                 <td>{{regulation.regulation_description}}</td>
@@ -30,11 +29,10 @@
                 <td  [ngClass]="{
                     'date-greater': isDateGreaterThanToday(regulation.next_renewal_date), 
                     'date-smaller': !isDateGreaterThanToday(regulation.next_renewal_date)
-                }"> {{regulation.next_renewal_date}} </td>
-                <!-- <td><button  (click)="downloadFile(regulation.file_path,regulation.file_name)">{{regulation.file_name}}</button> </td> -->
+                }"> {{regulation.next_renewal_date}} <sub> {{isExpired}} </sub></td>
+               
                 <td> <button (click)="openPdf(regulation.regulation_id )" target="_blank" class="btn btn-primary" > <i class="fa fa-download"></i>  {{regulation.file_name}}</button> </td>
-                <!-- <td> <a [href]="regulation.file_path" target="_blank"> {{regulation.file_name}}</a> </td> -->
-                 <td>{{regulation.file_path}}\{{regulation.file_name}}</td> 
+                <td>{{regulation.file_path}}\{{regulation.file_name}}</td> 
                 <td> <button (click)="getRegulationById(regulation.regulation_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> Edit</button>  </td>
             </tr>
         </tbody>

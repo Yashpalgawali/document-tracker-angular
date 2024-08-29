@@ -100,7 +100,12 @@
                           </tr>
                       </thead>
                       <tbody>
-                         
+                         <tr *ngFor="let expired of expiredregulationlist; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{expired.regulation_name}}</td>
+                            <td>{{expired.regulation_name}}</td>
+                            <td style="color : red;">{{expired.next_renewal_date}} <sub>Expired</sub></td>
+                         </tr>
                       </tbody>
                       
                   </table>
