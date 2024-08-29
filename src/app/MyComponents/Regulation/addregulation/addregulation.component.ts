@@ -36,6 +36,7 @@ export class AddregulationComponent  implements OnInit {
       regulation_name: ['', Validators.required],
       regulation_description: ['', Validators.required],
       regulation_issued_date: ['', Validators.required],
+      next_renewal_date: ['', Validators.required],
       regulation_frequency: ['', Validators.required],
       regulation_type_id: ['', Validators.required]
     });
@@ -52,15 +53,17 @@ export class AddregulationComponent  implements OnInit {
     // formData.append('regulation_frequency', (document.getElementById('regulation_frequency') as HTMLInputElement).value);
     // formData.append('regulation_issued_date', (document.getElementById('regulation_issued_date') as HTMLInputElement).value);
     // formData.append('regulation_type_id', (document.getElementById('regulation_type_id') as HTMLInputElement).value);
-    
+    const formData = new FormData();
+
     const dat = this.myGroup.get('regulation_issued_date')?.value
     const formattedDate = formatDate(dat , 'dd-MM-yyyy', 'en-US');
-
-    const formData = new FormData();
+    const next_renewal_date = formatDate(this.myGroup.get('next_renewal_date')?.value , 'dd-MM-yyyy', 'en-US')
+    
     formData.append('regulation_name', this.myGroup.get('regulation_name')?.value);
     formData.append('regulation_description', this.myGroup.get('regulation_description')?.value);
    // formData.append('regulation_issued_date', this.myGroup.get('regulation_issued_date')?.value);
-    formData.append('regulation_issued_date', formattedDate);
+   formData.append('regulation_issued_date', formattedDate);
+   formData.append('next_renewal_date', next_renewal_date);
     formData.append('regulation_frequency', this.myGroup.get('regulation_frequency')?.value);
     formData.append('regulation_type_id', this.myGroup.get('regulation_type_id')?.value);
     
@@ -118,8 +121,7 @@ export class AddregulationComponent  implements OnInit {
         if(next_total_days==cur_total_days) {
           
            next_date = (cur_month+1)+"-"+cur_date+"-"+cur_year
-           this.next_renewal_date = new Date(next_date)
-   
+           this.next_renewal_date = new Date(next_date) 
         } 
 
         if(next_total_days > cur_total_days) {
@@ -140,6 +142,59 @@ export class AddregulationComponent  implements OnInit {
          } 
       }
     }
+    if(duration==2) {
+      
+      if(cur_month==12) {
+        cur_month=3
+        next_date = cur_month+"-"+cur_date+"-"+(cur_year+1)
+        this.next_renewal_date = new Date(next_date)
+      }
+      else {
+
+        if(cur_month>=10 && cur_month<=11) {
+          if(cur_month==10) {
+            next_month = 1
+          }
+          if(cur_month==11) {
+            next_month = 2
+          }
+          next_date = next_month+"-"+cur_date+"-"+(cur_year+1)
+          this.next_renewal_date = new Date(next_date) 
+        }
+        else {
+          next_total_days = this.daysInMonth(cur_month+1, cur_year);
+          if(next_total_days==cur_total_days) {
+            
+            next_date = next_month+"-"+cur_date+"-"+cur_year
+            this.next_renewal_date = new Date(next_date) 
+          } 
+        }
+        
+      }
+   }
+   if(duration==3){
+    if(cur_month==2) {
+      if(cur_year%400==0 || cur_year/4==0) {
+        next_total_days = this.daysInMonth(cur_month, (cur_year+1));
+        if(cur_date>next_total_days) {
+          cur_date = cur_total_days-next_total_days
+          next_date = (cur_month+1)+"-"+cur_date+"-"+(cur_year+1)
+        }
+        else {
+          next_date = cur_month+"-"+cur_date+"-"+(cur_year+1)
+          this.next_renewal_date = new Date(next_date) 
+        }
+      }
+      else {
+        next_date = cur_month+"-"+cur_date+"-"+(cur_year+1)
+        this.next_renewal_date = new Date(next_date) 
+      }
+    }
+    else {
+      next_date = cur_month+"-"+cur_date+"-"+(cur_year+1)
+      this.next_renewal_date = new Date(next_date) 
+    }
+   }
   }
 
   daysInMonth(month : any, year : any) {
