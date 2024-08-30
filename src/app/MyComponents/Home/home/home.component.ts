@@ -1,6 +1,8 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { end } from '@popperjs/core';
+
+import { Subject } from 'rxjs';
 import { NotificationService } from 'src/app/Services/Notification/notification.service';
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
 
@@ -12,11 +14,11 @@ import { RegulationService } from 'src/app/Services/Regulation/regulation.servic
 export class HomeComponent implements OnInit {
 
   reserr  : any
-  response : any
+  response: any
   res : any
   notificationlist : any
   expiredregulationlist : any
-
+  
   constructor(private notificationserv : NotificationService,private regserv : RegulationService) {}
 
   ngOnInit(): void {
@@ -28,10 +30,7 @@ export class HomeComponent implements OnInit {
     this.regserv.getExpiredRegulations().subscribe({
       next:(data) =>{
         this.expiredregulationlist = data
-      },
-      error:(err) =>{
-          
-      },
+      }
     })
   }
 
@@ -47,8 +46,5 @@ export class HomeComponent implements OnInit {
  
       return eddate < currentDate;
   }
-
-  getExpiredRegulations(){
-      
-  }
+ 
 }

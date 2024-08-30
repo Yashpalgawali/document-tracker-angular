@@ -13,7 +13,7 @@ export class ViewregulationsComponent implements OnInit {
   reserr : any
   response : any
   regulationlist : any
-  isExpired : any
+  isExpired: string = '';
   app_url = GlobalComponent.app_url 
   
   pdfUrl : any
@@ -32,31 +32,21 @@ export class ViewregulationsComponent implements OnInit {
 // Method to check if a date is greater than today
 isDateGreaterThanToday(dateStr: string): boolean {
  
+  
   const today = new Date();
-  const regulationDate = new Date(dateStr);
-  
+    const regulationDate = new Date(dateStr);
+    
+    if (regulationDate > today) {
+      this.isExpired = ''; // Clear expiration status
+      return true; // Date is in the future
+    } else if (regulationDate < today) {
+      this.isExpired = 'Expired'; // Set status to "Expired"
+    } else {
+      this.isExpired = 'Due today'; // Set status to "Due today"
+    }
 
-  if (regulationDate > today) {
-    return true; // Date is in the future
-  } else if (regulationDate < today) {
-    this.isExpired = "Expired";
-  } else {
-    this.isExpired = "Due today";
-  }
-
-  return false; // Date is today
+    return false; // Date is today or in the past
   
-  // if(regulationDate > today) {
-  //   this.isExpired = " "
-  // }
-  // if(regulationDate < today) {
-  //   this.isExpired = "Expired"
-  // }
-  // if(regulationDate == today) {
-  //   this.isExpired = "Due today"
-  // }
-  
-  // return regulationDate > today;
 }
    
   ngOnInit(): void {

@@ -31,7 +31,7 @@ import { ActivityComponent } from './MyComponents/Activities/activity/activity.c
 import { DatePipe } from '@angular/common';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { VendorhomeComponent } from './MyComponents/VendorDashBoard/vendorhome/vendorhome.component';
-
+ 
 
 @NgModule({
   declarations: [
@@ -67,7 +67,7 @@ import { VendorhomeComponent } from './MyComponents/VendorDashBoard/vendorhome/v
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(), // Add this line
     DatePipe,
-    DpDatePickerModule 
+    DpDatePickerModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
