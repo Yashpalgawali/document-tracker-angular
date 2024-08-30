@@ -15,10 +15,9 @@ import { formatDate } from '@angular/common';
 })
 export class AddregulationComponent  implements OnInit {
 
-  startDate : Date = new Date();
+  startDate !: Date 
   endDate : Date = new Date();
   next_renewal_date !: Date  ;
- 
 
   public datepickerConfig: Partial<BsDatepickerConfig> = {
     containerClass : 'theme-dark-blue',
@@ -151,7 +150,8 @@ export class AddregulationComponent  implements OnInit {
       }
       else {
 
-        if(cur_month>=10 && cur_month<=11) {
+        if(cur_month>=10 && cur_month<=11) 
+        {
           if(cur_month==10) {
             next_month = 1
           }
@@ -162,14 +162,29 @@ export class AddregulationComponent  implements OnInit {
           this.next_renewal_date = new Date(next_date) 
         }
         else {
-          next_total_days = this.daysInMonth(cur_month+1, cur_year);
+          next_total_days = this.daysInMonth(cur_month+3, cur_year);
           if(next_total_days==cur_total_days) {
             
             next_date = next_month+"-"+cur_date+"-"+cur_year
             this.next_renewal_date = new Date(next_date) 
           } 
+          if(next_total_days < cur_total_days) {
+            if(cur_date>next_total_days)
+            {
+              days_diff = cur_total_days - next_total_days
+              next_date = (cur_month+4)+"-"+days_diff+"-"+cur_year
+              this.next_renewal_date = new Date(next_date) 
+            }
+            else {
+              next_date = (cur_month+3)+"-"+cur_date+"-"+cur_year
+              this.next_renewal_date = new Date(next_date) 
+            }
+          }
+          if(next_total_days > cur_total_days) {
+            next_date = (cur_month+3)+"-"+cur_date+"-"+cur_year
+            this.next_renewal_date = new Date(next_date) 
+          }
         }
-        
       }
    }
    if(duration==3){
