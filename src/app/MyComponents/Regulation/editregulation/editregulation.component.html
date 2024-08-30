@@ -3,6 +3,7 @@
     <form (ngSubmit)="updateRegulation()" [formGroup]="myGroup" #fileUploadForm="ngForm" enctype="multipart/form-data">
         <div class="form-group">
             <label for="regulation_name">Regulation Name:</label>
+            <input type="hidden" id="regulation_id" name="regulation_id"   formControlName="regulation_id"   [(ngModel)]="regulation.regulation_id"  >
             <input type="text" id="regulation_name" name="regulation_name" class="form-control mb-3" formControlName="regulation_name" placeholder="Enter Regulation Name" [(ngModel)]="regulation.regulation_name"  >
         </div>
         <div class="form-group">

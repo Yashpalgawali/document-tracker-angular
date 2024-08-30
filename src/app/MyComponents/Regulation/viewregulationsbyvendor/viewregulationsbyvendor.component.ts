@@ -9,8 +9,8 @@ import { RegulationService } from 'src/app/Services/Regulation/regulation.servic
 })
 export class ViewregulationsbyvendorComponent {
   reserr : any
-  response : any
-  regualtionlist : any
+  response : any 
+  regulationlist : any
 
   constructor (private router : Router,private regulateserv :RegulationService) { }
 
@@ -34,7 +34,7 @@ export class ViewregulationsbyvendorComponent {
                 this.response=""
               }, 3000);
             }
-        this.regualtionlist = data
+        this.regulationlist = data
       },
     })
   }

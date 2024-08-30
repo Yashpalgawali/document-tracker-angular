@@ -19,6 +19,7 @@ import { LoginComponent } from './MyComponents/Login/login/login.component';
 import { ActivityComponent } from './MyComponents/Activities/activity/activity.component';
 import { RegistervendorComponent } from './MyComponents/Register/registervendor/registervendor.component';
 import { RouteGuardService } from './Services/routeguard.service';
+import { ViewregulationhistoryComponent } from './MyComponents/Regulation/viewregulationhistory/viewregulationhistory.component';
 
 const routes: Routes = [
 
@@ -45,6 +46,8 @@ const routes: Routes = [
   { path : "login" , component : LoginComponent  },
 
   { path : "home" , component : HomeComponent  },
+
+  { path : "regulation/:rid/history/:vid" , component : ViewregulationhistoryComponent  },
   
   { path : "activities", component : ActivityComponent , canActivate : [RouteGuardService]},
   { path : "registervendor", component : RegistervendorComponent}

@@ -37,6 +37,7 @@ export class EditregulationComponent implements OnInit{
   ) {
     this.myGroup = this.fb.group({
       regulation_name: ['', Validators.required],
+      regulation_id: ['', Validators.required],
       regulation_description: ['', Validators.required],
       regulation_issued_date: ['', Validators.required],
       next_renewal_date: ['', Validators.required],
@@ -59,15 +60,17 @@ export class EditregulationComponent implements OnInit{
     // formData.append('regulation_type_id', (document.getElementById('regulation_type_id') as HTMLInputElement).value);
     const formData = new FormData();
 
+    alert("Data type of ID "+ typeof(this.myGroup.get('regulation_id')?.value))
     const dat = this.myGroup.get('regulation_issued_date')?.value
     const formattedDate = formatDate(dat , 'dd-MM-yyyy', 'en-US');
     const next_renewal_date = formatDate(this.myGroup.get('next_renewal_date')?.value , 'dd-MM-yyyy', 'en-US')
     
+    formData.append('regulation_id', this.myGroup.get('regulation_id')?.value);
     formData.append('regulation_name', this.myGroup.get('regulation_name')?.value);
     formData.append('regulation_description', this.myGroup.get('regulation_description')?.value);
-   // formData.append('regulation_issued_date', this.myGroup.get('regulation_issued_date')?.value);
-   formData.append('regulation_issued_date', formattedDate);
-   formData.append('next_renewal_date', next_renewal_date);
+    
+    formData.append('regulation_issued_date', formattedDate);
+    formData.append('next_renewal_date', next_renewal_date);
     formData.append('regulation_frequency', this.myGroup.get('regulation_frequency')?.value);
     formData.append('regulation_type_id', this.myGroup.get('regulation_type_id')?.value);
     
@@ -76,13 +79,14 @@ export class EditregulationComponent implements OnInit{
       formData.append('file', this.selectedFile);
     }
 
-    this.regulateserv.saveRegulation(formData).subscribe({
+    this.regulateserv.updateRegulation(formData).subscribe({
       complete :() => {
-        sessionStorage.setItem('response','Regulation '+this.myGroup.get('regulation_name')?.value+' is saved successfully');
+        sessionStorage.setItem('response','Regulation '+this.myGroup.get('regulation_name')?.value+' is updated successfully');
         this.router.navigate(['viewregulations']);
       },
       error : (err) => {
-        alert('NOT saved');
+        sessionStorage.setItem('reserr','Regulation '+this.myGroup.get('regulation_name')?.value+' is not updated');
+        this.router.navigate(['viewregulations']);
       },
     })
   }

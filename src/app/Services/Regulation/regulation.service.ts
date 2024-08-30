@@ -18,7 +18,7 @@ export class RegulationService {
     return this.http.post(this.base_url,regulation);
   }
 
-  public udpateRegulation(regulation : FormData):Observable<any>
+  public updateRegulation(regulation : FormData):Observable<any>
   {
     return this.http.put(`${this.base_url}`,regulation);
   }
@@ -43,9 +43,16 @@ export class RegulationService {
     return this.http.get<Regulation>(`${this.base_url}${rid}`);
   }
 
+  //This will return regulations of Particular Vendor
   public getRegulationbyVendorId(vendorid : number):Observable<Regulation[]>
   {
     return this.http.get<Regulation[]>(`${this.base_url}vendor/${vendorid}`);
+  }
+
+  //This will return regulations of Particular Vendor 
+  public getRegulationbyRegulationIdVendorId(vendorid : number,reg_id : number):Observable<Regulation[]>
+  {
+    return this.http.get<Regulation[]>(`${this.base_url}vendor/${vendorid}/regulation/${reg_id}`);
   }
 
   public getPdf(regid : number): Observable<Blob> {
