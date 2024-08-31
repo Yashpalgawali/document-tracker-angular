@@ -20,6 +20,8 @@ export class ViewregulationsComponent implements OnInit {
    
   date: Date = new Date(); // Example date to compare
   
+  dtOptions: DataTables.Settings = {}; //for DataTables configuration
+
   constructor (private router : Router,private regulateserv :RegulationService) { }
 
   openPdf(regid : number) {
