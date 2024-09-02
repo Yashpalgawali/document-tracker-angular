@@ -14,13 +14,13 @@ export class AppComponent implements OnInit {
   isUserLoggedIn : any
 
   ngOnInit(): void {
-    
-    if(this.basicauthserv.isUserLoggedIn()!=null)
-    {
-      this.isUserLoggedIn = true
-    }
-    else {
-      this.isUserLoggedIn = false
-    }
+    this.isUserLoggedIn = true
+    // if(this.basicauthserv.isUserLoggedIn()!=null)
+    // {
+    //   this.isUserLoggedIn = true
+    // }
+    // else {
+    //   this.isUserLoggedIn = false
+    // }
   }
 }

@@ -38,6 +38,12 @@ export class RegulationService {
     return this.http.get<Regulation[]>(`${this.base_url}expired/regulation/`);
   }
 
+  //This will return all expired regulations of a vendor ID
+  public getExpiredRegulationsByVendorId(vendor_id : number):Observable<Regulation[]>
+  {
+    return this.http.get<Regulation[]>(`${this.base_url}expired/regulation/vendor/${vendor_id}`);
+  }
+
   public getRegulationbyId(rid : number)
   {
     return this.http.get<Regulation>(`${this.base_url}${rid}`);

@@ -1,12 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RegulationHistory } from 'src/app/Models/RegulationHistory';
 import { RegulationHistoryService } from 'src/app/Services/regulation-history.service';
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
 
 @Component({
   selector: 'app-viewregulationhistory',
-  standalone: true,
-  imports: [],
   templateUrl: './viewregulationhistory.component.html',
   styleUrl: './viewregulationhistory.component.css'
 })
@@ -23,11 +23,10 @@ export class ViewregulationhistoryComponent implements OnInit{
   this.reg_id  = this.route.snapshot.params['rid']
 
   this.reghistserv.getRegulationHistoryByRegulationId(this.reg_id).subscribe({
-    next:(data)=> {
-        this.reghist = data
-        alert(JSON.stringify(data))
-    },
-  })
+      next:(data)=> {
+          this.reghist = data
+      },
+    })
     
   }
 }

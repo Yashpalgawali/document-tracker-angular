@@ -23,24 +23,24 @@ import { ViewregulationhistoryComponent } from './MyComponents/Regulation/viewre
 
 const routes: Routes = [
 
-  { path : "edit/vendortype/:id" , component: EditvendorComponent , canActivate : [RouteGuardService] },
-  { path : "addvendor" , component: AddvendorComponent, canActivate : [RouteGuardService]},
-  { path : "viewvendors" , component: ViewvendorsComponent , canActivate : [RouteGuardService]},
-  { path : "edit/vendor/:id" , component: EditvendorComponent , canActivate : [RouteGuardService]},
+  { path : "edit/vendortype/:id" , component: EditvendorComponent    },
+  { path : "addvendor" , component: AddvendorComponent  },
+  { path : "viewvendors" , component: ViewvendorsComponent   },
+  { path : "edit/vendor/:id" , component: EditvendorComponent   },
   
-  { path : "vendor/viewregulations" , component: ViewregulationsbyvendorComponent , canActivate : [RouteGuardService]},
+  { path : "vendor/viewregulations" , component: ViewregulationsbyvendorComponent  },
 
   { path : "addregulation" , component: AddregulationComponent },
   { path : "viewregulations" , component: ViewregulationsComponent },
-  { path : "edit/regulation/:id" , component: EditregulationComponent , canActivate : [RouteGuardService]},
+  { path : "edit/regulation/:id" , component: EditregulationComponent} ,
 
-  { path : "addregulationtype" , component: AddregulationtypeComponent , canActivate : [RouteGuardService]},
-  { path : "viewregulationtypes" , component: ViewregulationtypesComponent , canActivate : [RouteGuardService]},
-  { path : "edit/regulationtype/:id" , component: EditregulationtypeComponent , canActivate : [RouteGuardService]},
+  { path : "addregulationtype" , component: AddregulationtypeComponent  },
+  { path : "viewregulationtypes" , component: ViewregulationtypesComponent  },
+  { path : "edit/regulationtype/:id" , component: EditregulationtypeComponent  },
   
-  { path : "addnotification" , component: AddnotificationComponent , canActivate : [RouteGuardService]},
-  { path : "viewnotification" , component: ViewnotificationsComponent , canActivate : [RouteGuardService]},
-  { path : "notification/edit/:id" , component: EditnotificationComponent, canActivate : [RouteGuardService]},
+  { path : "addnotification" , component: AddnotificationComponent  },
+  { path : "viewnotification" , component: ViewnotificationsComponent  },
+  { path : "notification/edit/:id" , component: EditnotificationComponent },
   
   { path : "" , component : HomeComponent  },
   { path : "login" , component : LoginComponent  },
@@ -49,10 +49,8 @@ const routes: Routes = [
 
   { path : "regulation/:rid/history/:vid" , component : ViewregulationhistoryComponent  },
   
-  { path : "activities", component : ActivityComponent , canActivate : [RouteGuardService]},
+  { path : "activities", component : ActivityComponent  },
   { path : "registervendor", component : RegistervendorComponent}
-
-
 
 ];
 

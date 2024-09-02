@@ -87,8 +87,9 @@
              
              <hr>
              <div class="row mb-3" >
+                <h4 > Expired Regulations </h4>
                   <table class="table table-hover table-striped" width="100%" id="expiretable">
-                      <h4 > Expired Regulations </h4>
+                      
                       <caption>Expired Regulations</caption>
                       <thead>
                           <tr>
@@ -102,9 +103,10 @@
                       <tbody>
                          <tr *ngFor="let expired of expiredregulationlist; let i=index">
                             <td>{{i+1}}</td>
+                            <td>{{expired.vendor.vendor_name}}</td>
                             <td>{{expired.regulation_name}}</td>
-                            <td>{{expired.regulation_name}}</td>
-                            <td style="color : red;">{{expired.next_renewal_date}} <sub>Expired</sub></td>
+                            <td style="color : red;">{{expired.next_renewal_date}} </td>
+                            <td style="color : red;"> Expired</td>
                          </tr>
                       </tbody>
                       
@@ -118,54 +120,3 @@
      <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
  
 </div> 
-
-
-
-
-<!-- <div class="container">
-    <div class="form-group bg-warning">
-        <a routerLink="/addvendor" class="btn btn-primary">Add Vendor</a>
-    </div>
-    <div class="form-group bg-grey"> 
-        <a routerLink="/viewregulations" class="btn btn-primary">Add Regulations</a>
-    </div>
-    <div class="form-group bg-primary" > 
-        <a routerLink="/viewregulationtypes" class="btn btn-primary">View Regulation Types</a>
-    </div>
-    <div class="form-group bg-success"> 
-        <a routerLink="/viewnotification" class="btn btn-primary">View Notifications</a>
-    </div>
-
-
-    <div *ngIf="notificationlist!=null" class="mt-5 mb-3" style="overflow: auto; height:200px; background-color:#f5f5f5; padding: 10px;" id="notification">
-    <h4><strong>Important </strong></h4>
-    <ng-container *ngFor="let nlist of notificationlist; let i=index">
-        <h5>
-            <span [ngStyle]="{'color': isNotificationActive(nlist.notification_end_date) ? 'red' : 'black'}"><strong>{{ nlist.notification_name }}</strong></span>
-            <marquee direction='up' behavior='alternate'  scrollamount='1'> 
-                <h6 [ngStyle]="{'color': isNotificationActive(nlist.notification_end_date) ? 'red' : 'teal'}">{{nlist.notification_description}}</h6>
-            </marquee>
-        </h5>
-    </ng-container>
-
-    </div> -->
-
-    <!-- <table class="table table-hover table-striped">
-        <thead>
-            <tr>
-                <th>Sr no.</th>
-                <th>Notification</th>
-                <th>Regulation</th>
-                <th>Expired On</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let nlist of notificationlist; let i=index">
-                <td>{{i+1}}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table> -->
-<!-- </div> -->

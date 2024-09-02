@@ -1,10 +1,10 @@
-import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { end } from '@popperjs/core';
 
-import { Subject } from 'rxjs';
+
 import { NotificationService } from 'src/app/Services/Notification/notification.service';
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
+
+import 'datatables.net-responsive-dt';
 
 @Component({
   selector: 'app-home',
@@ -19,9 +19,14 @@ export class HomeComponent implements OnInit {
   notificationlist : any
   expiredregulationlist : any
   
-  constructor(private notificationserv : NotificationService,private regserv : RegulationService) {}
-
+  constructor(private notificationserv : NotificationService,private regserv : RegulationService) { }
+   
   ngOnInit(): void {
+  
+    // let table = new DataTable('#expiretable', {
+    //   responsive: true
+    // } as any);
+
     this.notificationserv.getAllActiveNotifications().subscribe({
       next:(data)=> {
           this.notificationlist = data 
@@ -29,9 +34,10 @@ export class HomeComponent implements OnInit {
     })
     this.regserv.getExpiredRegulations().subscribe({
       next:(data) =>{
-        this.expiredregulationlist = data
+         this.expiredregulationlist = data
       }
     })
+ 
   }
 
   isNotificationActive(endDate: any): boolean {
@@ -41,8 +47,6 @@ export class HomeComponent implements OnInit {
 
       const [day, month, year] = endDate.split('-').map(Number);
       const eddate = new Date(year, month -1,day)
-
-     // const formattedDate = formatDate(eddate , dateFormat,'en-us' );
  
       return eddate < currentDate;
   }

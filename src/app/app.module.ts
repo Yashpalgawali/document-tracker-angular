@@ -28,10 +28,9 @@ import { HomeComponent } from './MyComponents/Home/home/home.component';
 import { RegistervendorComponent } from './MyComponents/Register/registervendor/registervendor.component';
 import { LoginComponent } from './MyComponents/Login/login/login.component';
 import { ActivityComponent } from './MyComponents/Activities/activity/activity.component';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { VendorhomeComponent } from './MyComponents/VendorDashBoard/vendorhome/vendorhome.component';
-import { DataTablesModule } from 'angular-datatables';
  
 
 @NgModule({
@@ -59,6 +58,7 @@ import { DataTablesModule } from 'angular-datatables';
     
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -68,8 +68,7 @@ import { DataTablesModule } from 'angular-datatables';
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(), // Add this line
     DatePipe,
-    DpDatePickerModule,
-    DataTablesModule
+    DpDatePickerModule 
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

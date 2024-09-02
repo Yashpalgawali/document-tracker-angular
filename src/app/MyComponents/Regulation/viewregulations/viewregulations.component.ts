@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { formatDate } from 'date-fns';
+
 import { GlobalComponent } from 'src/app/GlobalComponents';
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
 
@@ -15,29 +17,40 @@ export class ViewregulationsComponent implements OnInit {
   regulationlist : any
   isExpired: string = '';
   app_url = GlobalComponent.app_url 
-  
-  pdfUrl : any
-   
-  date: Date = new Date(); // Example date to compare
-  
-  dtOptions: DataTables.Settings = {}; //for DataTables configuration
 
+  pdfUrl : any
+
+  date: Date = new Date(); // Example date to compare
+ 
   constructor (private router : Router,private regulateserv :RegulationService) { }
 
   openPdf(regid : number) {
-    this.regulateserv.getPdf(regid).subscribe((blob) => {
-      const url = window.URL.createObjectURL(blob);
-      window.open(url, '_blank');
+    // this.regulateserv.getPdf(regid).subscribe((blob) => {
+    //   const url = window.URL.createObjectURL(blob);
+    //   window.open(url, '_blank');
+    // })
+
+    this.regulateserv.getPdf(regid).subscribe({
+      next :(data)=> {
+        const url = window.URL.createObjectURL(data);
+          window.open(url, '_blank');
+      },
+      error:(err) =>{
+          alert('File not found')
+      },
     })
+
   }
 
 // Method to check if a date is greater than today
-isDateGreaterThanToday(dateStr: string): boolean {
- 
+isDateGreaterThanToday(dateStr: string): boolean { 
   
-  const today = new Date();
-    const regulationDate = new Date(dateStr);
+    const today = new Date();
     
+    let [date , month ,year] = dateStr.split("-")
+    let ndate = month+"-"+date+"-"+year
+    const regulationDate = new Date(ndate);
+
     if (regulationDate > today) {
       this.isExpired = ''; // Clear expiration status
       return true; // Date is in the future

@@ -15,6 +15,6 @@ export class RegulationHistoryService {
 
   public getRegulationHistoryByRegulationId(regid : number ):Observable<RegulationHistory[]>
   {
-    return this.http.get<RegulationHistory[]>(`${this.base_url}/history/${regid}`);
+    return this.http.get<RegulationHistory[]>(`${this.base_url}history/${regid}`);
   }
 }

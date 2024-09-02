@@ -6,22 +6,25 @@
         <div class="card-header">
             <div id="heading">
                 <h4>View Regulations
-                    <a style ="float:right !important;" href="http://saveraengineering.com/document-tracker/regulation" class="btn btn-primary"><i class="fa fa-plus"></i> Add Regulation</a> 
-                                            <a style ="float:right !important; margin-right : 5px;" href="http://saveraengineering.com/document-tracker/regulation/exportallregulationsbyvendorid/2" class="btn btn-success ">
+                    <a style ="float:right !important;" routerLink="/addregulation" class="btn btn-primary">
+                        <i class="fa fa-plus"></i> Add Regulation</a> 
+                    <a style ="float:right !important; margin-right : 5px;" routerLink="/addregulation" class="btn btn-success ">
                         <i class="fa fa-download"></i>  Export Regulation History </a>
-                                         </h4>
+                </h4>
             </div>
         </div>
- <div class="card-body">	
-    <table class="table table-striped table-bordered table-hover table-full-width  nowrap"  width="100%" >
+ <div class="card-body" style="overflow:auto">	
+    <table class="table table-striped table-bordered table-hover table-full-width nowrap" >
         <thead>
             <tr>
                 <th>Sr. No.</th>
+                <th>Status</th>
                 <th>Regulation Name</th>
                 <th>Regulation Description</th>
                 <th>Regulation Frequency</th>
                 <th>Regulation Issued Date</th>
                 <th>Next Renewal Date</th>
+                <th>Vendor</th>
                 <th>File Name</th>
                 <th>File Path</th>
                 <th>Action</th>
@@ -30,25 +33,34 @@
         <tbody>
             <tr *ngFor="let regulation of regulationlist; let i=index " >
                 <td>{{i+1}}</td>
+                <td *ngIf="isDateGreaterThanToday(regulation.next_renewal_date);then content else other_content">here is ignored</td>
+                <ng-template   #content><p>Active</p></ng-template>
+                <ng-template   #other_content><p style="color : red;"><strong> Expired</strong></p></ng-template>
+                
                 <td>{{regulation.regulation_name}}</td>
                 <td>{{regulation.regulation_description}}</td>
                 <td  *ngIf="regulation.regulation_frequency==1" >Monthly</td>
                 <td  *ngIf="regulation.regulation_frequency==2" >Quarterly</td>
                 <td  *ngIf="regulation.regulation_frequency==3" >Yearly</td>
                 <td>{{regulation.regulation_issued_date}}</td>
+ 
                 <td  [ngClass]="{
-                    'date-greater': isDateGreaterThanToday(regulation.next_renewal_date), 
+                    'date-greater': isDateGreaterThanToday(regulation.next_renewal_date) , 
                     'date-smaller': !isDateGreaterThanToday(regulation.next_renewal_date) }"> 
                     {{regulation.next_renewal_date}} <sub> {{isExpired}} </sub>
                 </td>
-                
+                <td>{{regulation.vendor.vendor_name}}</td>
                 <td>
                     <button (click)="openPdf(regulation.regulation_id )" style="white-space: normal; width:150px;word-wrap: break-word;" target="_blank" class="btn btn-primary"> 
                         <i class="fa fa-download"></i>  {{regulation.file_name}}
                     </button> 
+                    
                 </td>
                 <td>{{regulation.file_path}}\{{regulation.file_name}}</td> 
-                <td> <button (click)="getRegulationById(regulation.regulation_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> Edit</button>  </td>
+                <td> 
+                    <button (click)="getRegulationById(regulation.regulation_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> Edit </button>  
+                    <button (click)="getRegulationById(regulation.regulation_id)" class="btn btn-primary" > <i class="fa fa-eye"></i> Edit </button>  
+                </td>
             </tr>
         </tbody>
     </table>

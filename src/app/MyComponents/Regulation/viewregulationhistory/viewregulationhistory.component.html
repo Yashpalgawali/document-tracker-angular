@@ -1,1 +1,33 @@
-<p>viewregulationhistory works!</p>
+ <div class="container">
+ <div class="row mb-3" >
+    <h4 > Expired Regulations </h4>
+      <table class="table table-hover table-striped" width="100%" id="expiretable">
+        <thead>
+            <tr>
+                <th>Sr</th>
+                <th>Vendor</th>
+                <th>Regulation </th>
+                <th>Description</th>
+                <th>Duration</th>
+                <th>Issued Date </th>
+                <th>Next Renewal Date </th>
+                <th>Status</th>
+                <th>Uploaded File</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+             <tr *ngFor="let regulation of reghist; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{regulation.hist_regulation_name}}</td>
+                <td>{{regulation.hist_regulation_name}}</td>
+                <td>{{regulation.hist_regulation_description}}</td>
+                <td>{{regulation.hist_regulation_frequency}}</td>
+                <td>{{regulation.hist_regulation_issued_date}}</td>
+                <td>{{regulation.hist_next_renewal_date}}</td>
+                <td>{{regulation.hist_file_name}}</td>
+             </tr>
+          </tbody>
+      </table>
+ </div>
+</div>
