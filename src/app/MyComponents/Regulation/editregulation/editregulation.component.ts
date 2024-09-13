@@ -60,7 +60,7 @@ export class EditregulationComponent implements OnInit{
     // formData.append('regulation_type_id', (document.getElementById('regulation_type_id') as HTMLInputElement).value);
     const formData = new FormData();
 
-    alert("Data type of ID "+ typeof(this.myGroup.get('regulation_id')?.value))
+    
     const dat = this.myGroup.get('regulation_issued_date')?.value
     const formattedDate = formatDate(dat , 'dd-MM-yyyy', 'en-US');
     const next_renewal_date = formatDate(this.myGroup.get('next_renewal_date')?.value , 'dd-MM-yyyy', 'en-US')
@@ -124,7 +124,13 @@ export class EditregulationComponent implements OnInit{
     });
   }
  
-
+  onFocusOut() {
+    let issued_date = this.myGroup.get('regulation_issued_date')?.value;
+    if(issued_date!=''){
+      this.myGroup.get('next_renewal_date')?.setValue(null);
+      this.updateNextUpdateDate(issued_date)
+    }
+  }
   updateNextUpdateDate(event : Date) {
     this.myGroup.get('next_renewal_date')?.setValue(null);
     

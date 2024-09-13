@@ -13,7 +13,7 @@
     
         <div class="form-group">
             <label for="regulation_frequency">Please Select Frequency </label>
-            <select id="regulation_frequency" name="regulation_frequency " class="form-control mb-3" formControlName="regulation_frequency"  [(ngModel)]="regulation.regulation_frequency" >
+            <select id="regulation_frequency" name="regulation_frequency " class="form-control mb-3" formControlName="regulation_frequency" (focusout)="onFocusOut()" [(ngModel)]="regulation.regulation_frequency" >
                 <option selected disabled>Please Select Frequency </option>
                 <option value="1">Monthly</option>
                 <option value="2">Quarterly</option>

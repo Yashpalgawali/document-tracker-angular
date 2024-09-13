@@ -47,7 +47,7 @@ const routes: Routes = [
 
   { path : "home" , component : HomeComponent  },
 
-  { path : "regulation/:rid/history/:vid" , component : ViewregulationhistoryComponent  },
+  { path : "regulation/history/:rid" , component : ViewregulationhistoryComponent  },
   
   { path : "activities", component : ActivityComponent  },
   { path : "registervendor", component : RegistervendorComponent}

@@ -92,7 +92,13 @@ export class AddregulationComponent  implements OnInit {
       }
     });
   }
- 
+  onFocusOut() {
+    let issued_date = this.myGroup.get('regulation_issued_date')?.value;
+    if(issued_date!=''){
+      this.myGroup.get('next_renewal_date')?.setValue(null);
+      this.updateNextUpdateDate(issued_date)
+    }
+  }
 
   updateNextUpdateDate(event : Date) {
     this.myGroup.get('next_renewal_date')?.setValue(null);
