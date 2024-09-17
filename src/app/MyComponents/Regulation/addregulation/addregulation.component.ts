@@ -138,8 +138,8 @@ export class AddregulationComponent  implements OnInit {
          if(next_total_days < cur_total_days) {
           
           if(cur_date>next_total_days) {
-            
-            cur_date =  cur_total_days-next_total_days
+             
+            cur_date =  cur_date-next_total_days
             cur_month+=1
           }
           next_date = (cur_month+1)+"-"+cur_date+"-"+cur_year
