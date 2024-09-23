@@ -21,7 +21,7 @@ export class BasicAuthenticationService {
     let headers = new HttpHeaders({
       Authorization : basicAuthHeaderString
     })
-
+   
     return this.http.post<string>(`${this.base_url}`, {}, { headers }).pipe(map(data => {
       sessionStorage.setItem('token', basicAuthHeaderString);
       sessionStorage.setItem('authenticatedUser', username);
