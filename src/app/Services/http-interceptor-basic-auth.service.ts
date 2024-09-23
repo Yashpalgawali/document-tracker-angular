@@ -12,19 +12,19 @@ export class HttpInterceptorBasicAuthService implements HttpInterceptor{
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let basicAuthHeaderString = this.basicauthserv.getAuthenticatedToken();
     //let basicAuthHeaderString =  sessionStorage.getItem('token')
-    let username = this.basicauthserv.getAuthenticatedUser()
+    //let username = this.basicauthserv.getAuthenticatedUser()
 
      if(basicAuthHeaderString)
-      {request = request.clone({
-      setHeaders : {
-          Authorization : `${basicAuthHeaderString}`
+      {
+        alert('basic header is set ')
+        request = request.clone({
+        setHeaders : {
+            Authorization : `${basicAuthHeaderString}`
         }
       })
-  
       return next.handle(request);
     }
     return next.handle(request);
     
-  
   }
 }

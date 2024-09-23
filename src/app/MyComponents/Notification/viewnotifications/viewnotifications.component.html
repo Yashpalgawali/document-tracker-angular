@@ -1,11 +1,7 @@
 <div class="container">
 
-    <div *ngIf="response">
-        <h6 class="alert alert-success">{{response}}</h6>
-    </div>
-    <div *ngIf="reserr">
-        <h6 class="alert alert-danger">{{reserr}}</h6>
-    </div>
+    <div *ngIf="response"> <h6 class="alert alert-success">{{response}}</h6> </div>
+    <div *ngIf="reserr"><h6 class="alert alert-danger">{{reserr}}</h6></div>
     
     <caption>View Notifications</caption>
     <table class="table table-hover table-striped">
@@ -16,6 +12,7 @@
                 <th>Description</th>
                 <th>Start Date</th>
                 <th>End Date</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -26,6 +23,12 @@
                 <td>{{notification.notification_description}}</td>
                 <td>{{notification.notification_start_date }}</td>
                 <td>{{notification.notification_end_date }}</td>
+                <ng-container *ngIf="notification.status==1; else elseTemplate">
+                    <td><strong>Active</strong></td>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <td style="color: red;"><strong> DeActivated </strong></td>
+                </ng-template>
                 <td> <button (click)="getNotificationById(notification.notification_id)" class="btn btn-primary"> <i class="fa fa-edit"></i> Edit </button> </td>
             </tr>
         </tbody>

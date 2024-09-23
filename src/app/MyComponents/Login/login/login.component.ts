@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/Models/User';
+import { BasicAuthenticationService } from 'src/app/Services/basic-authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +10,24 @@ import { User } from 'src/app/Models/User';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router  : Router) { }
-  loginuser : User = new User();
-  ngOnInit(): void {
-    
+  constructor(private basicauthserv :BasicAuthenticationService,private router : Router){ }
+  
+  user : User = new User()
 
+  ngOnInit(): void {
+      
   }
+
   login()
   {
-    
+    alert(this.user.username)
+    this.basicauthserv.executeAuthenticationService(this.user.username,this.user.password).subscribe({
+       complete: ()=> {
+           this.router.navigate(['home'])
+       },
+       error : (err) => {
+          this.router.navigate(['login'])
+       },
+    })
   }
 }
