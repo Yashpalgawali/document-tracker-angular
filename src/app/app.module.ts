@@ -31,6 +31,7 @@ import { ActivityComponent } from './MyComponents/Activities/activity/activity.c
 import { CommonModule, DatePipe } from '@angular/common';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { VendorhomeComponent } from './MyComponents/VendorDashBoard/vendorhome/vendorhome.component';
+import { HttpInterceptorBasicAuthService } from './Services/http-interceptor-basic-auth.service';
  
 
 @NgModule({
@@ -70,7 +71,9 @@ import { VendorhomeComponent } from './MyComponents/VendorDashBoard/vendorhome/v
     DatePipe,
     DpDatePickerModule 
   ],
-  providers: [DatePipe],
+  providers: [DatePipe ,
+      { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorBasicAuthService, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

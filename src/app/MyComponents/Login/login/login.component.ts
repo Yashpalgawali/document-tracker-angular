@@ -11,7 +11,8 @@ import { BasicAuthenticationService } from 'src/app/Services/basic-authenticatio
 export class LoginComponent implements OnInit {
 
   constructor(private basicauthserv :BasicAuthenticationService,private router : Router){ }
-  
+  response : any
+  reserr : any
   user : User = new User()
 
   ngOnInit(): void {
@@ -20,12 +21,14 @@ export class LoginComponent implements OnInit {
 
   login()
   {
-    alert(this.user.username)
+    
     this.basicauthserv.executeAuthenticationService(this.user.username,this.user.password).subscribe({
-       complete: ()=> {
+       next: (data)=> {
+        alert('Login succeeded \n '+JSON.stringify(data))
            this.router.navigate(['home'])
        },
        error : (err) => {
+        alert('Login failed ')
           this.router.navigate(['login'])
        },
     })

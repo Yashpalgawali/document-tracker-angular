@@ -8,23 +8,45 @@ import { BasicAuthenticationService } from './basic-authentication.service';
 })
 export class HttpInterceptorBasicAuthService implements HttpInterceptor{
 
-  constructor(private basicauthserv : BasicAuthenticationService) { }
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let basicAuthHeaderString = this.basicauthserv.getAuthenticatedToken();
+  constructor( private basicAuthenticationService : BasicAuthenticationService) { }
+
+  intercept(request: HttpRequest<any>, next: HttpHandler)
+  {
+    let basicAuthHeaderString = this.basicAuthenticationService.getAuthenticatedToken();
     //let basicAuthHeaderString =  sessionStorage.getItem('token')
-    //let username = this.basicauthserv.getAuthenticatedUser()
+    let username = this.basicAuthenticationService.getAuthenticatedUser()
 
      if(basicAuthHeaderString)
-      {
-        alert('basic header is set ')
-        request = request.clone({
-        setHeaders : {
-            Authorization : `${basicAuthHeaderString}`
+      {request = request.clone({
+      setHeaders : {
+          Authorization : `${basicAuthHeaderString}`
         }
       })
+  
       return next.handle(request);
     }
     return next.handle(request);
     
   }
+  // constructor(private basicauthserv : BasicAuthenticationService) { }
+  // intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  //   let basicAuthHeaderString = this.basicauthserv.getAuthenticatedToken();
+  //   alert('inside httpinterceptorauth service '+basicAuthHeaderString)
+  //   //let basicAuthHeaderString =  sessionStorage.getItem('token')
+  //   //let username = this.basicauthserv.getAuthenticatedUser()
+
+  //    if(basicAuthHeaderString)
+  //     {
+  //       alert('Basic header is set ')
+  //       request = request.clone({
+  //       setHeaders : {
+  //         Authorization : basicAuthHeaderString
+  //       } 
+  //     })
+  //     return next.handle(request);
+  //   }
+  //   return next.handle(request);
+    
+  // }
 }
+ 

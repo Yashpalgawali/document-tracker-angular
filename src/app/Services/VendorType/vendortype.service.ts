@@ -12,6 +12,7 @@ export class VendortypeService {
   constructor(private http : HttpClient) { }
   base_url = GlobalComponent.app_url+"vendortype/";
 
+  //This will save Vendor Type
   public saveVendorType(vend_type : VendorType):Observable<VendorType>
   {
     return this.http.post<VendorType>(`${this.base_url}`,vend_type);

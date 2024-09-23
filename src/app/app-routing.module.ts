@@ -20,6 +20,7 @@ import { ActivityComponent } from './MyComponents/Activities/activity/activity.c
 import { RegistervendorComponent } from './MyComponents/Register/registervendor/registervendor.component';
 import { RouteGuardService } from './Services/routeguard.service';
 import { ViewregulationhistoryComponent } from './MyComponents/Regulation/viewregulationhistory/viewregulationhistory.component';
+import { LogoutComponent } from './MyComponents/Login/logout/logout.component';
 
 const routes: Routes = [
 
@@ -44,6 +45,7 @@ const routes: Routes = [
   
   { path : "" , component : LoginComponent  },
   { path : "login" , component : LoginComponent  },
+  { path : "logout" , component : LogoutComponent ,canActivate : [RouteGuardService] },
 
   { path : "home" , component : HomeComponent ,canActivate : [RouteGuardService]  },
 
