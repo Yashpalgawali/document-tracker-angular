@@ -26,6 +26,5 @@ export class LogoutComponent implements OnInit {
   logout()
   {
     this.baseauthserv.logout()
-    alert(sessionStorage.getItem('authenticatedUser'))
   }
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/Models/User';
+import { Vendor } from 'src/app/Models/Vendor';
 import { BasicAuthenticationService } from 'src/app/Services/basic-authentication.service';
+import { VendorService } from 'src/app/Services/Vendor/vendor.service';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +12,13 @@ import { BasicAuthenticationService } from 'src/app/Services/basic-authenticatio
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private basicauthserv :BasicAuthenticationService,private router : Router){ }
+  constructor(private basicauthserv :BasicAuthenticationService,private router : Router,private vendserv :VendorService){ }
   response : any
   reserr : any
   user : User = new User()
-  
+  vendor : Vendor  = new Vendor()
+  userid !: number
+  vid : any
   ngOnInit(): void { 
     if(sessionStorage.getItem('response')!=null)
       {
@@ -28,11 +32,10 @@ export class LoginComponent implements OnInit {
       if(sessionStorage.getItem('reserr')!=null)
       {
         this.reserr=sessionStorage.getItem('reserr')
-        setTimeout(() => {
-          this.reserr=""
-          sessionStorage.removeItem('reserr')
-          
-        }, 3000);
+          setTimeout(() => {
+            this.reserr=""
+            sessionStorage.removeItem('reserr') 
+          }, 3000);
       }
   }
 
@@ -40,10 +43,30 @@ export class LoginComponent implements OnInit {
   {
     this.basicauthserv.executeAuthenticationService(this.user.username,this.user.password).subscribe({
        next: (data)=> {
-        if(data.usertype.user_type_id==1){
+       
+        if(data.usertype.user_type_id==1) {
+          this.userid = data.userid
+          this.vendserv.getVendorByUserId(this.userid).subscribe({
+            next :(value)=> {
+                
+                this.vendor=value
+                this.vid =this.vendor.vendor_id
+                sessionStorage.setItem('vendor_id', this.vid)
+                //sessionStorage.setItem('vendor_id',''+this.vendor.vendor_id)
+            },
+          })
           this.router.navigate(['home'])
         }
-        if(data.usertype.user_type_id==2){
+
+        if(data.usertype.user_type_id==2) {
+          this.userid = data.userid
+          this.vendserv.getVendorByUserId(this.userid).subscribe({
+            next :(value)=> {
+                this.vendor=value
+                this.vid =this.vendor.vendor_id
+                sessionStorage.setItem('vendor_id', this.vid)
+            },
+          })
           this.router.navigate(['vendorhome'])
         }
           

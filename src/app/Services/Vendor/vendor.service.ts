@@ -28,5 +28,10 @@ export class VendorService {
     return this.http.get<Vendor>(`${this.base_url}${vid}`);
   }
 
+  public getVendorByUserId(user_id : number):Observable<Vendor>
+  { 
+    return this.http.get<Vendor>(`${this.base_url}user/${user_id}`);
+  }
+
  
 }

@@ -19,19 +19,23 @@ export class VendorhomeComponent implements OnInit{
 
   constructor(private notificationserv : NotificationService,private regserv : RegulationService) { }
   ngOnInit(): void {
+    
+    alert('Vendor Home '+sessionStorage.getItem('vendor_id') )
+    
     this.logged_user =sessionStorage.getItem('authenticatedUser')
     this.notificationserv.getAllActiveNotifications().subscribe({
       next:(data)=> {
           this.notificationlist = data 
       }
     })
-    this.regserv.getExpiredRegulations().subscribe({
-      next:(data) =>{
+    
+    this.regserv.getExpiredRegulationsByVendorId( parseInt(''+sessionStorage.getItem('vendor_id'))).subscribe({
+      next:(data) => {
          this.expiredregulationlist = data
       }
     })
- 
   }
+
   isNotificationActive(endDate: any): boolean {
 
     const currentDate = new Date();

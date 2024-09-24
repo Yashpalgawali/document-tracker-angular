@@ -16,9 +16,17 @@ export class ViewnotificationsComponent implements OnInit{
   notificationlist : any
   reserr : any
   response : any
+  user_type : any
+
   constructor(private notificationserv : NotificationService,private router : Router) { }
 
-ngOnInit(): void {
+  ngOnInit(): void {
+
+    this.user_type = sessionStorage.getItem('user_type')
+    if(this.user_type!=1) {
+      sessionStorage.setItem('reserr','You are not Authorized. Please Login to Continue!!');
+      this.router.navigate(['login']);
+    }
   this.notificationserv.getAllNotifications().subscribe({
     next:(data)=> {
       this.notificationlist=data

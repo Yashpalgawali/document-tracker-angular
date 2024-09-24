@@ -12,8 +12,16 @@ export class ViewvendorsComponent implements OnInit{
   vendlist :any
   reserr : any
   response : any
+  user_type : any
+
   constructor  (private vendserv : VendorService, private router : Router) {}
+
   ngOnInit(): void {
+    this.user_type = sessionStorage.getItem('user_type')
+    if(this.user_type!=1) {
+      sessionStorage.setItem('reserr','You are not Authorized. Please Login to Continue!!');
+      this.router.navigate(['login']);
+    }
     
     this.vendserv.getAllVendors().subscribe({
       next : (data) => {

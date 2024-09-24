@@ -131,6 +131,7 @@ logout() {
   sessionStorage.removeItem('authenticatedUser')
   sessionStorage.removeItem('token')
   sessionStorage.removeItem('user_type')
+  sessionStorage.removeItem('vendor_id')
   localStorage.removeItem('authenticatedUser');
   localStorage.removeItem('token');
  }

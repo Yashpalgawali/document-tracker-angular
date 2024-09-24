@@ -5,6 +5,7 @@ import { NotificationService } from 'src/app/Services/Notification/notification.
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
 
 import 'datatables.net-responsive-dt';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,15 +19,17 @@ export class HomeComponent implements OnInit {
   res : any
   notificationlist : any
   expiredregulationlist : any
-  
-  constructor(private notificationserv : NotificationService,private regserv : RegulationService) { }
+  user_type : any
+
+  constructor(private notificationserv : NotificationService,private regserv : RegulationService,private router : Router) { }
    
   ngOnInit(): void {
-  
-    // let table = new DataTable('#expiretable', {
-    //   responsive: true
-    // } as any);
-
+    this.user_type = sessionStorage.getItem('user_type')
+    if(this.user_type!=1) {
+      sessionStorage.setItem('reserr','You are not Authorized. Please Login to Continue!!');
+      this.router.navigate(['login']);
+    }
+     
     this.notificationserv.getAllActiveNotifications().subscribe({
       next:(data)=> {
           this.notificationlist = data 

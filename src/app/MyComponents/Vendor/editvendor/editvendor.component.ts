@@ -14,11 +14,18 @@ export class EditvendorComponent implements OnInit{
   vendor : Vendor = new Vendor();
   vendor_id !: number
   vtypelist : any
+  user_type : any
+  
   constructor(private vtypeserv : VendortypeService,private route : ActivatedRoute,
               private vendserv : VendorService,private router : Router) {
    }
 
   ngOnInit(): void {
+    this.user_type = sessionStorage.getItem('user_type')
+    if(this.user_type!=1) {
+      sessionStorage.setItem('reserr','You are not Authorized. Please Login to Continue!!');
+      this.router.navigate(['login']);
+    }
     this.vendor_id = this.route.snapshot.params['id']
     this.vendserv.getVendorById(this.vendor_id).subscribe({
       next:(data)=> {
