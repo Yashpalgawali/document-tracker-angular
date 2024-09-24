@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { GlobalComponent } from '../GlobalComponents';
 import { AuthenticationBean } from '../Models/AuthenticationBean';
 import { map } from 'rxjs';
+import { User } from '../Models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -15,33 +16,34 @@ export class BasicAuthenticationService {
   base_url= this.app_url+"basicauth";
 
   executeAuthenticationService(username : any ,password : any) {
-    alert('Username '+username+'\n password = '+password)
+    
     let basicAuthHeaderString =  'Basic '+ btoa(username+':'+password)
 
     let headers = new HttpHeaders({
       Authorization : basicAuthHeaderString
     })
-    //sessionStorage.setItem('token', basicAuthHeaderString);
-    return this.http.get<AuthenticationBean>(`${this.base_url}`, { headers: headers, withCredentials: true }  ).pipe(
-                      map(
-                        data=>{ 
-                          alert('successful logged IN')
-                                sessionStorage.setItem('token',basicAuthHeaderString)
-                                sessionStorage.setItem('authenticatedUser',username)
-                                localStorage.setItem('authenticatedUser',username)
-                                localStorage.setItem('token',basicAuthHeaderString)
-                                return data;
-                          }
-                      ));
-  //   return this.http.get<string>(`${this.base_url}`,   { headers }).pipe(map(data => {
-  //     alert('successful ')
-  //     sessionStorage.setItem('token', basicAuthHeaderString);
-  //     sessionStorage.setItem('authenticatedUser', username);
-  //     localStorage.setItem('authenticatedUser', username);
-  //     localStorage.setItem('token', basicAuthHeaderString);
-  //     return data;
-  // }));
-    
+    // return this.http.get<AuthenticationBean>(`${this.base_url}`, { headers: headers, withCredentials: true }  ).pipe(
+    //   map(
+    //     data=>{ 
+    //             sessionStorage.setItem('token',basicAuthHeaderString)
+    //             sessionStorage.setItem('authenticatedUser',username)
+    //             localStorage.setItem('authenticatedUser',username)
+    //             localStorage.setItem('token',basicAuthHeaderString)
+    //             return data;
+    //       }
+    //   ));
+    return this.http.get<User>(`${this.base_url}`, { headers: headers, withCredentials: true }  ).pipe(
+      map(
+        data=>{ 
+                sessionStorage.setItem('user_type',''+data.usertype.user_type_id)
+                sessionStorage.setItem('token',basicAuthHeaderString)
+                sessionStorage.setItem('authenticatedUser',username)
+                localStorage.setItem('authenticatedUser',username)
+                localStorage.setItem('token',basicAuthHeaderString)
+                return data;
+          }
+      ));
+
   }
 
   getAuthenticatedUser() {
@@ -57,6 +59,7 @@ export class BasicAuthenticationService {
   isUserLoggedIn() {
     
       let user = sessionStorage.getItem('token')
+      
       return !(user === null)
      
   }
@@ -127,6 +130,7 @@ export class BasicAuthenticationService {
 logout() {
   sessionStorage.removeItem('authenticatedUser')
   sessionStorage.removeItem('token')
+  sessionStorage.removeItem('user_type')
   localStorage.removeItem('authenticatedUser');
   localStorage.removeItem('token');
  }

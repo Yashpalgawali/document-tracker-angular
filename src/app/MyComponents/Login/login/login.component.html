@@ -1,11 +1,5 @@
 <div class="container">
-    <div *ngIf="response">
-        <h6 class="alert alert-success">{{response}}</h6>
-    </div>
-
-    <div *ngIf="reserr"> 
-        <h6 class="alert alert-danger">{{reserr}}</h6>
-    </div>
+   
     <form (ngSubmit)="login()" method="post">
     <div class="form-group">
         <input type="email" name="username" id="username" class="form-control" [(ngModel)]="user.username" placeholder="Use Email as Username" required>
@@ -16,4 +10,6 @@
 
         <button class="btn btn-primary" >Login</button> <a routerLink="/registervendor">New Vendor? Register Here</a>
     </form>
+     <div *ngIf="response"> <h6 class="alert alert-success">{{response}}</h6> </div>
+    <div *ngIf="reserr"> <h6 class="alert alert-danger">{{reserr}}</h6> </div>
 </div>

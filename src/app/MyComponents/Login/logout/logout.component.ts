@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BasicAuthenticationService } from 'src/app/Services/basic-authentication.service';
 
@@ -9,7 +9,7 @@ import { BasicAuthenticationService } from 'src/app/Services/basic-authenticatio
   templateUrl: './logout.component.html',
   styleUrl: './logout.component.css'
 })
-export class LogoutComponent {
+export class LogoutComponent implements OnInit {
 
   constructor(private baseauthserv : BasicAuthenticationService,private router : Router) { }
   

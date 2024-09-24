@@ -21,6 +21,7 @@ import { RegistervendorComponent } from './MyComponents/Register/registervendor/
 import { RouteGuardService } from './Services/routeguard.service';
 import { ViewregulationhistoryComponent } from './MyComponents/Regulation/viewregulationhistory/viewregulationhistory.component';
 import { LogoutComponent } from './MyComponents/Login/logout/logout.component';
+import { VendorhomeComponent } from './MyComponents/VendorDashBoard/vendorhome/vendorhome.component';
 
 const routes: Routes = [
 
@@ -52,7 +53,9 @@ const routes: Routes = [
   { path : "regulation/history/:rid" , component : ViewregulationhistoryComponent  ,canActivate : [RouteGuardService] },
   
   { path : "activities", component : ActivityComponent ,canActivate : [RouteGuardService]  },
-  { path : "registervendor", component : RegistervendorComponent }
+  { path : "registervendor", component : RegistervendorComponent },
+
+  { path : "vendorhome", component : VendorhomeComponent ,canActivate : [RouteGuardService]  }
 
 ];
 

@@ -12,12 +12,17 @@ export class ViewregulationtypesComponent {
   regtypelist : any
   reserr : any
   response : any
+  user_type : any
   constructor(private regtypeserv : RegulationTypeService,private router : Router){ }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    alert(sessionStorage.getItem('token'))
+    
+    this.user_type = sessionStorage.getItem('user_type')
+    if(this.user_type!=1){
+      
+      sessionStorage.setItem('reserr','You are not Authorized. Please Login to Continue!!');
+      this.router.navigate(['login']);
+    }
     this.regtypeserv.getAllRegulationTypes().subscribe({
       next:(data) => {
         this.regtypelist = data

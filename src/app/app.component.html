@@ -1,6 +1,6 @@
 
 
-<nav *ngIf="isUserLoggedIn==true" class="navbar navbar-expand-md navbar-light bg-light  fixed-top ">
+<nav *ngIf="isUserLoggedIn()===true && usertype==1" class="navbar navbar-expand-md navbar-light bg-light  fixed-top ">
     
     <!--   <a class="navbar-brand  " routerLink=" "><img  src=  " img/savera_logo.jpg}  "id="c_logo  "></a> -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
@@ -58,8 +58,39 @@
       </div>    
   </nav>
 
-
-  <nav *ngIf="isUserLoggedIn==false" class="navbar navbar-expand-md navbar-light bg-light  fixed-top ">
+  <nav *ngIf="isUserLoggedIn()===true && usertype==2" class="navbar navbar-expand-md navbar-light bg-light  fixed-top ">
+    
+    <!--   <a class="navbar-brand  " routerLink=" "><img  src=  " img/savera_logo.jpg}  "id="c_logo  "></a> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav"> 
+            <li class="nav-item">
+              <a class="nav-link active" routerLink="home"><i class="fa fa-home" style="color:blue;"></i>&nbsp;Home</a>
+            </li>
+         
+        <li ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Regulation</a>
+           <ul ngbDropdownMenu class="dropdown-menu">
+             <li><a ngbDropdownItem class="dropdown-item" routerLink ="addregulation">Add Regulation</a></li>
+              <li><a  ngbDropdownItem class="dropdown-item" routerLink="viewregulations">View Regulation</a></li>
+           </ul>
+        </li>
+   
+        <hr>
+        <li ngbDropdown class="nav-item dropdown" >
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" style="float : right !important;" data-bs-toggle="dropdown">Welcome&nbsp;</a>
+           <ul ngbDropdownMenu class="dropdown-menu">
+           <li><a ngbDropdownItem class="dropdown-item" routerLink="changepass"><i class="fas fa-cog"></i>&nbsp;Change Password</a></li>
+           <hr>
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="logout"><i class="fa fa-power-off" style="color:red;"></i>&nbsp;Logout</a></li>
+           </ul>
+        </li> 
+        </ul>
+      </div>    
+  </nav>
+  <nav *ngIf="isUserLoggedIn()===false" class="navbar navbar-expand-md navbar-light bg-light  fixed-top ">
     
     <!--   <a class="navbar-brand  " routerLink=" "><img  src=  " img/savera_logo.jpg}  "id="c_logo  "></a> -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">

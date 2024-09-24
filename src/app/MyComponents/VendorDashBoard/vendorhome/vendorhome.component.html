@@ -1,1 +1,122 @@
-<p>vendorhome works!</p>
+
+<div class="container-fluid" id="main">
+    <div class="col main pt-5 mt-3">
+             <h4 class="display-4 d-none d-sm-block" style="margin-top:5px;">
+                 <i class="fa fa-dashboard" aria-hidden="true"></i>Welcome <strong> {{logged_user}}</strong>
+             </h4>
+        <ng-container *ngIf="notificationlist!==null "> 
+         <div class="mt-5 mb-3" style="overflow: auto; height:200px; background-color:#f5f5f5; padding: 10px;" id="notification">
+            <div  class="mt-5 mb-3" style="overflow: auto; height:200px; background-color:#f5f5f5; padding: 10px;" id="notification">
+                <ng-container *ngFor="let nlist of notificationlist; let i=index">
+                    <h5>
+                        <span [ngStyle]="{'color': isNotificationActive(nlist.notification_end_date) ? 'red' : 'black'}"><strong>{{ nlist.notification_name }}</strong></span>
+                        <marquee direction='up' behavior='alternate'  scrollamount='1'> 
+                            <h6 [ngStyle]="{'color': isNotificationActive(nlist.notification_end_date) ? 'red' : 'teal'}">{{nlist.notification_description}}</h6>
+                        </marquee>
+                    </h5>
+                </ng-container>
+            </div>
+         </div>
+        </ng-container>
+             <p class="lead d-none d-sm-block">Quick Links </p>
+ 
+             <div class="alert alert-warning fade collapse" role="alert" id="myAlert">
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">�</span>
+                     <span class="sr-only">Close</span>
+                 </button>
+           
+             </div>
+             <div class="row mb-3">
+                 <div class="col-xl-3 col-sm-6 py-2">
+                     <a routerLink="/addvendor" class="effect-shine">
+                         
+                      <div class="card  bg-success text-white h-100">
+                         <div class="card-body bg-success">
+                             <div class="rotate">
+                               <i class="fa fa-user-plus fa-4x"></i>
+                             </div>
+                             <h6 class="text-uppercase">Add Vendor</h6>
+                                <h1 class="display-4"></h1>
+                         </div>
+                     </div>
+                 </a>
+                 </div>
+                 <div class="col-xl-3 col-sm-6 py-2">
+                 <a routerLink="/viewregulations" class="effect-shine">
+                     <div class="card text-white bg-warning h-100">
+                        <div class="card-body bg-warning"> 
+                             <div class="" >
+                                 <i class="fa fa-eye fa-4x"></i>
+                             </div>
+                             <h6 class="text-uppercase">View Regulations </h6>
+                             <h1 class="display-4"></h1>
+                         </div>
+                     </div>
+                 </a>
+                 </div>
+                 
+                  <div class="col-xl-3 col-sm-6 py-2">
+                 <a href=" " class="effect-shine">
+                     <div class="card text-white bg-info h-100">
+                         <div class="card-body bg-info">
+                             <div class="rotatenew">
+                                  <i class="fa fa-download fa-4x"></i>
+                             </div>
+                             <h6 class="text-uppercase">Export Regulation History</h6>
+                             <h1 class="display-4"></h1>
+                         </div>
+                     </div>
+                 </a>
+                 </div>
+                 
+                 <div class="col-xl-3 col-sm-6 py-2">
+                 <a href=" " class="effect-shine">
+                     <div class="card text-white bg-danger h-100">
+                         <div class="card-body bg-danger">
+                             <div class="rotate">
+                                 <i class="fa fa-download fa-4x"></i>
+                             </div>
+                             <h6 class="text-uppercase">Export Expired Regulations</h6>
+                             <h1 class="display-4"></h1>
+                         </div>
+                     </div>
+                 </a>
+                 </div>
+             </div>
+             
+             <hr>
+             <div class="row mb-3" >
+                <h4 > Expired Regulations </h4>
+                  <table class="table table-hover table-striped" width="100%" id="expiretable">
+                      
+                      <caption>Expired Regulations</caption>
+                      <thead>
+                          <tr>
+                              <th>Sr</th>
+                              <th>Vendor</th>
+                              <th>Regulation </th>
+                              <th>Expiration Date </th>
+                              <th>Status</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                         <tr *ngFor="let expired of expiredregulationlist; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{expired.vendor.vendor_name}}</td>
+                            <td>{{expired.regulation_name}}</td>
+                            <td style="color : red;">{{expired.next_renewal_date}} </td>
+                            <td style="color : red;"> Expired</td>
+                         </tr>
+                      </tbody>
+                      
+                  </table>
+             </div>
+             
+         </div>
+             <!--/row-->
+                 <!-- DataTable -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js" ></script>
+     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+ 
+</div> 

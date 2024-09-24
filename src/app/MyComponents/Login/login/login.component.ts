@@ -14,21 +14,42 @@ export class LoginComponent implements OnInit {
   response : any
   reserr : any
   user : User = new User()
+  
+  ngOnInit(): void { 
+    if(sessionStorage.getItem('response')!=null)
+      {
+          this.response=sessionStorage.getItem('response')
+          setTimeout(() => {
+            this.response=""
+            sessionStorage.removeItem('response')
+          }, 3000);
+      }
 
-  ngOnInit(): void {
-      
+      if(sessionStorage.getItem('reserr')!=null)
+      {
+        this.reserr=sessionStorage.getItem('reserr')
+        setTimeout(() => {
+          this.reserr=""
+          sessionStorage.removeItem('reserr')
+          
+        }, 3000);
+      }
   }
 
   login()
   {
-    
     this.basicauthserv.executeAuthenticationService(this.user.username,this.user.password).subscribe({
        next: (data)=> {
-        alert('Login succeeded \n '+JSON.stringify(data))
-           this.router.navigate(['home'])
+        if(data.usertype.user_type_id==1){
+          this.router.navigate(['home'])
+        }
+        if(data.usertype.user_type_id==2){
+          this.router.navigate(['vendorhome'])
+        }
+          
        },
        error : (err) => {
-        alert('Login failed ')
+          alert('Invalid Username Or Password')
           this.router.navigate(['login'])
        },
     })

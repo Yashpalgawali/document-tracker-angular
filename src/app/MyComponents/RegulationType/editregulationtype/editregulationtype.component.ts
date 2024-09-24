@@ -12,10 +12,18 @@ export class EditregulationtypeComponent implements OnInit {
 
   regtype :RegulationType = new RegulationType();
   regtypeid !: number
-  constructor(private regtypeserv : RegulationTypeService, private route : ActivatedRoute, private router : Router) { }
+  user_type :any
 
-  ngOnInit(): void {
+  constructor(private regtypeserv : RegulationTypeService, private route : ActivatedRoute, private router : Router) { }
   
+  ngOnInit(): void {
+    
+    this.user_type = sessionStorage.getItem('user_type')
+    if(this.user_type!=1){
+      
+      sessionStorage.setItem('reserr','You are not Authorized. Please Login to Continue!!');
+      this.router.navigate(['login']);
+    }
     this.regtypeid = this.route.snapshot.params['id'];
      this.regtypeserv.getRegulationTypeById(this.regtypeid ).subscribe({
       next:(data)=>{

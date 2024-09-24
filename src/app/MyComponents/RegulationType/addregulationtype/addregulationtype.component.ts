@@ -10,12 +10,19 @@ import { RegulationTypeService } from 'src/app/Services/RegulationType/regulatio
 })
 export class AddregulationtypeComponent implements OnInit{
 
-
+ user_type : any
   regtype :  RegulationType = new RegulationType();
-  constructor(private regtypeserv : RegulationTypeService,private router : Router){}
+  constructor(private regtypeserv : RegulationTypeService,private router : Router){
+    
+  }
 
   ngOnInit(): void {
-    
+    this.user_type = sessionStorage.getItem('user_type')
+    if(this.user_type!=1){
+      
+      sessionStorage.setItem('reserr','You are not Authorized. Please Login to Continue!!');
+      this.router.navigate(['login']);
+    }
   }
 
 saveRegulationType() {
