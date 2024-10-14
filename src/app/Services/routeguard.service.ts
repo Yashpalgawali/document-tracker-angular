@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
 import { BasicAuthenticationService } from './basic-authentication.service';
 
 @Injectable({
@@ -16,7 +15,11 @@ export class RouteGuardService implements CanActivate{
       return true
     }
     else {
-      this.router.navigate(['login'])
+      sessionStorage.removeItem('authenticatedUser')
+      sessionStorage.removeItem('token')
+      localStorage.removeItem('authenticatedUser')
+      localStorage.removeItem('token')
+      this.router.navigate(['login']);
       return false
     }
      

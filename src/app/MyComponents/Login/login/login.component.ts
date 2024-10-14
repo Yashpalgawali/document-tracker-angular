@@ -43,32 +43,43 @@ export class LoginComponent implements OnInit {
   {
     this.basicauthserv.executeAuthenticationService(this.user.username,this.user.password).subscribe({
        next: (data)=> {
-       
-        if(data.usertype.user_type_id==1) {
-          this.userid = data.userid
-          this.vendserv.getVendorByUserId(this.userid).subscribe({
-            next :(value)=> {
-                
-                this.vendor=value
-                this.vid =this.vendor.vendor_id
-                sessionStorage.setItem('vendor_id', this.vid)
-                //sessionStorage.setItem('vendor_id',''+this.vendor.vendor_id)
-            },
-          })
+        alert('successful login '+JSON.stringify(data))
+        sessionStorage.setItem('user_id',''+data.userid)
+        if(data.usertype.user_type_id==1){
+        
           this.router.navigate(['home'])
         }
 
-        if(data.usertype.user_type_id==2) {
-          this.userid = data.userid
-          this.vendserv.getVendorByUserId(this.userid).subscribe({
-            next :(value)=> {
-                this.vendor=value
-                this.vid =this.vendor.vendor_id
-                sessionStorage.setItem('vendor_id', this.vid)
-            },
-          })
+        if(data.usertype.user_type_id==2){
           this.router.navigate(['vendorhome'])
         }
+        // if(data.usertype.user_type_id==1) {
+        //   this.userid = data.userid
+        //   this.vendserv.getVendorByUserId(this.userid).subscribe({
+        //     next :(value)=> {
+        //         alert('vendor ID is '+value.vendor_id+'\n vendor type id is '+value.vendor_type.vendor_type_id)
+        //         this.vendor=value
+        //         this.vid =this.vendor.vendor_id
+        //         sessionStorage.setItem('vendor_id', this.vid)
+        //         //sessionStorage.setItem('vendor_id',''+this.vendor.vendor_id)
+        //     },
+        //   })
+        //   this.router.navigate(['home'])
+        // }
+
+        // if(data.usertype.user_type_id==2) {
+        //   this.userid = data.userid
+          
+        //   this.vendserv.getVendorByUserId(this.userid).subscribe({
+        //     next :(value)=> {
+        //       alert('vendor ID is '+value.vendor_id+'\n vendor type id is '+value.vendor_type.vendor_type_id)
+        //         this.vendor=value
+        //         this.vid =this.vendor.vendor_id
+        //         sessionStorage.setItem('vendor_id', this.vid)
+        //     },
+        //   })
+        //   this.router.navigate(['vendorhome'])
+        // }
           
        },
        error : (err) => {

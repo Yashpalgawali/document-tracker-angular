@@ -19,7 +19,7 @@ export class ViewregulationsComponent implements OnInit {
   app_url = GlobalComponent.app_url 
 
   pdfUrl : any
-
+  vendor_type : any
   date: Date = new Date(); // Example date to compare
  
   constructor (private router : Router,private regulateserv :RegulationService) { }
@@ -65,7 +65,7 @@ isDateGreaterThanToday(dateStr: string): boolean {
 }
    
   ngOnInit(): void {
-   
+   alert(sessionStorage.getItem('vendor_type'))
     this.regulateserv.getAllRegulation().subscribe({
       next:(data)=> {
       

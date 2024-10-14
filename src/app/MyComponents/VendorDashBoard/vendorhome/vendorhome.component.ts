@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/Models/User';
 import { NotificationService } from 'src/app/Services/Notification/notification.service';
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
+import { VendorService } from 'src/app/Services/Vendor/vendor.service';
 
 @Component({
   selector: 'app-vendorhome',
@@ -16,20 +17,30 @@ export class VendorhomeComponent implements OnInit{
   notificationlist : any
   expiredregulationlist : any
   logged_user : any
+  vid : any
+  userid :any 
+  constructor(private notificationserv : NotificationService,private regserv : RegulationService,private vendserv : VendorService) { }
 
-  constructor(private notificationserv : NotificationService,private regserv : RegulationService) { }
   ngOnInit(): void {
-    
-    alert('Vendor Home '+sessionStorage.getItem('vendor_id') )
-    
+  
     this.logged_user =sessionStorage.getItem('authenticatedUser')
-    this.notificationserv.getAllActiveNotifications().subscribe({
+    this.userid = sessionStorage.getItem('user_id')
+    this.vid = sessionStorage.getItem('vendor_id')
+
+    this.vendserv.getVendorByUserId(this.userid).subscribe({
+      next:(value) =>{
+        alert('Vendor dashboard '+JSON.stringify(value))
+          sessionStorage.setItem('vendor_id',''+value.vendor_id)
+      },
+    })
+
+  this.notificationserv.getAllActiveNotifications().subscribe({
       next:(data)=> {
           this.notificationlist = data 
       }
     })
     
-    this.regserv.getExpiredRegulationsByVendorId( parseInt(''+sessionStorage.getItem('vendor_id'))).subscribe({
+    this.regserv.getExpiredRegulationsByVendorId(this.vid).subscribe({
       next:(data) => {
          this.expiredregulationlist = data
       }

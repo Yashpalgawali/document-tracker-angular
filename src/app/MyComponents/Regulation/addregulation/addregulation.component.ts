@@ -7,6 +7,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { VendorService } from 'src/app/Services/Vendor/vendor.service';
 import { RegulationTypeService } from 'src/app/Services/RegulationType/regulation-type.service';
 import { formatDate } from '@angular/common';
+import { Vendor } from 'src/app/Models/Vendor';
 
 @Component({
   selector: 'app-addregulation',
@@ -18,11 +19,13 @@ export class AddregulationComponent  implements OnInit {
   startDate !: Date 
   endDate : Date = new Date();
   next_renewal_date !: Date  ;
+  vendor_id : any
+
+  vendor : Vendor = new Vendor()
 
   public datepickerConfig: Partial<BsDatepickerConfig> = {
     containerClass : 'theme-dark-blue',
     dateInputFormat: 'DD-MM-YYYY',
-    
   };
 
   regulationtype : any 
@@ -38,6 +41,8 @@ export class AddregulationComponent  implements OnInit {
       next_renewal_date: ['', Validators.required],
       regulation_frequency: ['', Validators.required],
       regulation_type_id: ['', Validators.required]
+      
+     // vendor_id: [sessionStorage.getItem('vendor_id') , Validators.required]
     });
   }
   selectedFile: File | null = null;
@@ -54,6 +59,7 @@ export class AddregulationComponent  implements OnInit {
     // formData.append('regulation_type_id', (document.getElementById('regulation_type_id') as HTMLInputElement).value);
     const formData = new FormData();
 
+    // this.vendor_id = sessionStorage.getItem('vendor_id')
     const dat = this.myGroup.get('regulation_issued_date')?.value
     const formattedDate = formatDate(dat , 'dd-MM-yyyy', 'en-US');
     const next_renewal_date = formatDate(this.myGroup.get('next_renewal_date')?.value , 'dd-MM-yyyy', 'en-US')
@@ -65,7 +71,7 @@ export class AddregulationComponent  implements OnInit {
    formData.append('next_renewal_date', next_renewal_date);
     formData.append('regulation_frequency', this.myGroup.get('regulation_frequency')?.value);
     formData.append('regulation_type_id', this.myGroup.get('regulation_type_id')?.value);
-    
+    // formData.append('vendor_id',this.myGroup.get('vendor')?.value );
 
     if (this.selectedFile) {
       formData.append('file', this.selectedFile);
@@ -84,7 +90,8 @@ export class AddregulationComponent  implements OnInit {
 
  
   ngOnInit(): void {
-   
+  //  alert('vendor ID = '+sessionStorage.getItem('vendor_id'))
+  //   this.vendor.vendor_id = parseInt(""+sessionStorage.getItem('vendor_id'))
     this.myGroup.get('next_renewal_date')?.setValue('');
     this.regtypeserv.getAllRegulationTypes().subscribe({
       next: (data) => {

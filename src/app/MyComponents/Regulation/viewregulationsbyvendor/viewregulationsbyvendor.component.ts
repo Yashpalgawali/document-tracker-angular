@@ -11,12 +11,13 @@ export class ViewregulationsbyvendorComponent {
   reserr : any
   response : any 
   regulationlist : any
-
+  vid : any
   constructor (private router : Router,private regulateserv :RegulationService) { }
 
   ngOnInit(): void {
    
-    this.regulateserv.getRegulationbyVendorId(2).subscribe({
+    this.vid = sessionStorage.getItem('vendor_id')
+    this.regulateserv.getRegulationbyVendorId(this.vid).subscribe({
       next:(data)=> {
         if(sessionStorage.getItem('reserr')!=null)
           {
