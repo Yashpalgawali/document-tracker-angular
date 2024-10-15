@@ -25,26 +25,28 @@ export class VendorhomeComponent implements OnInit{
   
     this.logged_user =sessionStorage.getItem('authenticatedUser')
     this.userid = sessionStorage.getItem('user_id')
-    this.vid = sessionStorage.getItem('vendor_id')
-
+   
     this.vendserv.getVendorByUserId(this.userid).subscribe({
       next:(value) =>{
-        alert('Vendor dashboard '+JSON.stringify(value))
-          sessionStorage.setItem('vendor_id',''+value.vendor_id)
+        this.vid = value.vendor_id
+        sessionStorage.setItem('vendor_id',''+value.vendor_id)
       },
     })
-
-  this.notificationserv.getAllActiveNotifications().subscribe({
+    this.vid = sessionStorage.getItem('vendor_id')
+    
+    this.notificationserv.getAllActiveNotifications().subscribe({
       next:(data)=> {
           this.notificationlist = data 
       }
     })
     
+   setTimeout(() => {
     this.regserv.getExpiredRegulationsByVendorId(this.vid).subscribe({
       next:(data) => {
          this.expiredregulationlist = data
       }
     })
+   }, 1000);
   }
 
   isNotificationActive(endDate: any): boolean {

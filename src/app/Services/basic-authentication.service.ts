@@ -16,27 +16,21 @@ export class BasicAuthenticationService {
   base_url= this.app_url+"basicauth";
 
   executeAuthenticationService(username : any ,password : any) {
-    alert('URL is '+this.base_url)
+    
     let basicAuthHeaderString =  'Basic '+ btoa(username+':'+password)
 
-    sessionStorage.setItem('token',basicAuthHeaderString)
     let headers = new HttpHeaders({
-      Authorization : `${basicAuthHeaderString}`
+      Authorization : `${basicAuthHeaderString}`,
+      'Content-Type': 'application/json'
     })
-    // return this.http.get<AuthenticationBean>(`${this.base_url}`, { headers: headers, withCredentials: true }  ).pipe(
-    //   map(
-    //     data=>{ 
-    //             sessionStorage.setItem('token',basicAuthHeaderString)
-    //             sessionStorage.setItem('authenticatedUser',username)
-    //             localStorage.setItem('authenticatedUser',username)
-    //             localStorage.setItem('token',basicAuthHeaderString)
-    //             return data;
-    //       }
-    //   ));
-    return this.http.post<User>(`${this.base_url}`, { headers: headers, withCredentials: true }  ).pipe(
+ 
+    const body = "" // Create a body with username and password
+
+    // return this.http.get<User>(`${this.base_url}`, { headers: headers, withCredentials: true }  ).pipe(
+      return this.http.post<User>(`${this.base_url}`,body, { headers: headers, withCredentials: true }  ).pipe(
       map(
         data=>{ 
-          alert(JSON.stringify(data))
+          
           sessionStorage.setItem('user_type',''+data.usertype.user_type_id)
           sessionStorage.setItem('user_id',''+data.userid)
                 sessionStorage.setItem('token',basicAuthHeaderString)
@@ -64,7 +58,7 @@ export class BasicAuthenticationService {
 logout() {
   return this.http.post(`${this.app_url}logouturl`, {}).subscribe({
       next : () =>{
-        alert('Logged out')
+       
         sessionStorage.removeItem('authenticatedUser')
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('user_type')

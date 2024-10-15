@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { BasicAuthenticationService } from './basic-authentication.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +10,15 @@ export class HttpInterceptorBasicAuthService implements HttpInterceptor{
 
   constructor( private basicAuthenticationService : BasicAuthenticationService) { }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler)
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
   {
     let basicAuthHeaderString = this.basicAuthenticationService.getAuthenticatedToken();
-    //let basicAuthHeaderString =  sessionStorage.getItem('token')
-    //let username = this.basicAuthenticationService.getAuthenticatedUser()
-
-     if(basicAuthHeaderString)
+    
+    if(basicAuthHeaderString)
       {request = request.clone({
       setHeaders : {
-          Authorization : `${basicAuthHeaderString}`
+          Authorization : `${basicAuthHeaderString}`,
+          'Content-Type': 'application/json'
         },
         withCredentials: true // Ensure credentials (cookies) are sent  
       })

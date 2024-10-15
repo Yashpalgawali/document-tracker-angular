@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private notificationserv : NotificationService,
               private regserv : RegulationService,private router : Router,
-            private vendserv : VendorService) { }
+              private vendserv : VendorService) { }
    
   ngOnInit(): void {
     this.user_type = sessionStorage.getItem('user_type')
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     this.vendserv.getVendorByUserId(this.userid).subscribe({
       next:(value) =>{
           sessionStorage.setItem('vendor_id',''+value.vendor_id)
-          alert(sessionStorage.getItem('vendor_id'))
+        
       },
     })
 

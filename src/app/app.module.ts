@@ -10,7 +10,7 @@ import { ViewregulationsComponent } from './MyComponents/Regulation/viewregulati
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { EditvendorComponent } from './MyComponents/Vendor/editvendor/editvendor.component';
 import { EditregulationComponent } from './MyComponents/Regulation/editregulation/editregulation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,6 +32,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { VendorhomeComponent } from './MyComponents/VendorDashBoard/vendorhome/vendorhome.component';
 import { HttpInterceptorBasicAuthService } from './Services/http-interceptor-basic-auth.service';
+import { NewchangepasswordComponent } from './MyComponents/Password/newchangepassword/newchangepassword.component';
  
 
 @NgModule({
@@ -55,7 +56,8 @@ import { HttpInterceptorBasicAuthService } from './Services/http-interceptor-bas
     RegistervendorComponent,
     LoginComponent,
     ActivityComponent,
-    VendorhomeComponent
+    VendorhomeComponent,
+    NewchangepasswordComponent
     
   ],
   imports: [
