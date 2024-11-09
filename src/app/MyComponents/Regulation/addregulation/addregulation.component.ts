@@ -20,7 +20,6 @@ export class AddregulationComponent  implements OnInit {
   endDate : Date = new Date();
   next_renewal_date !: Date  ;
   vendor_id : any
-
   vendor : Vendor = new Vendor()
 
   public datepickerConfig: Partial<BsDatepickerConfig> = {
@@ -28,9 +27,9 @@ export class AddregulationComponent  implements OnInit {
     dateInputFormat: 'DD-MM-YYYY',
   };
 
-  regulationtype : any 
-
+  regulationtype : any
   myGroup: FormGroup;
+  
   constructor(private router: Router, private regulateserv: RegulationService, private fb: FormBuilder,
                 private vendserv : VendorService, private regtypeserv : RegulationTypeService)
   {
@@ -42,8 +41,7 @@ export class AddregulationComponent  implements OnInit {
       regulation_frequency: ['', Validators.required],
       regulation_type_id: ['', Validators.required]
       
-     // vendor_id: [sessionStorage.getItem('vendor_id') , Validators.required]
-    });
+     });
   }
   selectedFile: File | null = null;
   onFileChange(event: any) {
@@ -59,28 +57,37 @@ export class AddregulationComponent  implements OnInit {
     // formData.append('regulation_type_id', (document.getElementById('regulation_type_id') as HTMLInputElement).value);
     const formData = new FormData();
 
-    // this.vendor_id = sessionStorage.getItem('vendor_id')
     const dat = this.myGroup.get('regulation_issued_date')?.value
     const formattedDate = formatDate(dat , 'dd-MM-yyyy', 'en-US');
     const next_renewal_date = formatDate(this.myGroup.get('next_renewal_date')?.value , 'dd-MM-yyyy', 'en-US')
     
     formData.append('regulation_name', this.myGroup.get('regulation_name')?.value);
     formData.append('regulation_description', this.myGroup.get('regulation_description')?.value);
-   // formData.append('regulation_issued_date', this.myGroup.get('regulation_issued_date')?.value);
-   formData.append('regulation_issued_date', formattedDate);
-   formData.append('next_renewal_date', next_renewal_date);
+    formData.append('regulation_issued_date', formattedDate);
+    formData.append('next_renewal_date', next_renewal_date);
     formData.append('regulation_frequency', this.myGroup.get('regulation_frequency')?.value);
-    formData.append('regulation_type_id', this.myGroup.get('regulation_type_id')?.value);
-    // formData.append('vendor_id',this.myGroup.get('vendor')?.value );
+    formData.append('regulation_type_id', this.myGroup.get('regulation_type_id')?.value); 
 
+  
     if (this.selectedFile) {
       formData.append('file', this.selectedFile);
     }
 
+     // Log FormData contents using type assertion
+     (formData as any).forEach((value: any, key: string) => {
+      alert(key+"===>>"+ value);
+    });
+    
     this.regulateserv.saveRegulation(formData).subscribe({
       complete :() => {
         sessionStorage.setItem('response','Regulation '+this.myGroup.get('regulation_name')?.value+' is saved successfully');
-        this.router.navigate(['viewregulations']);
+        if(sessionStorage.getItem('user_type')=='1')
+         {
+           this.router.navigate(['viewregulations']);
+         }
+         else{
+          this.router.navigate(['vendor/viewregulations']);
+         }
       },
       error : (err) => {
         alert('NOT saved');
@@ -90,8 +97,6 @@ export class AddregulationComponent  implements OnInit {
 
  
   ngOnInit(): void {
-  //  alert('vendor ID = '+sessionStorage.getItem('vendor_id'))
-  //   this.vendor.vendor_id = parseInt(""+sessionStorage.getItem('vendor_id'))
     this.myGroup.get('next_renewal_date')?.setValue('');
     this.regtypeserv.getAllRegulationTypes().subscribe({
       next: (data) => {

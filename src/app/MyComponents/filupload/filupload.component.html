@@ -1,0 +1,14 @@
+<div class="container">
+    <!-- <form action="" (ngSubmit)="onSubmit()"  [formGroup]="myGroup" #fileUploadForm="ngForm" method="post" enctype="multipart/form-data"> -->
+    <form (ngSubmit)="onSubmit()" [formGroup]="fileUploadForm" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="fname">FReg name</label>
+            <input type="text" class="form-control"  id="fname" formControlName="fname">
+        </div>
+        <div class="form-group">
+           <label for="file">File</label> 
+            <input type="file"   class="form-control" id="file" formControlName="file" accept=".pdf">
+        </div>
+        <button class="btn btn-primary" value="Upload">UPLOAD</button>
+    </form>
+</div>

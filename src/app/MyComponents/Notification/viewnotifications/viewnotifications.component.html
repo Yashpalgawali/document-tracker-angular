@@ -1,5 +1,16 @@
 <div class="container">
-
+  <!-- start: PAGE HEADER -->
+  <div class="row">
+    <div class="col-sm-12">
+        <!-- start: PAGE TITLE & BREADCRUMB -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a routerLink="/home"><i class="fa fa-home"></i>&nbsp;Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">View Notification</li>
+        </ol>
+    </div>
+</div>
     <div *ngIf="response"> <h6 class="alert alert-success">{{response}}</h6> </div>
     <div *ngIf="reserr"><h6 class="alert alert-danger">{{reserr}}</h6></div>
     

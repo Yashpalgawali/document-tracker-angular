@@ -22,6 +22,8 @@ import { RouteGuardService } from './Services/routeguard.service';
 import { ViewregulationhistoryComponent } from './MyComponents/Regulation/viewregulationhistory/viewregulationhistory.component';
 import { LogoutComponent } from './MyComponents/Login/logout/logout.component';
 import { VendorhomeComponent } from './MyComponents/VendorDashBoard/vendorhome/vendorhome.component';
+import { FiluploadComponent } from './MyComponents/filupload/filupload.component';
+import { ChangepasswordComponent } from './MyComponents/Password/changepassword/changepassword.component';
 
 const routes: Routes = [
 
@@ -30,6 +32,8 @@ const routes: Routes = [
   { path : "viewvendors" , component: ViewvendorsComponent ,canActivate : [RouteGuardService]   },
   { path : "edit/vendor/:id" , component: EditvendorComponent ,canActivate : [RouteGuardService]   },
   
+  { path : "fileupload" , component: FiluploadComponent ,canActivate : [RouteGuardService]   },
+
   { path : "vendor/viewregulations" , component: ViewregulationsbyvendorComponent ,canActivate : [RouteGuardService]  },
 
   { path : "addregulation" , component: AddregulationComponent ,canActivate : [RouteGuardService] },
@@ -55,7 +59,9 @@ const routes: Routes = [
   { path : "activities", component : ActivityComponent ,canActivate : [RouteGuardService]  },
   { path : "registervendor", component : RegistervendorComponent },
 
-  { path : "vendorhome", component : VendorhomeComponent ,canActivate : [RouteGuardService]  }
+  { path : "vendorhome", component : VendorhomeComponent ,canActivate : [RouteGuardService]  },
+
+  { path : "changepass", component : ChangepasswordComponent ,canActivate : [RouteGuardService]  }
 
 ];
 

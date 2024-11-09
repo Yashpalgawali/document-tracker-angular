@@ -28,6 +28,7 @@ export class ViewregulationhistoryComponent implements OnInit{
   this.reghistserv.getRegulationHistoryByRegulationId(this.reg_id).subscribe({
       next:(data)=> {
           this.reghist = data
+          alert(JSON.stringify(data))
       },
     })
   }

@@ -17,8 +17,8 @@ export class HttpInterceptorBasicAuthService implements HttpInterceptor{
     if(basicAuthHeaderString)
       {request = request.clone({
       setHeaders : {
-          Authorization : `${basicAuthHeaderString}`,
-          'Content-Type': 'application/json'
+          Authorization : `${basicAuthHeaderString}` 
+  
         },
         withCredentials: true // Ensure credentials (cookies) are sent  
       })

@@ -66,6 +66,10 @@ isDateGreaterThanToday(dateStr: string): boolean {
    
   ngOnInit(): void {
 
+    if(sessionStorage.getItem('user_type')!='1'){
+      sessionStorage.setItem('reserr','You are not Authorized. PLease Login to continue!!')
+      this.router.navigate(['vendorhome'])
+    }
     this.regulateserv.getAllRegulation().subscribe({
       next:(data)=> {
       

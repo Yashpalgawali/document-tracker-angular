@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
 
@@ -7,7 +7,7 @@ import { RegulationService } from 'src/app/Services/Regulation/regulation.servic
   templateUrl: './viewregulationsbyvendor.component.html',
   styleUrls: ['./viewregulationsbyvendor.component.css']
 })
-export class ViewregulationsbyvendorComponent {
+export class ViewregulationsbyvendorComponent implements OnInit{
   reserr : any
   response : any 
   regulationlist : any
@@ -38,5 +38,14 @@ export class ViewregulationsbyvendorComponent {
         this.regulationlist = data
       },
     })
+  }
+
+  getRegulationHistoryByVendorAndRegulationId( rid : any){
+
+    this.router.navigate(['regulation/history/',rid])
+  }
+
+  getNextRenewalDate(month : any, reg_date : any){
+    
   }
 }

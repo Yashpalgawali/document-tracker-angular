@@ -3,11 +3,11 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="myGroup" #fileUploadForm="ngForm" enctype="multipart/form-data">
     <div class="form-group">
         <label for="regulation_name">Regulation Name:</label>
-        <input type="text" id="regulation_name" name="regulation_name" class="form-control mb-3" formControlName="regulation_name" placeholder="Enter Regulation Name" ngModel>
+        <input type="text" id="regulation_name" name="regulation_name" class="form-control mb-3" formControlName="regulation_name" placeholder="Enter Regulation Name" required >
     </div>
     <div class="form-group">
         <label for="regulation_description">Description:</label>
-        <input type="text" id="regulation_description" name="regulation_description"  class="form-control mb-3" formControlName="regulation_description" placeholder="Enter Regulation Description" ngModel>
+        <input type="text" id="regulation_description" name="regulation_description"  class="form-control mb-3" formControlName="regulation_description" placeholder="Enter Regulation Description" >
     </div>
 
     <div class="form-group">

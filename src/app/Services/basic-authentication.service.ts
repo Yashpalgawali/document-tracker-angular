@@ -20,8 +20,7 @@ export class BasicAuthenticationService {
     let basicAuthHeaderString =  'Basic '+ btoa(username+':'+password)
 
     let headers = new HttpHeaders({
-      Authorization : `${basicAuthHeaderString}`,
-      'Content-Type': 'application/json'
+      Authorization : `${basicAuthHeaderString}` 
     })
  
     const body = "" // Create a body with username and password

@@ -23,13 +23,18 @@ export class VendorhomeComponent implements OnInit{
 
   ngOnInit(): void {
   
+    if(sessionStorage.getItem('reserr')!=null){
+      setTimeout(() => {
+        alert(''+sessionStorage.getItem('reserr'))
+      }, 2000);
+    }
+
     this.logged_user =sessionStorage.getItem('authenticatedUser')
     this.userid = sessionStorage.getItem('user_id')
-   
-    this.vendserv.getVendorByUserId(this.userid).subscribe({
+     this.vendserv.getVendorByUserId(this.userid).subscribe({
       next:(value) =>{
         this.vid = value.vendor_id
-        sessionStorage.setItem('vendor_id',''+value.vendor_id)
+         sessionStorage.setItem('vendor_id',''+value.vendor_id)
       },
     })
     this.vid = sessionStorage.getItem('vendor_id')
