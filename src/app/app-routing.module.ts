@@ -22,8 +22,7 @@ import { RouteGuardService } from './Services/routeguard.service';
 import { ViewregulationhistoryComponent } from './MyComponents/Regulation/viewregulationhistory/viewregulationhistory.component';
 import { LogoutComponent } from './MyComponents/Login/logout/logout.component';
 import { VendorhomeComponent } from './MyComponents/VendorDashBoard/vendorhome/vendorhome.component';
-import { FiluploadComponent } from './MyComponents/filupload/filupload.component';
-import { ChangepasswordComponent } from './MyComponents/Password/changepassword/changepassword.component';
+ import { ChangepasswordComponent } from './MyComponents/Password/changepassword/changepassword.component';
 
 const routes: Routes = [
 
@@ -31,8 +30,6 @@ const routes: Routes = [
   { path : "addvendor" , component: AddvendorComponent  ,canActivate : [RouteGuardService]  },
   { path : "viewvendors" , component: ViewvendorsComponent ,canActivate : [RouteGuardService]   },
   { path : "edit/vendor/:id" , component: EditvendorComponent ,canActivate : [RouteGuardService]   },
-  
-  { path : "fileupload" , component: FiluploadComponent ,canActivate : [RouteGuardService]   },
 
   { path : "vendor/viewregulations" , component: ViewregulationsbyvendorComponent ,canActivate : [RouteGuardService]  },
 

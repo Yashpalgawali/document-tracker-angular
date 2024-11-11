@@ -19,7 +19,14 @@ export class LoginComponent implements OnInit {
   vendor : Vendor  = new Vendor()
   userid !: number
   vid : any
-  ngOnInit(): void { 
+  ngOnInit(): void {
+
+    if(sessionStorage.getItem('user_type')=='1'){
+      this.router.navigate(['home'])
+    }
+    if(sessionStorage.getItem('user_type')=='2'){
+      this.router.navigate(['vendorhome'])
+    }
     if(sessionStorage.getItem('response')!=null)
       {
           this.response=sessionStorage.getItem('response')

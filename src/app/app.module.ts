@@ -33,7 +33,6 @@ import { DpDatePickerModule } from 'ng2-date-picker';
 import { VendorhomeComponent } from './MyComponents/VendorDashBoard/vendorhome/vendorhome.component';
 import { HttpInterceptorBasicAuthService } from './Services/http-interceptor-basic-auth.service';
 import { NewchangepasswordComponent } from './MyComponents/Password/newchangepassword/newchangepassword.component';
-import { FiluploadComponent } from './MyComponents/filupload/filupload.component';
 import { ChangepasswordComponent } from './MyComponents/Password/changepassword/changepassword.component';
  
 
@@ -60,8 +59,7 @@ import { ChangepasswordComponent } from './MyComponents/Password/changepassword/
     ActivityComponent,
     VendorhomeComponent,
     NewchangepasswordComponent,
-    ChangepasswordComponent,
-    FiluploadComponent
+    ChangepasswordComponent 
     
   ],
   imports: [

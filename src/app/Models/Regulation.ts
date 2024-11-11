@@ -1,3 +1,4 @@
+import { RegulationType } from "./RegulationType"
 import { Vendor } from "./Vendor"
 
 export class Regulation {
@@ -10,6 +11,6 @@ export class Regulation {
     file_path !: string
     file_name !: string
     file !: File
-    vendor !: Vendor ;
-
+    vendor !: Vendor 
+    regulationtype !: RegulationType
 }

@@ -1,4 +1,16 @@
 <div class="container">
+          <!-- start: PAGE HEADER -->
+          <div class="row">
+            <div class="col-sm-12">
+                <!-- start: PAGE TITLE & BREADCRUMB -->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a routerLink="/home"><i class="fa fa-home"></i>&nbsp;Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Add Regulation</li>
+                </ol>
+            </div>
+        </div>
 <h3>Add Regulation</h3>
 <form (ngSubmit)="onSubmit()" [formGroup]="myGroup" #fileUploadForm="ngForm" enctype="multipart/form-data">
     <div class="form-group">

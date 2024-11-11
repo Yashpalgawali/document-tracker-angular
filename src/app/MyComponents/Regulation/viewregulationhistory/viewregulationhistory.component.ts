@@ -28,11 +28,11 @@ export class ViewregulationhistoryComponent implements OnInit{
   this.reghistserv.getRegulationHistoryByRegulationId(this.reg_id).subscribe({
       next:(data)=> {
           this.reghist = data
-          alert(JSON.stringify(data))
+         
       },
     })
   }
-  // Method to check if a date is greater than today
+// Method to check if a date is greater than today
 isDateGreaterThanToday(dateStr: string): boolean { 
   
   const today = new Date();
@@ -42,7 +42,7 @@ isDateGreaterThanToday(dateStr: string): boolean {
   const regulationDate = new Date(ndate);
 
   if (regulationDate > today) {
-    this.isExpired = ''; // Clear expiration status
+    this.isExpired = 'Active'; // Clear expiration status
     return true; // Date is in the future
   } else if (regulationDate < today) {
     this.isExpired = 'Expired'; // Set status to "Expired"

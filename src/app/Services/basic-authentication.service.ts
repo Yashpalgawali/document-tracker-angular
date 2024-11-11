@@ -4,13 +4,14 @@ import { GlobalComponent } from '../GlobalComponents';
 import { AuthenticationBean } from '../Models/AuthenticationBean';
 import { map } from 'rxjs';
 import { User } from '../Models/User';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasicAuthenticationService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router : Router) { }
   app_url = GlobalComponent.app_url;
   //base_url= this.app_url+"users/";
   base_url= this.app_url+"basicauth";
@@ -56,8 +57,8 @@ export class BasicAuthenticationService {
 
 logout() {
   return this.http.post(`${this.app_url}logouturl`, {}).subscribe({
-      next : () =>{
-       
+      complete : () =>{
+      
         sessionStorage.removeItem('authenticatedUser')
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('user_type')
@@ -65,7 +66,8 @@ logout() {
         sessionStorage.removeItem('vendor_id')
         localStorage.removeItem('authenticatedUser');
         localStorage.removeItem('token');
-        
+      alert(sessionStorage.getItem('vendor_id'))
+          this.router.navigate(['login'])
       },
       error: (err) => {
         console.error('Logout failed', err);
