@@ -41,7 +41,22 @@ export class ViewregulationsbyvendorComponent implements OnInit {
       },
     })
   }
+  openPdf(regid : number) {
+    // this.regulateserv.getPdf(regid).subscribe((blob) => {
+    //   const url = window.URL.createObjectURL(blob);
+    //   window.open(url, '_blank');
+    // })
 
+    this.regulateserv.getPdf(regid).subscribe({
+      next :(data)=> {
+        const url = window.URL.createObjectURL(data);
+          window.open(url, '_blank');
+      },
+      error:(err) =>{
+          alert('File not found')
+      },
+    })
+  }
   getRegulationHistoryByVendorAndRegulationId( rid : any){
 
     this.router.navigate(['regulation/history/',rid])

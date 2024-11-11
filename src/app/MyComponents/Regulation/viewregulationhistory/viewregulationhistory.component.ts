@@ -1,10 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RegulationHistory } from 'src/app/Models/RegulationHistory';
-import { RegulationHistoryService } from 'src/app/Services/regulation-history.service';
-import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
-
+ import { RegulationHistoryService } from 'src/app/Services/regulation-history.service';
+ 
 @Component({
   selector: 'app-viewregulationhistory',
   standalone: true,

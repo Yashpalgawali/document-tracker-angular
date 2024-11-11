@@ -1,10 +1,9 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { formatDate } from 'date-fns';
-
+ 
 import { GlobalComponent } from 'src/app/GlobalComponents';
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
-
+ 
 @Component({
   selector: 'app-viewregulations',
   templateUrl: './viewregulations.component.html',
@@ -21,7 +20,7 @@ export class ViewregulationsComponent implements OnInit {
   pdfUrl : any
   vendor_type : any
   date: Date = new Date(); // Example date to compare
- 
+    
   constructor (private router : Router,private regulateserv :RegulationService) { }
 
   openPdf(regid : number) {
@@ -39,7 +38,6 @@ export class ViewregulationsComponent implements OnInit {
           alert('File not found')
       },
     })
-
   }
 
 // Method to check if a date is greater than today
@@ -65,7 +63,7 @@ isDateGreaterThanToday(dateStr: string): boolean {
 }
    
   ngOnInit(): void {
-
+    
     if(sessionStorage.getItem('user_type')!='1'){
       sessionStorage.setItem('reserr','You are not Authorized. PLease Login to continue!!')
       this.router.navigate(['vendorhome'])

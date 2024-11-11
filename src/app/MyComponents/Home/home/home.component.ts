@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { NotificationService } from 'src/app/Services/Notification/notification.service';
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
 
-import 'datatables.net-responsive-dt';
 import { Router } from '@angular/router';
 import { VendorService } from 'src/app/Services/Vendor/vendor.service';
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Regulation } from 'src/app/Models/Regulation';
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { VendorService } from 'src/app/Services/Vendor/vendor.service';
@@ -74,9 +73,9 @@ export class AddregulationComponent  implements OnInit {
     }
 
      // Log FormData contents using type assertion
-     (formData as any).forEach((value: any, key: string) => {
-      alert(key+"===>>"+ value);
-    });
+    //  (formData as any).forEach((value: any, key: string) => {
+    //   alert(key+"===>>"+ value);
+    // });
     
     this.regulateserv.saveRegulation(formData).subscribe({
       complete :() => {

@@ -1,5 +1,17 @@
 <div class="container">
-    <h4>Add Vendor</h4><hr>
+         <!-- start: PAGE HEADER -->
+         <div class="row">
+            <div class="col-sm-12">
+                <!-- start: PAGE TITLE & BREADCRUMB -->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a routerLink="/home"><i class="fa fa-home"></i>&nbsp;Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Add Vendor</li>
+                </ol>
+            </div>
+        </div>
+    <h3>Add Vendor</h3>
     <form (ngSubmit)="savevendor()"   #vendorForm="ngForm" method="post">
         <div class="form-group">
             <label for="vendor_name">Vendor Name</label><span style="color : red;"><strong>*</strong></span>

@@ -34,7 +34,7 @@ import { VendorhomeComponent } from './MyComponents/VendorDashBoard/vendorhome/v
 import { HttpInterceptorBasicAuthService } from './Services/http-interceptor-basic-auth.service';
 import { NewchangepasswordComponent } from './MyComponents/Password/newchangepassword/newchangepassword.component';
 import { ChangepasswordComponent } from './MyComponents/Password/changepassword/changepassword.component';
- 
+   
 
 @NgModule({
   declarations: [
@@ -64,7 +64,7 @@ import { ChangepasswordComponent } from './MyComponents/Password/changepassword/
   ],
   imports: [
     CommonModule,
-    BrowserModule,
+     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
