@@ -51,5 +51,15 @@ isDateGreaterThanToday(dateStr: string): boolean {
   return false; // Date is today or in the past
 
 }
+exportRegulationHistoryToExcel(regid : number){
  
+  this.reghistserv.exportRegulationHistoryToExcel(regid).subscribe((resp : any)=>{
+    const blob = new Blob([resp],{type : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
+    const link = document.createElement('a')
+    link.href = window.URL.createObjectURL(blob)
+    link.download = 'Regulation History .xlsx'
+    link.click()
+
+  })
+}
 }

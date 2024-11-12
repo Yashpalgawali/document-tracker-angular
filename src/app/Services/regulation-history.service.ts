@@ -17,4 +17,8 @@ export class RegulationHistoryService {
   {
     return this.http.get<RegulationHistory[]>(`${this.base_url}history/${regid}`);
   }
+
+  public exportRegulationHistoryToExcel(regid : number){
+    return this.http.get<any>(`${this.base_url}export/history/${regid}`, { responseType : 'arraybuffer' as 'json'});
+  }
 }

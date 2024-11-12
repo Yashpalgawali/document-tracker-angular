@@ -12,7 +12,10 @@
     </div>
     </div>
  <div class="row mb-3" >
-    <h4 >View Regulation History</h4>
+   <div> 
+        <h4 >View Regulation History</h4>
+        <button class="btn btn-primary" (click)="exportRegulationHistoryToExcel(reghist[0].hist_regulation_id)"><i class="fa fa-eye"></i>Export History </button>
+   </div>
       <table class="table table-hover table-striped" width="100%" id="expiretable">
         <thead>
             <tr>

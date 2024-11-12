@@ -65,4 +65,9 @@ export class RegulationService {
     return this.http.get(`${this.base_url}pdf/id/${regid}`, { responseType: 'blob' });
   }
    
+  public exportToExcel(){
+    return this.http.get<any>(`${this.base_url}export`, { responseType : 'arraybuffer' as 'json'});
+  }
+
+
 }

@@ -20,8 +20,9 @@
                 <h4>View Regulations
                     <a style ="float:right !important;" routerLink="/addregulation" class="btn btn-primary">
                         <i class="fa fa-plus"></i> Add Regulation</a> 
-                    <a style ="float:right !important; margin-right : 5px;" routerLink="/addregulation" class="btn btn-success ">
-                        <i class="fa fa-download"></i>  Export Regulation History </a>
+                        <button style ="float:right !important; margin-right : 5px;" (click)="exportAllRegulationsToExcel()" class="btn btn-success "><i class="fa fa-download"></i> Export Regulations</button>
+                    <!-- <a style ="float:right !important; margin-right : 5px;" routerLink="/exportAllRegulationsToExcel" class="btn btn-success ">
+                        <i class="fa fa-download"></i>  Export Regulation </a> -->
                 </h4>
             </div>
         </div>
@@ -31,11 +32,12 @@
             <tr>
                 <th>Sr. No.</th>
                 <th>Status</th>
-                <th>Regulation Name</th>
-                <th>Regulation Description</th>
-                <th>Regulation Frequency</th>
-                <th>Regulation Issued Date</th>
+                <th> Name</th>
+                <th> Description</th>
+                <th> Frequency</th>
+                <th> Issued Date</th>
                 <th>Next Renewal Date</th>
+                <th>Uploaded By</th>
                 <th>Vendor</th>
                 <th>File Name</th>
                 <th>File Path</th>
@@ -62,6 +64,7 @@
                     {{regulation.next_renewal_date}} <sub> {{isExpired}} </sub>
                 </td>
                 <td>{{regulation.vendor.vendor_name}}</td>
+                <td>{{regulation.vendor.vendor_name}}</td>
                 <td>
                     <button (click)="openPdf(regulation.regulation_id )" style="white-space: normal; width:150px;word-wrap: break-word;" target="_blank" class="btn btn-primary"> 
                         <i class="fa fa-download"></i>  {{regulation.file_name}}
@@ -71,7 +74,7 @@
                 <td>{{regulation.file_path}}\{{regulation.file_name}}</td> 
                 <td> 
                     <button (click)="getRegulationById(regulation.regulation_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> Edit </button>  
-                    <button (click)="getRegulationById(regulation.regulation_id)" class="btn btn-primary" > <i class="fa fa-eye"></i> Edit </button>  
+                    <button (click)="getRegulationHistoryByVendorAndRegulationId(regulation.regulation_id)" class="btn btn-info" > <i class="fa fa-eye"></i> History </button>  
                 </td>
             </tr>
         </tbody>

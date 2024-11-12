@@ -96,4 +96,20 @@ isDateGreaterThanToday(dateStr: string): boolean {
   {
     this.router.navigate(['/edit/regulation/',rid])
   }
+
+  getRegulationHistoryByVendorAndRegulationId( rid : any){
+
+    this.router.navigate(['regulation/history/',rid])
+  }
+
+  exportAllRegulationsToExcel(){
+    this.regulateserv.exportToExcel().subscribe((resp : any)=>{
+      const blob = new Blob([resp],{type : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
+      const link = document.createElement('a')
+      link.href = window.URL.createObjectURL(blob)
+      link.download = 'Active Regulation List.xlsx'
+      link.click()
+
+    })
+  }
 }
