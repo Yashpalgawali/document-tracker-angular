@@ -57,22 +57,22 @@
                  </div>
                  
                   <div class="col-xl-3 col-sm-6 py-2">
-                 <a href=" " class="effect-shine">
+                 <a (click)="exportActiveRegulationsToExcel()" class="effect-shine">
                      <div class="card text-white bg-info h-100">
                          <div class="card-body bg-info">
                              <div class="rotatenew">
                                   <i class="fa fa-download fa-4x"></i>
                              </div>
-                             <h6 class="text-uppercase">Export Regulation History</h6>
+                             <h6 class="text-uppercase">Export Active Regulations</h6>
                              <h1 class="display-4"></h1>
                          </div>
                      </div>
                  </a>
                  </div>
-                 
+
                  <div class="col-xl-3 col-sm-6 py-2">
-                 <a href=" " class="effect-shine">
-                     <div class="card text-white bg-danger h-100">
+                 <a (click)="exportExpiredRegulationsToExcel()" class="effect-shine">
+                         <div class="card text-white bg-danger h-100">
                          <div class="card-body bg-danger">
                              <div class="rotate">
                                  <i class="fa fa-download fa-4x"></i>

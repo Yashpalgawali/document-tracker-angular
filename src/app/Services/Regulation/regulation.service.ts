@@ -69,5 +69,11 @@ export class RegulationService {
     return this.http.get<any>(`${this.base_url}export`, { responseType : 'arraybuffer' as 'json'});
   }
 
+  public exportExpiredRegulationsToExcel(usertype : number , vendorid : number){
+    return this.http.get<any>(`${this.base_url}expired/export/${usertype}/${vendorid}`, { responseType : 'arraybuffer' as 'json'});
+  }
 
+  public exportAllRegulationsByVendorIdToExcel( vendorid : number){
+    return this.http.get<any>(`${this.base_url}export/${vendorid}`, { responseType : 'arraybuffer' as 'json'});
+  }
 }

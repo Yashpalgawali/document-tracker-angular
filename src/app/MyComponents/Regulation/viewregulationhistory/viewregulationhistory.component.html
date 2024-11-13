@@ -5,7 +5,7 @@
         <!-- start: PAGE TITLE & BREADCRUMB -->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a routerLink="/home"><i class="fa fa-home"></i>&nbsp;Home</a>
+                <a routerLink="/home" href=""><i class="fa fa-home"></i>&nbsp;Home</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">View Regulation History</li>
         </ol>
@@ -13,8 +13,9 @@
     </div>
  <div class="row mb-3" >
    <div> 
-        <h4 >View Regulation History</h4>
-        <button class="btn btn-primary" (click)="exportRegulationHistoryToExcel(reghist[0].hist_regulation_id)"><i class="fa fa-eye"></i>Export History </button>
+        <h4 >View Regulation History
+            <button class="btn btn-primary" (click)="exportRegulationHistoryToExcel(reghist[0].hist_regulation_id)" style="clear:left; float:right;"><i class="fa fa-eye"></i>Export History </button>
+        </h4>
    </div>
       <table class="table table-hover table-striped" width="100%" id="expiretable">
         <thead>

@@ -57,11 +57,37 @@ export class VendorhomeComponent implements OnInit{
   isNotificationActive(endDate: any): boolean {
 
     const currentDate = new Date();
-    const dateFormat = "dd-MM-yyyy"
-
+    //const dateFormat = "dd-MM-yyyy"
     const [day, month, year] = endDate.split('-').map(Number);
     const eddate = new Date(year, month -1,day)
-
     return eddate < currentDate;
-}
+  }
+
+  exportExpiredRegulationsToExcel(){
+
+    let utype = parseInt(""+sessionStorage.getItem('user_type'))
+    let vid = parseInt(""+sessionStorage.getItem('vendor_id'))
+
+    this.regserv.exportExpiredRegulationsToExcel(utype,vid).subscribe((resp : any)=>{
+      const blob = new Blob([resp],{type : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
+      const link = document.createElement('a')
+      link.href = window.URL.createObjectURL(blob)
+      link.download = 'Expired Regulations List.xlsx'
+      link.click()
+
+    })
+  }
+
+  exportActiveRegulationsToExcel(){
+ 
+    let vid = parseInt(""+sessionStorage.getItem('vendor_id'))
+    this.regserv.exportAllRegulationsByVendorIdToExcel(vid).subscribe((resp : any)=>{
+      const blob = new Blob([resp],{type : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
+      const link = document.createElement('a')
+      link.href = window.URL.createObjectURL(blob)
+      link.download = 'Active Regulations List.xlsx'
+      link.click()
+
+    })
+  }
 }
