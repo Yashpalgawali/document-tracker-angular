@@ -67,7 +67,7 @@ export class VendorhomeComponent implements OnInit{
 
     let utype = parseInt(""+sessionStorage.getItem('user_type'))
     let vid = parseInt(""+sessionStorage.getItem('vendor_id'))
-
+    alert('usertype = '+utype+' vendor id ='+vid)
     this.regserv.exportExpiredRegulationsToExcel(utype,vid).subscribe((resp : any)=>{
       const blob = new Blob([resp],{type : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
       const link = document.createElement('a')
@@ -81,6 +81,7 @@ export class VendorhomeComponent implements OnInit{
   exportActiveRegulationsToExcel(){
  
     let vid = parseInt(""+sessionStorage.getItem('vendor_id'))
+
     this.regserv.exportAllRegulationsByVendorIdToExcel(vid).subscribe((resp : any)=>{
       const blob = new Blob([resp],{type : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
       const link = document.createElement('a')

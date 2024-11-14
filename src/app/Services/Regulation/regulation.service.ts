@@ -65,15 +65,15 @@ export class RegulationService {
     return this.http.get(`${this.base_url}pdf/id/${regid}`, { responseType: 'blob' });
   }
    
-  public exportToExcel(){
+  public exportToExcel() :Observable<any>{
     return this.http.get<any>(`${this.base_url}export`, { responseType : 'arraybuffer' as 'json'});
   }
 
-  public exportExpiredRegulationsToExcel(usertype : number , vendorid : number){
+  public exportExpiredRegulationsToExcel(usertype : number , vendorid : number) :Observable<any>{
     return this.http.get<any>(`${this.base_url}expired/export/${usertype}/${vendorid}`, { responseType : 'arraybuffer' as 'json'});
   }
 
-  public exportAllRegulationsByVendorIdToExcel( vendorid : number){
+  public exportAllRegulationsByVendorIdToExcel( vendorid : number) :Observable<any>{
     return this.http.get<any>(`${this.base_url}export/${vendorid}`, { responseType : 'arraybuffer' as 'json'});
   }
 }

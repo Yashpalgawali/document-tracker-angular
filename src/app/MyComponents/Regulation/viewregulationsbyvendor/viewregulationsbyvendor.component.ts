@@ -18,6 +18,7 @@ export class ViewregulationsbyvendorComponent implements OnInit {
   ngOnInit(): void {
    
     this.vid = sessionStorage.getItem('vendor_id')
+    
     this.regulateserv.getRegulationbyVendorId(this.vid).subscribe({
       next:(data)=> {
        
@@ -101,7 +102,6 @@ isDateGreaterThanToday(dateStr: string): boolean {
     this.isExpired = 'Due today'; // Set status to "Due today"
   }
 
-  return false; // Date is today or in the past
-
+  return false; // Date is today or in the past 
 }
 }

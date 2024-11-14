@@ -20,15 +20,13 @@ export class ViewregulationhistoryComponent implements OnInit{
   constructor(private reghistserv : RegulationHistoryService, private route : ActivatedRoute ) { }
   
   ngOnInit(): void {
- // this.vendor_id = this.route.snapshot.params['vid']
-  this.reg_id  = this.route.snapshot.params['rid']
-
-  this.reghistserv.getRegulationHistoryByRegulationId(this.reg_id).subscribe({
-      next:(data)=> {
-          this.reghist = data
-         
-      },
-    })
+    this.reg_id  = this.route.snapshot.params['rid']
+      
+    this.reghistserv.getRegulationHistoryByRegulationId(this.reg_id).subscribe({
+        next:(data)=> {
+            this.reghist = data
+        },
+      })
   }
 // Method to check if a date is greater than today
 isDateGreaterThanToday(dateStr: string): boolean { 

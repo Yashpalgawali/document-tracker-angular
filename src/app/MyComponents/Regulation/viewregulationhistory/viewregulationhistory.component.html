@@ -14,7 +14,7 @@
  <div class="row mb-3" >
    <div> 
         <h4 >View Regulation History
-            <button class="btn btn-primary" (click)="exportRegulationHistoryToExcel(reghist[0].hist_regulation_id)" style="clear:left; float:right;"><i class="fa fa-eye"></i>Export History </button>
+            <button class="btn btn-primary" (click)="exportRegulationHistoryToExcel(reghist[0].regulation.regulation_id)" style="clear:left; float:right;"><i class="fa fa-eye"></i>Export History </button>
         </h4>
    </div>
       <table class="table table-hover table-striped" width="100%" id="expiretable">

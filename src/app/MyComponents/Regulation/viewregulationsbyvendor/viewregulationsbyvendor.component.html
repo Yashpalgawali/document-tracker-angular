@@ -14,7 +14,9 @@
     </div>
     <div *ngIf="response"> <h6 class="alert alert-success">{{response}}</h6> </div>
     <div *ngIf="reserr"> <h6 class="alert alert-danger">{{reserr}}</h6> </div>
-    
+    <div>
+        <h4>View Regulations <button type="button" style="float:right;" routerLink="/addregulation" class="btn btn-primary">Add Regulation</button> </h4>
+    </div>
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -42,7 +44,7 @@
                 <td>{{regulation.regulation_issued_date}}</td>
                 <td *ngIf="isDateGreaterThanToday(regulation.next_renewal_date);then content else other_content"></td>
                 <ng-template #content> <p>{{regulation.regulation_issued_date}} <sub>Active</sub> </p></ng-template>
-                <ng-template #other_content><p style="color : red;"><strong>{{regulation.regulation_issued_date}} <sub> Expired</sub></strong></p></ng-template>
+                <ng-template #other_content><p style="color : red;"><strong>{{regulation.next_renewal_date}} <sub> Expired</sub></strong></p></ng-template>
                 <td>   {{regulation.file_name}} </td>
                 <!-- <td>{{regulation.file_path}}</td>  -->
                 <td> 
