@@ -21,7 +21,7 @@
         <thead>
             <tr>
                 <th>Sr. No.</th>
-                <th>Vendor</th>
+               
                 <th>Regulation </th>
                 <th>Description</th>
                 <th>Duration</th>
@@ -34,7 +34,7 @@
         <tbody>
              <tr *ngFor="let regulation of reghist; let i=index">
                 <td>{{i+1}}</td>
-                <td>{{regulation.hist_regulation_name}}</td>
+                
                 <td>{{regulation.hist_regulation_name}}</td>
                 <td>{{regulation.hist_regulation_description}}</td>
                 <td *ngIf="regulation.hist_regulation_frequency==1"> Monthly </td>

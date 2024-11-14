@@ -17,7 +17,7 @@
     <div>
         <h4>View Regulations <button type="button" style="float:right;" routerLink="/addregulation" class="btn btn-primary">Add Regulation</button> </h4>
     </div>
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover" id="regtable">
         <thead>
             <tr>
                 <th>Sr. No.</th>
@@ -42,9 +42,11 @@
                 <td  *ngIf="regulation.regulation_frequency==2" >Quarterly</td>
                 <td  *ngIf="regulation.regulation_frequency==3" >Yearly</td>
                 <td>{{regulation.regulation_issued_date}}</td>
-                <td *ngIf="isDateGreaterThanToday(regulation.next_renewal_date);then content else other_content"></td>
-                <ng-template #content> <p>{{regulation.regulation_issued_date}} <sub>Active</sub> </p></ng-template>
+                
+                <td *ngIf="isDateGreaterThanToday(regulation.next_renewal_date);then content else other_content"  ></td>
+                <ng-template #content> <p>{{regulation.next_renewal_date}} <sub>Active</sub> </p></ng-template>
                 <ng-template #other_content><p style="color : red;"><strong>{{regulation.next_renewal_date}} <sub> Expired</sub></strong></p></ng-template>
+                
                 <td>   {{regulation.file_name}} </td>
                 <!-- <td>{{regulation.file_path}}</td>  -->
                 <td> 

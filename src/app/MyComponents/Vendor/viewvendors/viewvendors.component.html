@@ -32,7 +32,11 @@
                 <td>{{i+1}}</td>
                 <td>{{vendor.vendor_name}}</td>
                 <td>{{vendor.vendor_email}}</td>
-                <td> <button (click)="getVendorById(vendor.vendor_id)" class="btn btn-primary" > <i class="fa fa-edit"></i> Edit</button>  </td>
+                <td> 
+                    <button (click)="getVendorById(vendor.vendor_id)" class="btn btn-primary " > <i class="fa fa-edit"></i> Edit</button> 
+                    &nbsp;
+                    <button (click)="exportRegulationsVendorById(vendor.vendor_id)" class="btn btn-warning" > <i class="fa fa-download"></i> Download</button> 
+                 </td>
             </tr>
         </tbody>
     </table>

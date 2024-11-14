@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
 import { VendorService } from 'src/app/Services/Vendor/vendor.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class ViewvendorsComponent implements OnInit{
   response : any
   user_type : any
 
-  constructor  (private vendserv : VendorService, private router : Router) {}
+  constructor  (private vendserv : VendorService, private router : Router,private regserv : RegulationService) {}
 
   ngOnInit(): void {
     this.user_type = sessionStorage.getItem('user_type')
@@ -54,5 +55,26 @@ export class ViewvendorsComponent implements OnInit{
   getVendorById(vid : number)
   {
     this.router.navigate(['/edit/vendor/',vid]);
+  }
+
+  exportRegulationsVendorById(vid : number)
+  { 
+    
+      this.regserv.exportAllRegulationsByVendorIdToExcel(vid).subscribe((resp : any)=>{
+        const blob = new Blob([resp],{type : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
+        const link = document.createElement('a')
+        link.href = window.URL.createObjectURL(blob)
+        link.download = 'Regulation List .xlsx'
+        link.click()
+      })
+  }
+
+  getVendornamebyId(vid : number)
+  {
+    this.vendserv.getVendorById(vid).subscribe({
+      next: (data) =>{
+          let vendor_name = data.vendor_name
+      },
+    })
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegulationService } from 'src/app/Services/Regulation/regulation.service';
+ 
 
 @Component({
   selector: 'app-viewregulationsbyvendor',
@@ -16,6 +17,7 @@ export class ViewregulationsbyvendorComponent implements OnInit {
   constructor (private router : Router,private regulateserv :RegulationService) { }
 
   ngOnInit(): void {
+   
    
     this.vid = sessionStorage.getItem('vendor_id')
     
@@ -85,23 +87,23 @@ export class ViewregulationsbyvendorComponent implements OnInit {
   }
 
  // Method to check if a date is greater than today
-isDateGreaterThanToday(dateStr: string): boolean { 
+ isDateGreaterThanToday(dateStr: string): boolean { 
   
-  const today = new Date();
-  
-  let [date , month ,year] = dateStr.split("-")
-  let ndate = month+"-"+date+"-"+year
-  const regulationDate = new Date(ndate);
+    const today = new Date();
+    
+    let [date , month ,year] = dateStr.split("-")
+    let ndate = month+"-"+date+"-"+year
+    const regulationDate = new Date(ndate);
 
-  if (regulationDate > today) {
-    this.isExpired = ''; // Clear expiration status
-    return true; // Date is in the future
-  } else if (regulationDate < today) {
-    this.isExpired = 'Expired'; // Set status to "Expired"
-  } else {
-    this.isExpired = 'Due today'; // Set status to "Due today"
+    if (regulationDate > today) {
+      this.isExpired = 'Active'; // Clear expiration status
+      return true; // Date is in the future
+    } else if (regulationDate < today) {
+      this.isExpired = 'Expired'; // Set status to "Expired"
+    } else {
+      this.isExpired = 'Due today'; // Set status to "Due today"
+    }
+
+    return false; // Date is today or in the past
   }
-
-  return false; // Date is today or in the past 
-}
 }
