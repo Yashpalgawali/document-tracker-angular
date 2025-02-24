@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { GlobalComponent } from 'src/app/GlobalComponents';
-import { Regulation } from 'src/app/Models/Regulation';
 import { Vendor } from 'src/app/Models/Vendor';
 
 @Injectable({
@@ -23,9 +22,25 @@ export class VendorService {
     return this.http.get<Vendor[]>(`${this.base_url}`);
   }
 
+  // public getVendorById(vid : number):Observable<Vendor>
+  // { 
+  //   return this.http.get<Vendor>(`${this.base_url}${vid}`);
+  // }
   public getVendorById(vid : number):Observable<Vendor>
   { 
-    return this.http.get<Vendor>(`${this.base_url}${vid}`);
+    return this.http.get<Vendor>(`${this.base_url}${vid}`).pipe(
+      catchError((error) => {
+        let errorMessage = 'An unexpected error occurred'
+        if (error.status === 404) {
+          // Handle 404 (Not Found) error
+      errorMessage = error.error.error
+           return throwError(() => new Error(errorMessage));  // Return the error message from the backend
+        } else {
+          // Handle other errors
+          return throwError(()=> new Error(errorMessage));
+        }
+      })
+    );
   }
 
   public getVendorByUserId(user_id : number):Observable<Vendor>
