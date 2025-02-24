@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   expiredregulationlist : any
   user_type : any
   userid : any
+  user_name : any
 
   constructor(private notificationserv : NotificationService,
               private regserv : RegulationService,private router : Router,
@@ -31,7 +32,9 @@ export class HomeComponent implements OnInit {
     this.userid = sessionStorage.getItem('user_id')
     this.vendserv.getVendorByUserId(this.userid).subscribe({
       next:(value) =>{
+       
           sessionStorage.setItem('vendor_id',''+value.vendor_id)
+          this.user_name = value.vendor_name
       },
     })
 

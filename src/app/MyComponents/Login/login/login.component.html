@@ -8,8 +8,10 @@
         <input type="password" name="password" id="password" placeholder="Enter your password" [(ngModel)]="user.password" class="form-control" required>
     </div>
 
-        <button class="btn btn-primary" >Login</button> <a routerLink="/registervendor">New Vendor? Register Here</a>
+        <button class="btn btn-primary" >Login</button> <a routerLink="/registervendor">&nbsp;New Vendor? Register Here</a>
     </form>
-     <div *ngIf="response"> <h6 class="alert alert-success">{{response}}</h6> </div>
-    <div *ngIf="reserr"> <h6 class="alert alert-danger">{{reserr}}</h6> </div>
+    <div class="mt-2">
+        <div *ngIf="response"> <h6 class="alert alert-success">{{response}}</h6> </div>
+        <div *ngIf="reserr"> <h6 class="alert alert-danger">{{reserr}}</h6> </div>
+    </div>
 </div>

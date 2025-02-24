@@ -66,7 +66,7 @@ logout() {
         localStorage.removeItem('authenticatedUser');
         localStorage.removeItem('token');
       
-          this.router.navigate(['login'])
+        this.router.navigate(['login'])
       },
       error: (err) => {
         console.error('Logout failed', err);

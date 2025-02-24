@@ -81,8 +81,9 @@ export class VendorhomeComponent implements OnInit{
 
   exportActiveRegulationsToExcel(){
  
+    
     let vid = parseInt(""+sessionStorage.getItem('vendor_id'))
-
+    alert('vendor_id = '+vid)
     this.regserv.exportAllRegulationsByVendorIdToExcel(vid).subscribe((resp : any)=>{
       const blob = new Blob([resp],{type : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
       const link = document.createElement('a')

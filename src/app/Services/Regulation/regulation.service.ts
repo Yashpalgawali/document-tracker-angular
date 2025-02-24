@@ -61,14 +61,17 @@ export class RegulationService {
     return this.http.get<Regulation[]>(`${this.base_url}vendor/${vendorid}/regulation/${reg_id}`);
   }
 
+  // to Get the PDF file
   public getPdf(regid : number): Observable<Blob> {
     return this.http.get(`${this.base_url}pdf/id/${regid}`, { responseType: 'blob' });
   }
-   
+  
+  //Export all Regulations to the Excel file ( For Admin )
   public exportToExcel() :Observable<any>{
     return this.http.get<any>(`${this.base_url}export`, { responseType : 'arraybuffer' as 'json'});
   }
 
+  //Export all Regulations to the Excel file ( For Admin )
   public exportExpiredRegulationsToExcel(usertype : number , vendorid : number) :Observable<any>{
     return this.http.get<any>(`${this.base_url}expired/export/${usertype}/${vendorid}`, { responseType : 'arraybuffer' as 'json'});
   }
