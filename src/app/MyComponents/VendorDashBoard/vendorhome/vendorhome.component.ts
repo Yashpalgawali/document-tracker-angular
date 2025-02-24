@@ -19,7 +19,8 @@ export class VendorhomeComponent implements OnInit{
   logged_user : any
   vid : any
   userid :any 
-  constructor(private notificationserv : NotificationService,private regserv : RegulationService,private vendserv : VendorService) { }
+  constructor(private notificationserv : NotificationService,private regserv : RegulationService,
+              private vendserv : VendorService) { }
 
   ngOnInit(): void {
   

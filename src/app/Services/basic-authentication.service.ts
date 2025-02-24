@@ -30,9 +30,8 @@ export class BasicAuthenticationService {
       return this.http.post<User>(`${this.base_url}`,body, { headers: headers, withCredentials: true }  ).pipe(
       map(
         data=>{ 
-          
-          sessionStorage.setItem('user_type',''+data.usertype.user_type_id)
-          sessionStorage.setItem('user_id',''+data.userid)
+                sessionStorage.setItem('user_type',''+data.usertype.user_type_id)
+                sessionStorage.setItem('user_id',''+data.userid)
                 sessionStorage.setItem('token',basicAuthHeaderString)
                 sessionStorage.setItem('authenticatedUser',username)
                 localStorage.setItem('authenticatedUser',username)
@@ -66,7 +65,7 @@ logout() {
         sessionStorage.removeItem('vendor_id')
         localStorage.removeItem('authenticatedUser');
         localStorage.removeItem('token');
-      alert(sessionStorage.getItem('vendor_id'))
+      
           this.router.navigate(['login'])
       },
       error: (err) => {
